@@ -2,24 +2,24 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   content: [
-    "./src/pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
+    "./components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
     screens: {
-      'xs': '320px',
-      'sm': '480px',
-      'md': '768px',
-      'lg': '1024px',
-      'xl': '1440px',
-      '2xl': '1920px',
+      'xs': 'var(--screen-xs)',
+      'sm': 'var(--screen-sm)',
+      'md': 'var(--screen-md)',
+      'lg': 'var(--screen-lg)',
+      'xl': 'var(--screen-xl)',
+      '2xl': 'var(--screen-2xl)',
     },
     extend: {
       fontSize: {
-        'body': ['1rem', '1.5'],
-        'heading': ['2.074rem', '1.35'],
-        'subheading': ['1.2rem', '1.35'],
+        'body': ['var(--font-size-body)', 'var(--line-height-body)'],
+        'heading': ['var(--font-size-heading)', 'var(--line-height-headings)'],
+        'subheading': ['var(--font-size-subheading)', 'var(--line-height-headings)'],
       },
       colors: {
         'background': "var(--color-background)",
