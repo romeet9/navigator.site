@@ -2,15 +2,28 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
+const commitMono = localFont({
+  src: "./fonts/CommitMono.woff2",
+  variable: "--font-commit-mono",
+  weight: "450",
+  preload: true,
+  display: 'swap',
 });
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
+
+const tiemposHeadline = localFont({
+  src: "./fonts/TiemposHeadline-Regular.woff2",
+  variable: "--font-tiempos-headline",
+  weight: "400",
+  preload: true,
+  display: 'swap',
+});
+
+const tiemposText = localFont({
+  src: "./fonts/TiemposText-Regular.woff2",
+  variable: "--font-tiempos-text",
+  weight: "400",
+  preload: true,
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${commitMono.variable} ${tiemposHeadline.variable} ${tiemposText.variable} antialiased`}
       >
         {children}
       </body>
