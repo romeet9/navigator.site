@@ -12,8 +12,9 @@
     /* Colors */
     --color-background: #F7F7F5;
     --color-fill: #FFFFFF; 
-    --color-primary-text: #0A0A0A;
-    --color-secondary-text: #454545;
+    --color-primary: #0A0A0A;
+    --color-secondary: #454545;
+    --color-tertiary: #C7C7C6; 
 
     /* Font sizes and line heights */
     --font-size-body: 1rem;
@@ -23,28 +24,90 @@
     --line-height-body: 1.5;
     --line-height-headings: 1.35;
 
-    /* Breakpoints */
-    --screen-xs: 320px;
-    --screen-sm: 480px;
-    --screen-md: 768px;
-    --screen-lg: 1024px;
-    --screen-xl: 1440px;
-    --screen-2xl: 1920px;
+    /* Spacing */
+    --spacing-0: 0.25rem;
+    --spacing-1: 0.5rem;
+    --spacing-2: 0.8rem;
+    --spacing-3: 1rem;
+    --spacing-4: 1.5rem;
+    --spacing-5: 2rem;
+    --spacing-6: 3rem;
+
+    /* Shadcn Colors */
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
   }
- 
+
+  /* Set default font size to 12px for all screen sizes */
+  html {
+    font-size: 12px;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    html {
+      font-size: 18px;
+    }
+  }
+
   h1 {
-    @apply text-heading font-tiempos-headline text-primary-text;
+    @apply text-heading font-tiempos-headline text-primary-color;
   }
+
   h2 {
-    @apply text-subheading font-tiempos-headline text-primary-text;
+    @apply text-subheading font-tiempos-headline text-primary-color;
   }
-  a {
-    @apply text-primary-text underline hover:text-secondary-text;
+
+  .b_mono {
+    @apply text-body font-commit-mono text-primary-color;
+  }
+
+  .b_serif {
+    @apply text-body font-tiempos-text text-primary-color;
+  }
+
+  .b_mono a, .b_serif a {
+    @apply text-primary-color no-underline transition-all duration-300;
+  }
+
+  .b_mono a:hover, .b_serif a:hover {
+    @apply underline;
   }
 }
 
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .text-underline {
+    @apply underline; 
+  }
+  
+  .text-all-caps {
+    @apply uppercase;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
   }
 }

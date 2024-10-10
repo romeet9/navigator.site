@@ -39,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${commitMono.variable} ${tiemposHeadline.variable} ${tiemposText.variable} antialiased`}
+        className={`${commitMono.variable} ${tiemposHeadline.variable} ${tiemposText.variable} antialiased bg-background-color min-h-screen`}
       >
         {children}
       </body>
