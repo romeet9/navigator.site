@@ -4,11 +4,6 @@
 
 @layer base {
   :root {
-    /* Font families */
-    --font-commit-mono: 'CommitMono', monospace;
-    --font-tiempos-headline: 'TiemposHeadline', serif;
-    --font-tiempos-text: 'TiemposText', serif;
-
     /* Colors */
     --color-background: #F7F7F5;
     --color-fill: #FFFFFF; 
@@ -16,11 +11,13 @@
     --color-secondary: #454545;
     --color-tertiary: #C7C7C6; 
 
-    /* Font sizes and line heights */
+    /* Typography */
+    --font-commit-mono: 'CommitMono', monospace;
+    --font-tiempos-headline: 'TiemposHeadline', serif;
+    --font-tiempos-text: 'TiemposText', serif;
     --font-size-body: 1rem;
     --font-size-heading: 2.074rem;
     --font-size-subheading: 1.2rem;
-    
     --line-height-body: 1.5;
     --line-height-headings: 1.35;
 
@@ -33,6 +30,10 @@
     --spacing-5: 2rem;
     --spacing-6: 3rem;
 
+    /* Layout */
+    --max-width-default: 58rem;
+    --max-width-narrow: 36rem;
+
     /* Shadcn Colors */
     --primary: 240 5.9% 10%;
     --primary-foreground: 0 0% 98%;
@@ -41,73 +42,99 @@
     --ring: 240 10% 3.9%;
   }
 
-  /* Set default font size to 12px for all screen sizes */
+  /* Responsive font sizes */
   html {
     font-size: 12px;
   }
 
-  @media (min-width: 1024px) {
-    html {
-      font-size: 14px;
-    }
+  @media (min-width: 1024px) { 
+    html { 
+      font-size: 14px; 
+    } 
   }
 
-  @media (min-width: 1440px) {
-    html {
-      font-size: 16px;
-    }
+  @media (min-width: 1440px) { 
+    html { 
+      font-size: 16px; 
+    } 
   }
 
-  @media (min-width: 1920px) {
-    html {
-      font-size: 18px;
-    }
+  @media (min-width: 1920px) { 
+    html { 
+      font-size: 18px; 
+    } 
   }
 
-  h1 {
-    @apply text-heading font-tiempos-headline text-primary-color;
+  /* Typography styles */
+  h1 { 
+    @apply text-heading font-tiempos-headline text-primary-color; 
   }
 
-  h2 {
-    @apply text-subheading font-tiempos-headline text-primary-color;
+  h2 { 
+    @apply text-subheading font-tiempos-headline text-primary-color; 
   }
 
-  .b_mono {
-    @apply text-body font-commit-mono text-primary-color;
+  .b_mono { 
+    @apply text-body font-commit-mono text-primary-color; 
   }
 
-  .b_serif {
-    @apply text-body font-tiempos-text text-primary-color;
+  .b_serif { 
+    @apply text-body font-tiempos-text text-primary-color; 
   }
 
   .b_mono a, .b_serif a {
     @apply text-primary-color no-underline transition-all duration-300;
   }
 
-  .b_mono a:hover, .b_serif a:hover {
-    @apply underline;
+  .b_mono a:hover, .b_serif a:hover { 
+    @apply underline; 
+  }
+
+  /* Global styles */
+  * { 
+    @apply border-border; 
+  }
+
+  body { 
+    @apply bg-background text-foreground; 
+  }
+
+  main {
+    padding-top: 8rem;
   }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  /* Text utilities */
+  .text-all-caps { 
+    @apply uppercase; 
   }
 
-  .text-underline {
+  .text-balance { 
+    text-wrap: balance; 
+  }
+
+  .text-underline { 
     @apply underline; 
   }
-  
-  .text-all-caps {
-    @apply uppercase;
-  }
-}
 
-@layer base {
-  * {
-    @apply border-border;
+  /* Layout utilities */
+  .page-container {
+    margin-left: auto;
+    margin-right: auto;
+    max-width: var(--max-width-default);
   }
-  body {
-    @apply bg-background text-foreground;
+
+  .page-container-narrow { 
+    max-width: var(--max-width-narrow); 
+  }
+
+  .b_mono a.link-underline, 
+  .b_serif a.link-underline {
+    @apply underline underline-offset-2;
+  }
+
+  .link-underline {
+    @apply underline underline-offset-2 hover:no-underline;
   }
 }

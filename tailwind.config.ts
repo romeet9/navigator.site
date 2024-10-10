@@ -48,6 +48,10 @@ const config: Config = {
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
+      maxWidth: {
+        'default': 'var(--max-width-default)',
+        'wide': 'var(--max-width-wide)',
+      },
   		borderWidth: {
   			'0.8': '0.8px',
   		}
