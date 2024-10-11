@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { Button } from "@/components/button"
+import Footer from '@/components/ui/footer';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
@@ -45,6 +46,7 @@ export default function Home() {
           <a href="https://twitter.com/robertkkan" className="link-underline-body" rel="noopener noreferrer">Twitter</a> a bit too much.
         </p>
         </div>
+        <Footer />
       </section>
     </main>
   )
