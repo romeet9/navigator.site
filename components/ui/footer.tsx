@@ -3,10 +3,10 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="mt-5 pt-4 border-t-0.8 border-tertiary-color">
+    <footer className="w-full pt-4 border-t-0.8 border-tertiary-color">
       <div className="flex justify-center">
         <nav className="flex items-center">
-          <ul className="flex">
+          <ul className="flex flex-wrap justify-center">
             <li>
               <a 
                 href="/other-assets/resume_2024.pdf" 
