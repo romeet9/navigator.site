@@ -41,7 +41,6 @@ const config: Config = {
   			'3': 'var(--spacing-3)',
   			'4': 'var(--spacing-4)',
   			'5': 'var(--spacing-5)',
-  			'6': 'var(--spacing-6)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

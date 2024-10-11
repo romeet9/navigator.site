@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 
 const commitMono = localFont({
-  src: "./fonts/CommitMono.woff2",
+  src: "../public/fonts/CommitMono.woff2",
   variable: "--font-commit-mono",
   weight: "450",
   preload: true,
@@ -11,7 +11,7 @@ const commitMono = localFont({
 });
 
 const tiemposHeadline = localFont({
-  src: "./fonts/TiemposHeadline-Regular.woff2",
+  src: "../public/fonts/TiemposHeadline-Regular.woff2",
   variable: "--font-tiempos-headline",
   weight: "400",
   preload: true,
@@ -19,7 +19,7 @@ const tiemposHeadline = localFont({
 });
 
 const tiemposText = localFont({
-  src: "./fonts/TiemposText-Regular.woff2",
+  src: "../public/fonts/TiemposText-Regular.woff2",
   variable: "--font-tiempos-text",
   weight: "400",
   preload: true,

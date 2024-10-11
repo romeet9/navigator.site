@@ -8,7 +8,7 @@
     --color-background: #F7F7F5;
     --color-fill: #FFFFFF; 
     --color-primary: #0A0A0A;
-    --color-secondary: #454545;
+    --color-secondary: #5A5A5A;
     --color-tertiary: #C7C7C6; 
 
     /* Typography */
@@ -27,8 +27,7 @@
     --spacing-2: 0.8rem;
     --spacing-3: 1rem;
     --spacing-4: 1.5rem;
-    --spacing-5: 2rem;
-    --spacing-6: 3rem;
+    --spacing-5: 4rem;
 
     /* Layout */
     --max-width-default: 58rem;
@@ -129,12 +128,8 @@
     max-width: var(--max-width-narrow); 
   }
 
-  .b_mono a.link-underline, 
-  .b_serif a.link-underline {
-    @apply underline underline-offset-2;
-  }
-
-  .link-underline {
+  .b_mono a.link-underline-body, 
+  .b_serif a.link-underline-body {
     @apply underline underline-offset-2 hover:no-underline;
   }
 }
