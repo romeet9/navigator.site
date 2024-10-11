@@ -10,7 +10,7 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "text-secondary-color border-tertiary-color hover:text-primary-color",
+          "text-secondary-color border-tertiary-color hover:text-primary-color transition-all duration-300 ease-in-out",
         selected:
           "text-primary-color border-primary-color bg-fill-color",
       },

@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { Button } from "@/components/button"
 import Footer from '@/components/ui/footer';
+import Link from 'next/link';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
@@ -41,7 +42,7 @@ export default function Home() {
 
         <p className="b_mono">
           Apart from work, you'll find me exploring analog{' '} 
-          <a href="https://twitter.com/robertkkan" className="link-underline-body" rel="noopener noreferrer" aria-label="My photography on Twitter">photography</a>, 
+          <Link href="https://twitter.com/robertkkan" className="link-underline-body" rel="noopener noreferrer" aria-label="My photography on Twitter">photography</Link>, 
           though I still reach for digital sometimes. I also enjoy ideating novel product ideas and scrolling{' '}
           <a href="https://twitter.com/robertkkan" className="link-underline-body" rel="noopener noreferrer">Twitter</a> a bit too much.
         </p>
