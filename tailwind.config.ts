@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+    darkMode: ["class"],
     content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -20,7 +21,7 @@ const config: Config = {
   			fill: 'var(--color-fill)',
   			'primary-color': 'var(--color-primary)',
   			'secondary-color': 'var(--color-secondary)',
-  			'tertiary-color': 'var(--color-tertiary)',
+  			'tertiary-color': 'var(--color-tertiary)'
   		},
   		fontFamily: {
   			'commit-mono': ['var(--font-commit-mono)'],
@@ -33,20 +34,42 @@ const config: Config = {
   			'2': 'var(--spacing-2)',
   			'3': 'var(--spacing-3)',
   			'4': 'var(--spacing-4)',
-  			'5': 'var(--spacing-5)',
+  			'5': 'var(--spacing-5)'
   		},
   		borderRadius: {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
   		},
-      maxWidth: {
-        'default': 'var(--max-width-default)',
-        'wide': 'var(--max-width-wide)',
-      },
-			boxShadow: {
-        'line': 'inset 0 0.05rem 0 0 var(--color-tertiary)',
-      },
+  		maxWidth: {
+  			default: 'var(--max-width-default)',
+  			wide: 'var(--max-width-wide)'
+  		},
+  		boxShadow: {
+  			line: 'inset 0 0.05rem 0 0 var(--color-tertiary)'
+  		},
+  		keyframes: {
+  			'accordion-down': {
+  				from: {
+  					height: '0'
+  				},
+  				to: {
+  					height: 'var(--radix-accordion-content-height)'
+  				}
+  			},
+  			'accordion-up': {
+  				from: {
+  					height: 'var(--radix-accordion-content-height)'
+  				},
+  				to: {
+  					height: '0'
+  				}
+  			}
+  		},
+  		animation: {
+  			'accordion-down': 'accordion-down 0.2s ease-out',
+  			'accordion-up': 'accordion-up 0.2s ease-out'
+  		}
   	}
   },
   plugins: [require("tailwindcss-animate")],

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react'
 import { Button } from "@/components/button"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion"
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -57,6 +58,39 @@ export default function Home() {
             height={496}
             className="rounded-[0.25rem] object-cover w-full h-auto"
           />
+        </div>
+        <div className="w-[18rem] mx-auto">
+          <Accordion 
+            type="single" 
+            collapsible 
+            defaultSelectedContent="2024-1"
+            defaultOpenItem="item-2"
+          >
+            <AccordionItem value="item-1">
+              <AccordionTrigger>2025</AccordionTrigger>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>2024</AccordionTrigger>
+              <AccordionContent contentId="2024-1" value="item-2">
+                Linkedin Brand Kit
+              </AccordionContent>
+              <AccordionContent contentId="2024-2" value="item-2">
+                SearchNEU Notifications
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>2023</AccordionTrigger>
+              <AccordionContent contentId="2023-1" value="item-3">
+                ClubsNEU For Students
+              </AccordionContent>
+              <AccordionContent contentId="2023-2" value="item-3">
+                Udemy Personal Plan
+              </AccordionContent>
+              <AccordionContent contentId="2023-3" value="item-3">
+                ReMo For Teachers
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
         <Footer />
       </div>
