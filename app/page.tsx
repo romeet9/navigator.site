@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
 import Image from 'next/image';
+import AccordionLikeButton from '@/components/accordion-like-button';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
@@ -81,16 +82,19 @@ export default function Home() {
             <AccordionItem value="item-3">
               <AccordionTrigger>2023</AccordionTrigger>
               <AccordionContent contentId="2023-1" value="item-3">
-                ClubsNEU For Students
+                ClubsNEU Core Experience
+              </AccordionContent>
+              <AccordionContent contentId="2023-3" value="item-3">
+                ReMo Teacher View
               </AccordionContent>
               <AccordionContent contentId="2023-2" value="item-3">
                 Udemy Personal Plan
               </AccordionContent>
-              <AccordionContent contentId="2023-3" value="item-3">
-                ReMo For Teachers
-              </AccordionContent>
             </AccordionItem>
           </Accordion>
+          <AccordionLikeButton href="/archive">
+            VIEW ALL
+          </AccordionLikeButton>
         </div>
         <Footer />
       </div>
