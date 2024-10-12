@@ -5,14 +5,14 @@ import { cva, type VariantProps } from "class-variance-authority"
 import { cn } from "@/lib/utils"
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center whitespace-nowrap rounded-[4px] border-[0.8px] px-[1rem] py-[0.4375rem] uppercase transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none b_mono",
+  "inline-flex items-center justify-center whitespace-nowrap rounded-[0.25rem] px-[1rem] py-[0.4375rem] uppercase transition-all duration-300 ease-in-out focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none b_mono",
   {
     variants: {
       variant: {
         default:
-          "text-secondary-color border-tertiary-color hover:text-primary-color transition-all duration-300 ease-in-out",
+          "text-secondary-color hover:text-primary-color shadow-[inset_0_0_0_0.05rem_var(--color-tertiary)]",
         selected:
-          "text-primary-color border-primary-color bg-fill-color",
+          "text-primary-color bg-select shadow-[inset_0_0_0_0.05rem_var(--color-primary)]",
       },
     },
     defaultVariants: {

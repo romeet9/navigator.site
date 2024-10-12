@@ -5,6 +5,7 @@ import { Button } from "@/components/button"
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
 import Image from 'next/image';
+
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
 
@@ -15,10 +16,10 @@ export default function Home() {
   return (
     <main className="page-container">
       <div className="flex flex-col gap-5 items-center w-full">
-        <section className="flex flex-col gap-3 w-full">
+        <section className="flex flex-col gap-2 w-full">
           <div className="flex flex-row justify-between items-center w-full">
             <h1>Hey, I'm Robert.</h1>
-            <nav className="space-x-1">
+            <nav className="flex flex-row gap-1">
               <Button 
                 isSelected={selectedButton === 'home'}
                 onClick={() => handleButtonClick('home')}
@@ -33,7 +34,7 @@ export default function Home() {
               </Button>
             </nav>
           </div>
-          <div className="flex flex-col gap-3 w-full"> 
+          <div className="flex flex-col gap-2 w-full"> 
             <p className="b_mono">
               I am a product designer obsessed with finding the simplest solution that leaves room for taste. 
               Previously, I was at <a href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate" className="link-underline-body" rel="noopener noreferrer">LinkedIn</a> reimagining 
@@ -54,7 +55,7 @@ export default function Home() {
             alt="Robert playing tennis"
             width={496}
             height={496}
-            className="rounded-[4px] object-cover w-full h-auto"
+            className="rounded-[0.25rem] object-cover w-full h-auto"
           />
         </div>
         <Footer />

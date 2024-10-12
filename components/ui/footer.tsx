@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full pt-4 border-t-0.8 border-tertiary-color">
+    <footer className="w-full pt-3 shadow-line">
       <div className="flex justify-center">
         <nav className="flex items-center">
           <ul className="flex flex-wrap justify-center">

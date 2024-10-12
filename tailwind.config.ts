@@ -11,23 +11,16 @@ const config: Config = {
   		fontSize: {
   			body: ['var(--font-size-body)', 'var(--line-height-body)'],
   			heading: ['var(--font-size-heading)', 'var(--line-height-headings)'],
+  			title: ['var(--font-size-title)', 'var(--line-height-headings)'],
   			subheading: ['var(--font-size-subheading)', 'var(--line-height-headings)']
   		},
   		colors: {
-  			'background-color': 'var(--color-background)',
-  			'fill-color': 'var(--color-fill)',
+  			background: 'var(--color-background)',
+  			select: 'var(--color-select)',
+  			fill: 'var(--color-fill)',
   			'primary-color': 'var(--color-primary)',
   			'secondary-color': 'var(--color-secondary)',
   			'tertiary-color': 'var(--color-tertiary)',
-  			background: 'hsl(var(--background))',
-  			foreground: 'hsl(var(--foreground))',
-  			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
-  				foreground: 'hsl(var(--primary-foreground))'
-  			},
-  			border: 'hsl(var(--border))',
-  			input: 'hsl(var(--input))',
-  			ring: 'hsl(var(--ring))',
   		},
   		fontFamily: {
   			'commit-mono': ['var(--font-commit-mono)'],
@@ -51,9 +44,9 @@ const config: Config = {
         'default': 'var(--max-width-default)',
         'wide': 'var(--max-width-wide)',
       },
-  		borderWidth: {
-  			'0.8': '0.8px',
-  		}
+			boxShadow: {
+        'line': 'inset 0 0.05rem 0 0 var(--color-tertiary)',
+      },
   	}
   },
   plugins: [require("tailwindcss-animate")],
