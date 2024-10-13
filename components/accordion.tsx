@@ -6,35 +6,40 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { cn } from "@/lib/utils"
 import ChevronDown from '/public/images/icons/chevron-down.svg'
 
-const AccordionContext = React.createContext<{
+interface AccordionContextProps {
   selectedContent: string | null;
   setSelectedContent: (value: string | null) => void;
-  openItem: string | undefined;
-  setOpenItem: (value: string | undefined) => void;
-}>({ 
+}
+
+const AccordionContext = React.createContext<AccordionContextProps>({
   selectedContent: null, 
   setSelectedContent: () => {},
-  openItem: undefined,
-  setOpenItem: () => {}
 });
+
+type AccordionSingleProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
+  type: 'single';
+  defaultSelectedContent?: string;
+  collapsible?: boolean;
+};
+
+type AccordionMultipleProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
+  type: 'multiple';
+  defaultSelectedContent?: string;
+};
+
+type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
 
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
-  React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
-    defaultSelectedContent?: string;
-    defaultOpenItem?: string;
-  }
->(({ className, defaultSelectedContent, defaultOpenItem, ...props }, ref) => {
+  AccordionProps
+>(({ className, defaultSelectedContent, ...props }, ref) => {
   const [selectedContent, setSelectedContent] = React.useState<string | null>(defaultSelectedContent || null);
-  const [openItem, setOpenItem] = React.useState<string | undefined>(defaultOpenItem);
 
   return (
-    <AccordionContext.Provider value={{ selectedContent, setSelectedContent, openItem, setOpenItem }}>
+    <AccordionContext.Provider value={{ selectedContent, setSelectedContent }}>
       <AccordionPrimitive.Root
         ref={ref}
         className={cn(className)}
-        value={openItem}
-        onValueChange={setOpenItem}
         {...props}
       />
     </AccordionContext.Provider>
@@ -51,7 +56,8 @@ const AccordionItem = React.forwardRef<
     className={cn(
       "b_mono text-secondary-color",
       "data-[state=open]:pb-[0.375rem]",
-       className)}
+      className
+    )}
     {...props}
   />
 ))
@@ -65,9 +71,9 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-[0.375rem] transition-all group",
-        "text-secondary-color hover:text-primary-color",
-        "data-[state=open]:underline data-[state=open]:text-primary-color hover:data-[state=open]:no-underline",
+        "flex flex-1 items-center justify-between py-[0.375rem] transition-all",
+        "text-primary-color hover:text-primary-color hover:underline",
+        "data-[state=open]:underline hover:data-[state=open]:no-underline",
         "[&[data-state=open]>div>svg]:rotate-180",
         className
       )}
@@ -77,12 +83,12 @@ const AccordionTrigger = React.forwardRef<
         {children}
       </span>
       <div className="flex items-center justify-center shrink-0 transition-transform duration-200">
-        <ChevronDown className="w-3 h-3 text-secondary-color group-hover:text-primary-color transition-colors duration-200 group-data-[state=open]:text-primary-color" /> 
+        <ChevronDown className="w-3 h-3 text-primary-color transition-colors duration-200" /> 
       </div>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
 ))
-AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName
+AccordionTrigger.displayName = "AccordionTrigger"
 
 const AccordionContent = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Content>,
@@ -90,12 +96,11 @@ const AccordionContent = React.forwardRef<
     contentId: string;
   }
 >(({ className, children, contentId, ...props }, ref) => {
-  const { selectedContent, setSelectedContent, setOpenItem } = React.useContext(AccordionContext);
+  const { selectedContent, setSelectedContent } = React.useContext(AccordionContext);
   const isSelected = selectedContent === contentId;
 
   const handleClick = () => {
-    setSelectedContent(isSelected ? null : contentId);
-    setOpenItem(props.value as string);
+    setSelectedContent(contentId);
   };
 
   return (
@@ -121,6 +126,6 @@ const AccordionContent = React.forwardRef<
   );
 })
 
-AccordionContent.displayName = AccordionPrimitive.Content.displayName
+AccordionContent.displayName = "AccordionContent"
 
 export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }

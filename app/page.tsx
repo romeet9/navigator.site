@@ -1,41 +1,43 @@
 'use client'
 
 import React, { useState } from 'react'
-import { Button } from "@/components/button"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion"
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
 import Image from 'next/image';
 import AccordionLikeButton from '@/components/accordion-like-button';
+import HeaderMain from '@/components/ui/header-main';
+import ProjectCard from '@/components/project-card';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
+  const [selectedProject, setSelectedProject] = useState<string>('2024-1')
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName === selectedButton ? selectedButton : buttonName)
+  }
+
+  const handleProjectSelect = (projectId: string) => {
+    setSelectedProject(projectId)
+  }
+
+  const projectData = {
+    '2024-1': { title: 'Linkedin Brand Kit', imageSrc: '/images/linkedin.png', link: '/linkedin-brand-kit' },
+    '2024-2': { title: 'SearchNEU Notifications', imageSrc: '/images/searchneu.png', link: '/searchneu-notifications' },
+    '2023-1': { title: 'ClubsNEU Student View', imageSrc: '/images/clubsneu.png', link: '/clubsneu-student-view' },
+    '2023-2': { title: 'ReMo Teacher App', imageSrc: '/images/remo.png', link: '/remo-teacher-app' },
+    '2023-3': { title: 'Udemy Personal Plan', imageSrc: '/images/udemy.png', link: '/udemy-personal-plan' },
   }
 
   return (
     <main className="page-container">
       <div className="flex flex-col gap-5 items-center w-full">
         <section className="flex flex-col gap-2 w-full">
-          <div className="flex flex-row justify-between items-center w-full">
-            <h1>Hey, I'm Robert.</h1>
-            <nav className="flex flex-row gap-1">
-              <Button 
-                isSelected={selectedButton === 'home'}
-                onClick={() => handleButtonClick('home')}
-              >
-                HOME
-              </Button>
-              <Button 
-                isSelected={selectedButton === 'writing'}
-                onClick={() => handleButtonClick('writing')}
-              >
-                WRITING
-              </Button>
-            </nav>
-          </div>
+          <HeaderMain 
+            headerText="Hey, I'm Robert."
+            selectedButton={selectedButton} 
+            handleButtonClick={handleButtonClick}
+          />
           <div className="flex flex-col gap-2 w-full"> 
             <p className="b_mono">
               I am a product designer obsessed with finding the simplest solution that leaves room for taste. 
@@ -51,50 +53,65 @@ export default function Home() {
             </p>
           </div>
         </section>
-        <div className="w-full md:w-[30rem] mx-auto">
-          <Image
-            src="/images/tennis.png"
-            alt="Robert playing tennis"
-            width={496}
-            height={496}
-            className="rounded-[0.25rem] object-cover w-full h-auto"
-          />
-        </div>
-        <div className="w-[18rem] mx-auto">
-          <Accordion 
-            type="single" 
-            collapsible 
-            defaultSelectedContent="2024-1"
-            defaultOpenItem="item-2"
-          >
-            <AccordionItem value="item-1">
-              <AccordionTrigger>2025</AccordionTrigger>
-            </AccordionItem>
-            <AccordionItem value="item-2">
-              <AccordionTrigger>2024</AccordionTrigger>
-              <AccordionContent contentId="2024-1" value="item-2">
-                Linkedin Brand Kit
-              </AccordionContent>
-              <AccordionContent contentId="2024-2" value="item-2">
-                SearchNEU Notifications
-              </AccordionContent>
-            </AccordionItem>
-            <AccordionItem value="item-3">
-              <AccordionTrigger>2023</AccordionTrigger>
-              <AccordionContent contentId="2023-1" value="item-3">
-                ClubsNEU Core Experience
-              </AccordionContent>
-              <AccordionContent contentId="2023-3" value="item-3">
-                ReMo Teacher View
-              </AccordionContent>
-              <AccordionContent contentId="2023-2" value="item-3">
-                Udemy Personal Plan
-              </AccordionContent>
-            </AccordionItem>
-          </Accordion>
-          <AccordionLikeButton href="/archive">
-            VIEW ALL
-          </AccordionLikeButton>
+        <div className="w-full flex flex-col gap-[5rem]">
+          <div className="w-full max-w-[28rem] mx-auto">
+            <Image
+              src="/images/tennis.png"
+              alt="Robert playing tennis"
+              width={496}
+              height={496}
+              quality={100}
+              className="w-full rounded-[0.25rem] object-cover"
+            />
+          </div>
+          <section className="flex flex-row gap-[3rem] w-full">
+            <div className="w-[18rem] mx-auto md:block hidden">
+              <Accordion 
+                type="single"  
+                defaultValue="item-2"
+                defaultSelectedContent="2024-1"
+                collapsible
+              >
+                <AccordionItem value="item-1">
+                  <AccordionTrigger>2025</AccordionTrigger>
+                  <AccordionContent contentId="2025-1">
+                    Coming Soon.
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-2">
+                  <AccordionTrigger>2024</AccordionTrigger>
+                  <AccordionContent contentId="2024-1" onClick={() => handleProjectSelect('2024-1')}>
+                    Linkedin Brand Kit
+                  </AccordionContent>
+                  <AccordionContent contentId="2024-2" onClick={() => handleProjectSelect('2024-2')}>
+                    SearchNEU Notifications
+                  </AccordionContent>
+                </AccordionItem>
+                <AccordionItem value="item-3">
+                  <AccordionTrigger>2023</AccordionTrigger>
+                  <AccordionContent contentId="2023-1" onClick={() => handleProjectSelect('2023-1')}>
+                    ClubsNEU Student View
+                  </AccordionContent>
+                  <AccordionContent contentId="2023-2" onClick={() => handleProjectSelect('2023-2')}>
+                    ReMo Teacher App
+                  </AccordionContent>
+                  <AccordionContent contentId="2023-3" onClick={() => handleProjectSelect('2023-3')}>
+                    Udemy Personal Plan
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+              <AccordionLikeButton href="/archive">
+                VIEW ALL
+              </AccordionLikeButton>
+            </div>
+            {selectedProject && projectData[selectedProject as keyof typeof projectData] && (
+              <ProjectCard 
+                title={projectData[selectedProject as keyof typeof projectData].title}
+                imageSrc={projectData[selectedProject as keyof typeof projectData].imageSrc}
+                link={projectData[selectedProject as keyof typeof projectData].link}
+              />
+            )}
+          </section>
         </div>
         <Footer />
       </div>

@@ -10,9 +10,9 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "text-secondary-color hover:text-primary-color shadow-[inset_0_0_0_0.05rem_var(--color-tertiary)]",
+          "text-secondary-color hover:text-primary-color shadow-inset-tertiary",
         selected:
-          "text-primary-color bg-select shadow-[inset_0_0_0_0.05rem_var(--color-primary)]",
+          "text-primary-color bg-select shadow-inset-primary",
       },
     },
     defaultVariants: {

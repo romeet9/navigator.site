@@ -41,13 +41,19 @@
     font-size: 12px;
   }
 
-  @media (min-width: 992px) { 
+  @media (min-width: 1024px) { 
     html { 
       font-size: 14px; 
     } 
   }
 
-  @media (min-width: 1440px) { 
+  /* @media (min-width: 1440px) { 
+    html { 
+      font-size: 14px; 
+    } 
+  } */
+
+  @media (min-width: 1920px) { 
     html { 
       font-size: 16px; 
     } 
@@ -115,5 +121,13 @@
   .b_mono a.link-underline-body, 
   .b_serif a.link-underline-body {
     @apply underline underline-offset-2 hover:no-underline;
+  }
+
+  .shadow-inset-tertiary {
+    box-shadow: inset 0 0 0 0.05rem var(--color-tertiary);
+  }
+
+  .shadow-inset-primary {
+    box-shadow: inset 0 0 0 0.05rem var(--color-primary);
   }
 }
