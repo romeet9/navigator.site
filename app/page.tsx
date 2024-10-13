@@ -9,6 +9,15 @@ import AccordionLikeButton from '@/components/accordion-like-button';
 import HeaderMain from '@/components/ui/header-main';
 import ProjectCard from '@/components/project-card';
 
+// Consider moving this to a separate file if it grows larger
+const projectData = {
+  '2024-1': { title: 'Linkedin Brand Kit', imageSrc: '/images/linkedin.png', link: '/linkedin-brand-kit' },
+  '2024-2': { title: 'SearchNEU Notifications', imageSrc: '/images/searchneu.png', link: '/searchneu-notifications' },
+  '2023-1': { title: 'ClubsNEU Student View', imageSrc: '/images/clubsneu.png', link: '/clubsneu-student-view' },
+  '2023-2': { title: 'ReMo Teacher App', imageSrc: '/images/remo.png', link: '/remo-teacher-app' },
+  '2023-3': { title: 'Udemy Personal Plan', imageSrc: '/images/udemy.png', link: '/udemy-personal-plan' },
+};
+
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
   const [selectedProject, setSelectedProject] = useState<string>('2024-1')
@@ -21,17 +30,10 @@ export default function Home() {
     setSelectedProject(projectId)
   }
 
-  const projectData = {
-    '2024-1': { title: 'Linkedin Brand Kit', imageSrc: '/images/linkedin.png', link: '/linkedin-brand-kit' },
-    '2024-2': { title: 'SearchNEU Notifications', imageSrc: '/images/searchneu.png', link: '/searchneu-notifications' },
-    '2023-1': { title: 'ClubsNEU Student View', imageSrc: '/images/clubsneu.png', link: '/clubsneu-student-view' },
-    '2023-2': { title: 'ReMo Teacher App', imageSrc: '/images/remo.png', link: '/remo-teacher-app' },
-    '2023-3': { title: 'Udemy Personal Plan', imageSrc: '/images/udemy.png', link: '/udemy-personal-plan' },
-  }
-
   return (
     <main className="page-container">
       <div className="flex flex-col gap-5 items-center w-full">
+        {/* Introduction Section */}
         <section className="flex flex-col gap-2 w-full">
           <HeaderMain 
             headerText="Hey, I'm Robert."
@@ -53,7 +55,10 @@ export default function Home() {
             </p>
           </div>
         </section>
+
+        {/* Main Content Section */}
         <div className="w-full flex flex-col gap-[5rem]">
+          {/* Image Section */}
           <div className="w-full max-w-[28rem] mx-auto">
             <Image
               src="/images/tennis.png"
@@ -64,7 +69,10 @@ export default function Home() {
               className="w-full rounded-[0.25rem] object-cover"
             />
           </div>
+
+          {/* Projects Section */}
           <section className="flex flex-row gap-[3rem] w-full">
+            {/* Accordion */}
             <div className="w-[18rem] mx-auto md:block hidden">
               <Accordion 
                 type="single"  
@@ -104,6 +112,8 @@ export default function Home() {
                 VIEW ALL
               </AccordionLikeButton>
             </div>
+
+            {/* Project Card */}
             {selectedProject && projectData[selectedProject as keyof typeof projectData] && (
               <ProjectCard 
                 title={projectData[selectedProject as keyof typeof projectData].title}
@@ -113,6 +123,8 @@ export default function Home() {
             )}
           </section>
         </div>
+
+        {/* Footer */}
         <Footer />
       </div>
     </main>
