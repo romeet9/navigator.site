@@ -5,9 +5,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import AccordionLikeButton from '@/components/accordion-like-button';
+import AccordionLikeButton from '@/components/accordionLikeButton';
 import HeaderMain from '@/components/ui/header-main';
-import ProjectCard from '@/components/project-card';
+import ProjectCard from '@/components/projectCard';
 
 // Consider moving this to a separate file if it grows larger
 const projectData = {

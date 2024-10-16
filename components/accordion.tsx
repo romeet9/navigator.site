@@ -5,17 +5,21 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion"
 
 import { cn } from "@/lib/utils"
 import ChevronDown from '/public/images/icons/chevron-down.svg'
+import { useHoverEffect } from '@/hooks/useHoverEffect';
+import { HoverEffectWrapper } from './hoverEffectWrapper';
 
 interface AccordionContextProps {
   hoveredItem: string | null;
-  setHoveredItem: (value: string | null) => void;
+  handleMouseEnter: (id: string) => void;
+  handleMouseLeave: () => void;
   selectedContent: string | null;
   setSelectedContent: (value: string | null) => void;
 }
 
 const AccordionContext = React.createContext<AccordionContextProps>({
   hoveredItem: null,
-  setHoveredItem: () => {},
+  handleMouseEnter: () => {},
+  handleMouseLeave: () => {},
   selectedContent: '2024-1', // Default to Linkedin Brand Kit
   setSelectedContent: () => {},
 });
@@ -30,11 +34,11 @@ const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
   AccordionProps
 >(({ className, ...props }, ref) => {
-  const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
+  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
   const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-1');
 
   return (
-    <AccordionContext.Provider value={{ hoveredItem, setHoveredItem, selectedContent, setSelectedContent }}>
+    <AccordionContext.Provider value={{ hoveredItem, handleMouseEnter, handleMouseLeave, selectedContent, setSelectedContent }}>
       <AccordionPrimitive.Root
         ref={ref}
         className={className}
@@ -49,21 +53,21 @@ const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
 >(({ className, ...props }, ref) => {
-  const { hoveredItem, setHoveredItem } = React.useContext(AccordionContext);
+  const { hoveredItem, handleMouseEnter, handleMouseLeave } = React.useContext(AccordionContext);
   
   return (
-    <AccordionPrimitive.Item
-      ref={ref}
-      className={cn(
-        "b_mono text-secondary-color transition-all duration-500 ease-in-out",
-        hoveredItem && hoveredItem !== props.value ? "opacity-30" : "opacity-100",
-        "data-[state=open]:pb-[0.375rem]", // Add extra padding when open
-        className
-      )}
-      onMouseEnter={() => setHoveredItem(props.value as string)}
-      onMouseLeave={() => setHoveredItem(null)}
-      {...props}
-    />
+    <HoverEffectWrapper
+      id={props.value as string}
+      hoveredItem={hoveredItem}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      className={cn("b_mono text-secondary-color", "data-[state=open]:pb-0", className)}
+    >
+      <AccordionPrimitive.Item
+        ref={ref}
+        {...props}
+      />
+    </HoverEffectWrapper>
   )
 })
 AccordionItem.displayName = "AccordionItem"
@@ -76,7 +80,7 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-[0.375rem] transition-all duration-500 ease-in-out",
+        "flex flex-1 items-center justify-between py-0 transition-all duration-500 ease-in-out",
         "text-primary-color",
         "[&[data-state=open]>div>svg]:rotate-180",
         className

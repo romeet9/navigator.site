@@ -44,19 +44,7 @@
 
   @media (min-width: 1024px) { 
     html { 
-      font-size: 14px; 
-    } 
-  }
-
-  /* @media (min-width: 1440px) { 
-    html { 
-      font-size: 14px; 
-    } 
-  } */
-
-  @media (min-width: 1920px) { 
-    html { 
-      font-size: 16px; 
+      font-size: 15px; 
     } 
   }
 
@@ -126,11 +114,11 @@
 
   .link-underline-dotted {
     text-decoration: none;
-    background-image: radial-gradient(circle, var(--color-primary) 0.06rem, transparent 0.06rem);
-    background-position: 0 calc(100% - 0.06rem);
-    background-size: 0.28rem 0.12rem;
+    background-image: radial-gradient(circle, var(--color-primary) 0.06em, transparent 0.06em);
+    background-position: 0 calc(100% - 0.08em);
+    background-size: 0.35em 0.15em;
     background-repeat: repeat-x;
-    padding-bottom: 0.125rem;
+    padding-bottom: 0.15em;
   }
 
   .shadow-inset-tertiary {
