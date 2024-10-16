@@ -7,39 +7,37 @@ import { cn } from "@/lib/utils"
 import ChevronDown from '/public/images/icons/chevron-down.svg'
 
 interface AccordionContextProps {
+  hoveredItem: string | null;
+  setHoveredItem: (value: string | null) => void;
   selectedContent: string | null;
   setSelectedContent: (value: string | null) => void;
 }
 
 const AccordionContext = React.createContext<AccordionContextProps>({
-  selectedContent: null, 
+  hoveredItem: null,
+  setHoveredItem: () => {},
+  selectedContent: '2024-1', // Default to Linkedin Brand Kit
   setSelectedContent: () => {},
 });
 
-type AccordionSingleProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
-  type: 'single';
+type AccordionProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
+  type: 'single' | 'multiple';
   defaultSelectedContent?: string;
   collapsible?: boolean;
 };
 
-type AccordionMultipleProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
-  type: 'multiple';
-  defaultSelectedContent?: string;
-};
-
-type AccordionProps = AccordionSingleProps | AccordionMultipleProps;
-
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
   AccordionProps
->(({ className, defaultSelectedContent, ...props }, ref) => {
-  const [selectedContent, setSelectedContent] = React.useState<string | null>(defaultSelectedContent || null);
+>(({ className, ...props }, ref) => {
+  const [hoveredItem, setHoveredItem] = React.useState<string | null>(null);
+  const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-1');
 
   return (
-    <AccordionContext.Provider value={{ selectedContent, setSelectedContent }}>
+    <AccordionContext.Provider value={{ hoveredItem, setHoveredItem, selectedContent, setSelectedContent }}>
       <AccordionPrimitive.Root
         ref={ref}
-        className={cn(className)}
+        className={className}
         {...props}
       />
     </AccordionContext.Provider>
@@ -50,17 +48,24 @@ Accordion.displayName = "Accordion"
 const AccordionItem = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Item>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Item>
->(({ className, ...props }, ref) => (
-  <AccordionPrimitive.Item
-    ref={ref}
-    className={cn(
-      "b_mono text-secondary-color",
-      "data-[state=open]:pb-[0.375rem]",
-      className
-    )}
-    {...props}
-  />
-))
+>(({ className, ...props }, ref) => {
+  const { hoveredItem, setHoveredItem } = React.useContext(AccordionContext);
+  
+  return (
+    <AccordionPrimitive.Item
+      ref={ref}
+      className={cn(
+        "b_mono text-secondary-color transition-all duration-500 ease-in-out",
+        hoveredItem && hoveredItem !== props.value ? "opacity-30" : "opacity-100",
+        "data-[state=open]:pb-[0.375rem]", // Add extra padding when open
+        className
+      )}
+      onMouseEnter={() => setHoveredItem(props.value as string)}
+      onMouseLeave={() => setHoveredItem(null)}
+      {...props}
+    />
+  )
+})
 AccordionItem.displayName = "AccordionItem"
 
 const AccordionTrigger = React.forwardRef<
@@ -71,19 +76,16 @@ const AccordionTrigger = React.forwardRef<
     <AccordionPrimitive.Trigger
       ref={ref}
       className={cn(
-        "flex flex-1 items-center justify-between py-[0.375rem] transition-all",
-        "text-primary-color hover:text-primary-color hover:underline",
-        "data-[state=open]:underline hover:data-[state=open]:no-underline",
+        "flex flex-1 items-center justify-between py-[0.375rem] transition-all duration-500 ease-in-out",
+        "text-primary-color",
         "[&[data-state=open]>div>svg]:rotate-180",
         className
       )}
       {...props}
     >
-      <span className="transition-all duration-200 data-[state=open]:underline data-[state=open]:text-primary-color">
-        {children}
-      </span>
-      <div className="flex items-center justify-center shrink-0 transition-transform duration-200">
-        <ChevronDown className="w-3 h-3 text-primary-color transition-colors duration-200" /> 
+      {children}
+      <div className="flex items-center justify-center shrink-0 transition-transform duration-500 ease-in-out">
+        <ChevronDown className="w-3 h-3 text-primary-color" /> 
       </div>
     </AccordionPrimitive.Trigger>
   </AccordionPrimitive.Header>
@@ -99,33 +101,27 @@ const AccordionContent = React.forwardRef<
   const { selectedContent, setSelectedContent } = React.useContext(AccordionContext);
   const isSelected = selectedContent === contentId;
 
-  const handleClick = () => {
-    setSelectedContent(contentId);
-  };
-
   return (
     <AccordionPrimitive.Content
       ref={ref}
       className={cn(
-        "rounded-[0.25rem] overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
+        "overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
         className
       )}
       {...props}
     >
       <div 
         className={cn(
-          "pb-[0.375rem] pt-[0.375rem] px-[0.75rem] cursor-pointer",
-          "transition-all duration-200",
-          isSelected ? "bg-select text-primary-color" : "hover:text-primary-color"
+          "pb-[0.35rem] pt-[0.4rem] px-[0.75rem] rounded-[0.375rem] cursor-pointer transition-all duration-500 ease-in-out",
+          isSelected ? "bg-select text-primary-color" : "hover:text-primary-color",
         )}
-        onClick={handleClick}
+        onClick={() => setSelectedContent(contentId)}
       >
         {children}
       </div>
     </AccordionPrimitive.Content>
   );
 })
-
 AccordionContent.displayName = "AccordionContent"
 
-export { Accordion, AccordionItem, AccordionTrigger, AccordionContent }
+export { Accordion, AccordionItem, AccordionTrigger, AccordionContent, AccordionContext }

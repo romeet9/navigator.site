@@ -61,7 +61,7 @@ export default function Home() {
           {/* Image Section */}
           <div className="w-full max-w-[28rem] mx-auto">
             <Image
-              src="/images/tennis.png"
+              src="/images/grid.png"
               alt="Robert playing tennis"
               width={496}
               height={496}
@@ -77,7 +77,6 @@ export default function Home() {
               <Accordion 
                 type="single"  
                 defaultValue="item-2"
-                defaultSelectedContent="2024-1"
                 collapsible
               >
                 <AccordionItem value="item-1">
@@ -107,10 +106,10 @@ export default function Home() {
                     Udemy Personal Plan
                   </AccordionContent>
                 </AccordionItem>
+                <AccordionLikeButton href="/archive">
+                  VIEW ALL
+                </AccordionLikeButton>
               </Accordion>
-              <AccordionLikeButton href="/archive">
-                VIEW ALL
-              </AccordionLikeButton>
             </div>
 
             {/* Project Card */}

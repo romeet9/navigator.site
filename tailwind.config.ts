@@ -38,7 +38,7 @@ const config: Config = {
   		},
   		maxWidth: {
   			default: 'var(--max-width-default)',
-  			wide: 'var(--max-width-wide)'
+  			narrow: 'var(--max-width-narrow)'
   		},
   		boxShadow: {
   			line: 'inset 0 0.05rem 0 0 var(--color-tertiary)'
