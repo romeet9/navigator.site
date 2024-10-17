@@ -57,7 +57,6 @@ export default function Writing() {
             ))}
           </div>
         </section>
-
         <Footer />
       </div>
     </main>
