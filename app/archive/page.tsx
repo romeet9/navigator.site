@@ -9,15 +9,7 @@ import ArrowLeftIcon from '@/public/images/icons/arrow-left.svg'
 import ChevronRightIcon from '@/public/images/icons/chevron-right.svg'
 import { HoverEffectWrapper } from '@/components/hoverEffectWrapper'
 import { useHoverEffect } from '@/hooks/useHoverEffect'
-
-// You can move this to a separate file and import it in both pages
-const projectData = [
-  { num: '005', title: 'Linkedin Brand Kit', date: '2024', href: '/linkedin-brand-kit' },
-  { num: '004', title: 'SearchNEU Notifications', date: '2024', href: '/searchneu-notifications' },
-  { num: '003', title: 'ClubsNEU for Students', date: '2023', href: '/clubsneu-student-view' },
-  { num: '002', title: 'Udemy Personal Plan', date: '2023', href: '/udemy-personal-plan' },
-  { num: '001', title: 'ReMo for Teachers', date: '2023', href: '/remo-teacher-app' },
-]
+import { allProjects } from '@/data/projectData';
 
 export default function Archive() {
   const router = useRouter()
@@ -36,7 +28,7 @@ export default function Archive() {
         </section>
 
         <div className="w-full">
-          {projectData.map((project) => (
+          {allProjects.map((project) => (
             <HoverEffectWrapper
               key={project.num}
               id={project.num}

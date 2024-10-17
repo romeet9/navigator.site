@@ -17,7 +17,7 @@ const ItemEntry: React.FC<ItemEntryProps> = ({ num, title, date, href }) => {
           <span className="b_mono text-primary-color">{title}</span>
         </div>
         <div className="flex-grow mx-[0.25rem] mt-[0.625rem]">
-          <div className="h-[0.0625rem] bg-tertiary-color opacity-[0.84]"></div>
+          <div className="h-[0.0625rem] bg-tertiary-color opacity-[0.82]"></div>
         </div>
         <span className="b_mono text-secondary-color">{date}</span>
       </div>

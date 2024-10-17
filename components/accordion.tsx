@@ -20,7 +20,7 @@ const AccordionContext = React.createContext<AccordionContextProps>({
   hoveredItem: null,
   handleMouseEnter: () => {},
   handleMouseLeave: () => {},
-  selectedContent: '2024-1', // Default to Linkedin Brand Kit
+  selectedContent: '2024-005', // Default to Linkedin Brand Kit
   setSelectedContent: () => {},
 });
 
@@ -35,7 +35,7 @@ const Accordion = React.forwardRef<
   AccordionProps
 >(({ className, ...props }, ref) => {
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
-  const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-1');
+  const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-005');
 
   return (
     <AccordionContext.Provider value={{ hoveredItem, handleMouseEnter, handleMouseLeave, selectedContent, setSelectedContent }}>

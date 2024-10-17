@@ -9,19 +9,11 @@ import AccordionLikeButton from '@/components/accordionLikeButton';
 import HeaderMain from '@/components/ui/header-main';
 import ProjectCard from '@/components/projectCard';
 import { useRouter } from 'next/navigation';
-
-// Consider moving this to a separate file if it grows larger
-const projectData = {
-  '2024-1': { title: 'Linkedin Brand Kit', imageSrc: '/images/linkedin.png', link: '/linkedin-brand-kit' },
-  '2024-2': { title: 'SearchNEU Notifications', imageSrc: '/images/searchneu.png', link: '/searchneu-notifications' },
-  '2023-1': { title: 'ClubsNEU Student View', imageSrc: '/images/clubsneu.png', link: '/clubsneu-student-view' },
-  '2023-2': { title: 'ReMo Teacher App', imageSrc: '/images/remo.png', link: '/remo-teacher-app' },
-  '2023-3': { title: 'Udemy Personal Plan', imageSrc: '/images/udemy.png', link: '/udemy-personal-plan' },
-};
+import { getFeaturedProjects } from '@/data/projectData';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
-  const [selectedProject, setSelectedProject] = useState<string>('2024-1')
+  const [selectedProject, setSelectedProject] = useState<string>('2024-005')
   const router = useRouter();
 
   useEffect(() => {
@@ -38,6 +30,9 @@ export default function Home() {
   const handleProjectSelect = (projectId: string) => {
     setSelectedProject(projectId)
   }
+
+  const projectData = getFeaturedProjects();
+  const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
 
   return (
     <main className="page-container">
@@ -85,36 +80,23 @@ export default function Home() {
             <div className="w-[18rem] mx-auto md:block hidden">
               <Accordion 
                 type="single"  
-                defaultValue="item-2"
+                defaultValue={years[0]}
                 collapsible
               >
-                <AccordionItem value="item-1">
-                  <AccordionTrigger>2025</AccordionTrigger>
-                  <AccordionContent contentId="2025-1">
-                    Coming Soon.
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-2">
-                  <AccordionTrigger>2024</AccordionTrigger>
-                  <AccordionContent contentId="2024-1" onClick={() => handleProjectSelect('2024-1')}>
-                    Linkedin Brand Kit
-                  </AccordionContent>
-                  <AccordionContent contentId="2024-2" onClick={() => handleProjectSelect('2024-2')}>
-                    SearchNEU Notifications
-                  </AccordionContent>
-                </AccordionItem>
-                <AccordionItem value="item-3">
-                  <AccordionTrigger>2023</AccordionTrigger>
-                  <AccordionContent contentId="2023-1" onClick={() => handleProjectSelect('2023-1')}>
-                    ClubsNEU Student View
-                  </AccordionContent>
-                  <AccordionContent contentId="2023-2" onClick={() => handleProjectSelect('2023-2')}>
-                    ReMo Teacher App
-                  </AccordionContent>
-                  <AccordionContent contentId="2023-3" onClick={() => handleProjectSelect('2023-3')}>
-                    Udemy Personal Plan
-                  </AccordionContent>
-                </AccordionItem>
+                {years.map((year) => (
+                  <AccordionItem key={year} value={year}>
+                    <AccordionTrigger>{year}</AccordionTrigger>
+                    {projectData[year].map((project) => (
+                      <AccordionContent 
+                        key={project.num} 
+                        contentId={`${year}-${project.num}`} 
+                        onClick={() => handleProjectSelect(`${year}-${project.num}`)}
+                      >
+                        {project.title}
+                      </AccordionContent>
+                    ))}
+                  </AccordionItem>
+                ))}
                 <AccordionLikeButton href="/archive">
                   VIEW ALL
                 </AccordionLikeButton>
@@ -122,13 +104,20 @@ export default function Home() {
             </div>
 
             {/* Project Card */}
-            {selectedProject && projectData[selectedProject as keyof typeof projectData] && (
-              <ProjectCard 
-                title={projectData[selectedProject as keyof typeof projectData].title}
-                imageSrc={projectData[selectedProject as keyof typeof projectData].imageSrc}
-                link={projectData[selectedProject as keyof typeof projectData].link}
-              />
-            )}
+            {selectedProject && (() => {
+              const [year, num] = selectedProject.split('-');
+              const project = projectData[year]?.find(p => p.num === num);
+              if (project) {
+                return (
+                  <ProjectCard 
+                    title={project.title}
+                    imageSrc={project.imageSrc || ''}
+                    link={project.href}
+                  />
+                );
+              }
+              return null;
+            })()}
           </section>
         </div>
 
