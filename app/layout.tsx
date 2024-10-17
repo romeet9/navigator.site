@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import FadeBottomWrapper from '@/components/fadeBottomWrapper';
 
 const commitMono = localFont({
   src: "../public/fonts/CommitMono.woff2",
@@ -41,7 +42,9 @@ export default function RootLayout({
       <body
         className={`${commitMono.variable} ${tiemposHeadline.variable} ${tiemposText.variable} antialiased bg-background min-h-screen`}
       >
-        {children}
+        <FadeBottomWrapper>
+          {children}
+        </FadeBottomWrapper>
       </body>
     </html>
   );

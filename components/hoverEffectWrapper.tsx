@@ -22,7 +22,7 @@ export const HoverEffectWrapper: React.FC<HoverEffectWrapperProps> = ({
     <div
       className={cn(
         "transition-opacity duration-500 ease-in-out",
-        hoveredItem && hoveredItem !== id ? "opacity-30" : "opacity-100",
+        hoveredItem && hoveredItem !== id ? "opacity-[0.28]" : "opacity-100",
         className
       )}
       onMouseEnter={() => onMouseEnter(id)}

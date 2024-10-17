@@ -5,13 +5,13 @@
 @layer base {
   :root {
     /* Colors */
-    --color-background: #F7F7F5;
+    --color-background: #F7F7F7;
     --color-select: #FFFFFF; 
-    --color-fill: #F2F2F2;
+    --color-fill: #F3F3F3;
     --color-primary: #0F0F0F;
     --color-primary-light: #262626;
     --color-secondary: #5A5A5A;
-    --color-tertiary: #C7C7C6; 
+    --color-tertiary: #C9C9C9; 
 
     /* Typography */
     --font-commit-mono: 'CommitMono', monospace;
@@ -165,5 +165,27 @@
     0px 54.64px 32.99px 0px rgba(150, 150, 150, 0.05),
     0px 23.71px 23.71px 0px rgba(150, 150, 150, 0.09),
     0px 6.19px 13.40px 0px rgba(150, 150, 150, 0.10);
+  }
+
+  .fade-bottom {
+    position: relative;
+  }
+
+  .fade-bottom::after {
+    content: '';
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 10rem; /* Adjust this value to control the fade height */
+    background: linear-gradient(to bottom, rgba(247, 247, 247, 0), rgba(247, 247, 247, 1));
+    pointer-events: none; /* Allows interaction with content underneath */
+    z-index: 10;
+    opacity: 1;
+    transition: opacity 0.3s ease;
+  }
+
+  .fade-bottom.at-bottom::after {
+    opacity: 0;
   }
 }
