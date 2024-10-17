@@ -61,10 +61,11 @@ const AccordionItem = React.forwardRef<
       hoveredItem={hoveredItem}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={cn("b_mono text-secondary-color", "data-[state=open]:pb-0", className)}
+      className={cn("b_mono text-secondary-color", className)}
     >
       <AccordionPrimitive.Item
         ref={ref}
+        className={cn("data-[state=open]:pb-[0.375rem]")}
         {...props}
       />
     </HoverEffectWrapper>

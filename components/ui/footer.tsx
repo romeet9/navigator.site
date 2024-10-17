@@ -3,13 +3,14 @@ import Link from 'next/link';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="w-full pt-3 shadow-line">
+    <footer className="w-full">
+    {/* <footer className="w-full pt-3 shadow-line"> */}
       <nav className="flex justify-center items-center">
         <ul className="flex flex-wrap justify-center">
           <li>
             <a 
               href="/other-assets/resume_2024.pdf" 
-              className="b_mono text-primary-color hover:underline"
+              className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -19,7 +20,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a href="mailto:therobkan@gmail.com"
-               className="b_mono text-primary-color hover:underline"
+               className="b_mono text-primary-color link-underline link-underline-hover"
             >
               EMAIL
             </a>
@@ -27,7 +28,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <Link href="#"
-              className="b_mono text-primary-color hover:underline"
+              className="b_mono text-primary-color link-underline link-underline-hover"
             >
               PHOTOS
             </Link>
@@ -35,7 +36,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a href="https://twitter.com/robertkkan"
-               className="b_mono text-primary-color hover:underline"
+               className="b_mono text-primary-color link-underline link-underline-hover"
                target="_blank"
                rel="noopener noreferrer"
             >
@@ -45,7 +46,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a href="https://www.cosmos.so/robertkkan" 
-               className="b_mono text-primary-color hover:underline"
+               className="b_mono text-primary-color link-underline link-underline-hover"
                target="_blank"
                rel="noopener noreferrer"
             >
@@ -56,7 +57,7 @@ const Footer: React.FC = () => {
           <li>
             <a 
               href="https://read.cv/robertkkan" 
-              className="b_mono text-primary-color hover:underline"
+              className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"
             >

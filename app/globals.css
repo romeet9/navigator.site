@@ -17,10 +17,12 @@
     --font-commit-mono: 'CommitMono', monospace;
     --font-tiempos-headline: 'TiemposHeadline', serif;
     --font-tiempos-text: 'TiemposText', serif;
+
     --font-size-body: 1rem;
     --font-size-heading: 2.074rem;
     --font-size-title: 1.728rem;
     --font-size-subheading: 1.2rem;
+
     --line-height-body: 1.5;
     --line-height-headings: 1.35;
 
@@ -39,7 +41,7 @@
 
   /* Responsive font sizes */
   html {
-    font-size: 12px;
+    font-size: 14px;
   }
 
   @media (min-width: 1024px) { 
@@ -64,63 +66,90 @@
   .b_serif { 
     @apply text-body font-tiempos-text text-primary-color; 
   }
-
-  body { 
-    @apply bg-background;
-  }
 }
 
 @layer utilities {
-  /* Text utilities */
+  /* Text styles */
   .text-all-caps { 
     @apply uppercase; 
-  }
-
-  .text-balance { 
-    text-wrap: balance; 
-  }
-
-  .text-underline { 
-    @apply underline; 
   }
 
   /* Layout utilities */
   .page-container {
     width: 100%;
-    max-width: calc(var(--max-width-default) + 40px); /* 58rem + 40px for margins */
+    max-width: calc(var(--max-width-default) + 6rem); /* 58rem + 40px for margins */
     margin: 0 auto;
-    padding: 4rem 20px 2rem; /* Default padding for smaller screens */
+    padding: 8rem 3rem 2rem; /* Default padding for smaller screens */
   }
 
   .page-container-narrow { 
     width: 100%;
-    max-width: calc(var(--max-width-narrow) + 40px); 
+    max-width: calc(var(--max-width-narrow) + 6rem); 
     margin: 0 auto;
-    padding: 4rem 20px 2rem;
+    padding: 8rem 3rem 2rem;
   }
 
-  @media (min-width: 768px) {
+  /* @media (min-width: 768px) {
     .page-container,
     .page-container-narrow {
       max-width: calc(var(--max-width-default) + 4rem);
       padding: 8rem 2rem 4rem;
     }
-  }
+  } */
 
-  .b_mono a.link-underline-body, 
-  .b_serif a.link-underline-body {
-    @apply link-underline-dotted hover:bg-none;
-  }
-
-  .link-underline-dotted {
+  /* Underline styles */
+  /* .link-underline {
     text-decoration: none;
     background-image: radial-gradient(circle, var(--color-primary) 0.06em, transparent 0.06em);
     background-position: 0 calc(100% - 0.08em);
-    background-size: 0.35em 0.15em;
     background-repeat: repeat-x;
-    padding-bottom: 0.15em;
+    padding-bottom: 0.16em;
+    background-size: 0.35em 0.15em;
+  }
+  
+  .link-underline-hover {
+    background-size: 0 0.15em;
+  }
+  
+  .link-underline-hover:hover {
+    background-size: 0.35em 0.15em;
+  }
+  
+  .b_mono a.link-underline,
+  .b_serif a.link-underline {
+    background-size: 0.35em 0.15em;
+  }
+  
+  .b_mono a.link-underline:hover,
+  .b_serif a.link-underline:hover {
+    background-size: 0 0.15em;
+  } */
+
+  .link-underline {
+    text-decoration: none;
+    border-bottom: 2px dotted var(--color-primary-light);
+    transition: border-color 0.3s ease;
+  }
+  
+  .link-underline-hover {
+    border-bottom: 2px dotted transparent;
+  }
+  
+  .link-underline-hover:hover {
+    border-bottom: 2px dotted var(--color-primary);
+  }
+  
+  .b_mono a.link-underline,
+  .b_serif a.link-underline {
+    border-bottom: 2px dotted var(--color-primary-light);
+  }
+  
+  .b_mono a.link-underline:hover,
+  .b_serif a.link-underline:hover {
+    border-bottom: 2px dotted transparent;
   }
 
+  /* Shadow styles */
   .shadow-inset-tertiary {
     box-shadow: inset 0 0 0 0.05rem var(--color-tertiary);
   }

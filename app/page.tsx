@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion"
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
@@ -8,6 +8,7 @@ import Image from 'next/image';
 import AccordionLikeButton from '@/components/accordionLikeButton';
 import HeaderMain from '@/components/ui/header-main';
 import ProjectCard from '@/components/projectCard';
+import { useRouter } from 'next/navigation';
 
 // Consider moving this to a separate file if it grows larger
 const projectData = {
@@ -21,9 +22,17 @@ const projectData = {
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')
   const [selectedProject, setSelectedProject] = useState<string>('2024-1')
+  const router = useRouter();
+
+  useEffect(() => {
+    setSelectedButton('home');
+  }, []);
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName === selectedButton ? selectedButton : buttonName)
+    if (buttonName === 'writing') {
+      router.push('/writing');
+    }
   }
 
   const handleProjectSelect = (projectId: string) => {
@@ -43,15 +52,15 @@ export default function Home() {
           <div className="flex flex-col gap-2 w-full"> 
             <p className="b_mono">
               I am a product designer obsessed with finding the simplest solution that leaves room for taste. 
-              Previously, I was at <a href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate" className="link-underline-body" rel="noopener noreferrer">LinkedIn</a> reimagining 
+              Previously, I was at <a href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate" className="link-underline" rel="noopener noreferrer">LinkedIn</a> reimagining 
               the future of generative AI ads. In my past life, I engineered insulin delivery pods at{' '} 
-              <a href="https://www.bd.com/en-us" className="link-underline-body" rel="noopener noreferrer">Becton Dickinson & Co</a>. 
+              <a href="https://www.bd.com/en-us" className="link-underline" rel="noopener noreferrer">Becton Dickinson & Co</a>. 
             </p>
             <p className="b_mono">
               Apart from work, you'll find me exploring analog{' '} 
-              <Link href="https://twitter.com/robertkkan" className="link-underline-body" rel="noopener noreferrer" aria-label="My photography on Twitter">photography</Link>, 
+              <Link href="https://twitter.com/robertkkan" className="link-underline" rel="noopener noreferrer" aria-label="My photography on Twitter">photography</Link>, 
               though I still reach for digital sometimes. I also enjoy ideating novel product ideas and scrolling{' '}
-              <a href="https://twitter.com/robertkkan" className="link-underline-body" rel="noopener noreferrer">Twitter</a> a bit too much.
+              <a href="https://twitter.com/robertkkan" className="link-underline" rel="noopener noreferrer">Twitter</a> a bit too much.
             </p>
           </div>
         </section>
