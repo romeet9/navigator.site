@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { cn } from "@/lib/utils";
 import ArrowRight from '/public/images/icons/arrow-right.svg';
 import { AccordionContext } from './accordion';
-import { HoverEffectWrapper } from './hoverEffectWrapper';
+import { HoverEffectWrapper } from '../hoverEffectWrapper';
 
 interface AccordionLikeButtonProps {
   href: string;

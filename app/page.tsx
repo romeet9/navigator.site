@@ -1,15 +1,15 @@
 'use client'
 
 import React, { useState, useEffect } from 'react'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/accordion"
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import Footer from '@/components/ui/footer';
 import Link from 'next/link';
 import Image from 'next/image';
-import AccordionLikeButton from '@/components/accordionLikeButton';
-import HeaderMain from '@/components/ui/header-main';
-import ProjectCard from '@/components/projectCard';
+import AccordionLikeButton from '@/components/ui/accordionLikeButton';
+import HeaderMain from '@/components/ui/header';
+import ProjectCard from '@/components/ui/projectCard';
 import { useRouter } from 'next/navigation';
-import { getFeaturedProjects } from '@/data/projectData';
+import { getFeaturedProjects } from '@/lib/data/projectData';
 
 export default function Home() {
   const [selectedButton, setSelectedButton] = useState<string>('home')

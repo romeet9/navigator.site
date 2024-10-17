@@ -6,7 +6,7 @@ import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { cn } from "@/lib/utils"
 import ChevronDown from '/public/images/icons/chevron-down.svg'
 import { useHoverEffect } from '@/hooks/useHoverEffect';
-import { HoverEffectWrapper } from './hoverEffectWrapper';
+import { HoverEffectWrapper } from '../hoverEffectWrapper';
 
 interface AccordionContextProps {
   hoveredItem: string | null;

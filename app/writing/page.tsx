@@ -1,7 +1,7 @@
 'use client'
 
 import React from 'react';
-import HeaderMain from '@/components/ui/header-main';
+import HeaderMain from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
 import { useRouter } from 'next/navigation';
 import ItemEntry from '@/components/ui/itemEntry';
