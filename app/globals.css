@@ -9,7 +9,7 @@
     --color-select: #FFFFFF; 
     --color-fill: #F3F3F3;
     --color-primary: #0F0F0F;
-    --color-primary-light: #262626;
+    --color-primary-light: #1F1F1F;
     --color-secondary: #5A5A5A;
     --color-tertiary: #C9C9C9; 
 
@@ -70,6 +70,10 @@
   .b_serif { 
     @apply text-body font-tiempos-text text-primary-color-light; 
   }
+
+  .italic-text {
+    font-style: italic;
+  }
 }
 
 @layer utilities {
@@ -93,18 +97,10 @@
     padding: 8rem 3rem 2rem;
   }
 
-  /* @media (min-width: 768px) {
-    .page-container,
-    .page-container-narrow {
-      max-width: calc(var(--max-width-default) + 4rem);
-      padding: 8rem 2rem 4rem;
-    }
-  } */
-
   /* Underline styles */
   .link-underline {
     text-decoration: none;
-    border-bottom: 2px dotted var(--color-primary-light);
+    border-bottom: 2px dotted var(--color-secondary);
     transition: border-color 0.3s ease;
   }
   
@@ -113,12 +109,12 @@
   }
   
   .link-underline-hover:hover {
-    border-bottom: 2px dotted var(--color-primary);
+    border-bottom: 2px dotted var(--color-secondary);
   }
   
   .b_mono a.link-underline,
   .b_serif a.link-underline {
-    border-bottom: 2px dotted var(--color-primary-light);
+    border-bottom: 2px dotted var(--color-secondary);
   }
   
   .b_mono a.link-underline:hover,
@@ -130,10 +126,6 @@
   .shadow-inset-tertiary {
     box-shadow: inset 0 0 0 0.05rem var(--color-tertiary);
   }
-
-  /* .shadow-inset-primary {
-    box-shadow: inset 0 0 0 0.05rem var(--color-primary);
-  } */
 
   .subtle-shadow {
     box-shadow: 

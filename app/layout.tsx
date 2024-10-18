@@ -20,9 +20,19 @@ const tiemposHeadline = localFont({
 });
 
 const tiemposText = localFont({
-  src: "../public/fonts/TiemposText-Regular.woff2",
+  src: [
+    {
+      path: "../public/fonts/TiemposText-Regular.woff2",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/TiemposText-Regular-Italic.woff2",
+      weight: "400",
+      style: "italic",
+    },
+  ],
   variable: "--font-tiempos-text",
-  weight: "400",
   preload: true,
   display: 'swap',
 });
