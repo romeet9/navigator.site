@@ -22,7 +22,7 @@ const Footer: React.FC = () => {
             <a href="mailto:therobkan@gmail.com"
                className="b_mono text-primary-color link-underline link-underline-hover"
             >
-              EMAIL
+              MAIL
             </a>
           </li>
           <li className="mx-0 text-primary-color">/</li>
@@ -45,12 +45,12 @@ const Footer: React.FC = () => {
           </li>
           <li className="mx-0 text-primary-color">/</li>
           <li>
-            <a href="https://www.cosmos.so/robertkkan" 
+            <a href="https://github.com/robkkan" 
                className="b_mono text-primary-color link-underline link-underline-hover"
                target="_blank"
                rel="noopener noreferrer"
             >
-              COSMOS
+              GITHUB
             </a>
           </li>
           <li className="mx-0 text-primary-color">/</li>

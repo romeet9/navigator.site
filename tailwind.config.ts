@@ -20,6 +20,7 @@ const config: Config = {
   			select: 'var(--color-select)',
   			fill: 'var(--color-fill)',
   			'primary-color': 'var(--color-primary)',
+  			'primary-color-light': 'var(--color-primary-light)',
   			'secondary-color': 'var(--color-secondary)',
   			'tertiary-color': 'var(--color-tertiary)'
   		},

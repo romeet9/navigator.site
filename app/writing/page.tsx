@@ -24,9 +24,7 @@ export default function Writing() {
 
   // writing entries data
   const writingEntries = [
-    { num: "001", title: "Fear and Confidence", date: "10-05-2024", href: "/writing/007-fear-and-confidence" },
-    { num: "002", title: "Another Entry", date: "11-05-2024", href: "/writing/008-another-entry" },
-    { num: "003", title: "Latest Entry", date: "12-05-2024", href: "/writing/009-latest-entry" },
+    { num: "001", title: "Rejection", date: "10-10-2024", href: "/writing/rejection" },
   ];
 
   return (

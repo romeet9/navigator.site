@@ -55,7 +55,11 @@
     @apply text-heading font-tiempos-headline text-primary-color; 
   }
 
-  h2 { 
+  h2 {
+    @apply text-title font-tiempos-headline text-primary-color; 
+  }
+  
+  h3 { 
     @apply text-subheading font-tiempos-headline text-primary-color; 
   }
 
@@ -64,7 +68,7 @@
   }
 
   .b_serif { 
-    @apply text-body font-tiempos-text text-primary-color; 
+    @apply text-body font-tiempos-text text-primary-color-light; 
   }
 }
 
@@ -98,33 +102,6 @@
   } */
 
   /* Underline styles */
-  /* .link-underline {
-    text-decoration: none;
-    background-image: radial-gradient(circle, var(--color-primary) 0.06em, transparent 0.06em);
-    background-position: 0 calc(100% - 0.08em);
-    background-repeat: repeat-x;
-    padding-bottom: 0.16em;
-    background-size: 0.35em 0.15em;
-  }
-  
-  .link-underline-hover {
-    background-size: 0 0.15em;
-  }
-  
-  .link-underline-hover:hover {
-    background-size: 0.35em 0.15em;
-  }
-  
-  .b_mono a.link-underline,
-  .b_serif a.link-underline {
-    background-size: 0.35em 0.15em;
-  }
-  
-  .b_mono a.link-underline:hover,
-  .b_serif a.link-underline:hover {
-    background-size: 0 0.15em;
-  } */
-
   .link-underline {
     text-decoration: none;
     border-bottom: 2px dotted var(--color-primary-light);
@@ -177,7 +154,7 @@
     left: 0;
     right: 0;
     bottom: 0;
-    height: 10rem; /* Adjust this value to control the fade height */
+    height: 20vh; /* Adjust this value to control the fade height */
     background: linear-gradient(to bottom, rgba(247, 247, 247, 0), rgba(247, 247, 247, 1));
     pointer-events: none; /* Allows interaction with content underneath */
     z-index: 10;
