@@ -98,21 +98,21 @@
     width: 100%;
     max-width: calc(var(--max-width-default) + 6rem); /* 57rem + 40px for margins */
     margin: 0 auto;
-    padding: 13vh 3rem 2rem; /* Default padding for smaller screens */
+    padding: 12vh 3rem 2rem; /* Default padding for smaller screens */
   }
 
   .page-container-narrow { 
     width: 100%;
     max-width: calc(var(--max-width-narrow) + 6rem); 
     margin: 0 auto;
-    padding: 8rem 3rem 2rem;
+    padding: 12vh 3rem 2rem;
   }
 
   .page-container-study { 
     width: 100%;
     max-width: calc(var(--max-width-study) + 6rem); 
     margin: 0 auto;
-    padding: 8rem 3rem 2rem;
+    padding: 12vh 3rem 2rem;
   }
 
   /* Underline styles */
