@@ -48,7 +48,7 @@ export default function Home() {
   }
 
   return (
-    <main className="page-container">
+    <main className="page-container page-container-default">
       <div className="flex flex-col gap-5 items-center w-full">
         {/* Introduction Section */}
         <section className="flex flex-col gap-2 w-full">

@@ -96,23 +96,26 @@
   /* Layout utilities */
   .page-container {
     width: 100%;
-    max-width: calc(var(--max-width-default) + 6rem); /* 57rem + 40px for margins */
     margin: 0 auto;
-    padding: 12vh 3rem 2rem; /* Default padding for smaller screens */
+    padding: 12vh 3rem 4vh;
   }
 
-  .page-container-narrow { 
-    width: 100%;
-    max-width: calc(var(--max-width-narrow) + 6rem); 
-    margin: 0 auto;
-    padding: 12vh 3rem 2rem;
+  .page-container-default {
+    max-width: calc(var(--max-width-default) + 6rem);
   }
 
-  .page-container-study { 
-    width: 100%;
-    max-width: calc(var(--max-width-study) + 6rem); 
-    margin: 0 auto;
-    padding: 12vh 3rem 2rem;
+  .page-container-narrow {
+    max-width: calc(var(--max-width-narrow) + 6rem);
+  }
+
+  .page-container-study {
+    max-width: calc(var(--max-width-study) + 6rem);
+  }
+
+  @media (max-width: 420px) {
+    .page-container {
+      padding-top: 8vh;
+    }
   }
 
   /* Underline styles */
@@ -202,4 +205,3 @@
     overflow: hidden;
   }
 }
-

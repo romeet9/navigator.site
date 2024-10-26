@@ -33,7 +33,7 @@ function ClubsNEUContent() {
     : [{ label: "CLUBSNEU DATABASE" }];
 
   return (
-    <main className="page-container-study">
+    <main className="page-container page-container-study">
       <div className="flex flex-col gap-4 items-start w-full mx-auto">
         <Breadcrumbs crumbs={crumbs} />
 

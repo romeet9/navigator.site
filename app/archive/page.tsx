@@ -14,7 +14,7 @@ export default function Archive() {
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect()
 
   return (
-    <main className="page-container">
+    <main className="page-container page-container-default">
       <div className="flex flex-col gap-[1.625rem] items-start w-full mx-auto">
         <Breadcrumbs crumbs={[{ label: "ALL WORKS" }]} />
         <div className="w-full">

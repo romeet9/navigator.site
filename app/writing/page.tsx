@@ -28,7 +28,7 @@ export default function Writing() {
   ];
 
   return (
-    <main className="page-container">
+    <main className="page-container page-container-default">
       <div className="flex flex-col gap-[1.625rem] items-center w-full">
         <section className="flex flex-col gap-[0.75rem] w-full">
           <HeaderMain 
