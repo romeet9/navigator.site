@@ -14,6 +14,8 @@ interface AccordionContextProps {
   handleMouseLeave: () => void;
   selectedContent: string | null;
   setSelectedContent: (value: string | null) => void;
+  selectedYear: string | null;
+  setSelectedYear: (value: string | null) => void;
 }
 
 const AccordionContext = React.createContext<AccordionContextProps>({
@@ -22,6 +24,8 @@ const AccordionContext = React.createContext<AccordionContextProps>({
   handleMouseLeave: () => {},
   selectedContent: '2024-005', // Default to Linkedin Brand Kit
   setSelectedContent: () => {},
+  selectedYear: null,
+  setSelectedYear: () => {},
 });
 
 type AccordionProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Root> & {
@@ -36,9 +40,18 @@ const Accordion = React.forwardRef<
 >(({ className, ...props }, ref) => {
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
   const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-005');
+  const [selectedYear, setSelectedYear] = React.useState<string | null>(null);
 
   return (
-    <AccordionContext.Provider value={{ hoveredItem, handleMouseEnter, handleMouseLeave, selectedContent, setSelectedContent }}>
+    <AccordionContext.Provider value={{ 
+      hoveredItem, 
+      handleMouseEnter, 
+      handleMouseLeave, 
+      selectedContent, 
+      setSelectedContent,
+      selectedYear,
+      setSelectedYear
+    }}>
       <AccordionPrimitive.Root
         ref={ref}
         className={className}
@@ -76,24 +89,29 @@ AccordionItem.displayName = "AccordionItem"
 const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-  <AccordionPrimitive.Header className="flex">
-    <AccordionPrimitive.Trigger
-      ref={ref}
-      className={cn(
-        "b_mono flex flex-1 items-center justify-between py-0 transition-all duration-500 ease-in-out",
-        "[&[data-state=open]>div>svg]:rotate-180",
-        className
-      )}
-      {...props}
-    >
-      {children}
-      <div className="b_mono flex items-center justify-center shrink-0 transition-transform duration-500 ease-in-out">
-        <ChevronDown className="w-3 h-3 text-primary-color" /> 
-      </div>
-    </AccordionPrimitive.Trigger>
-  </AccordionPrimitive.Header>
-))
+>(({ className, children, ...props }, ref) => {
+  const { setSelectedYear } = React.useContext(AccordionContext);
+
+  return (
+    <AccordionPrimitive.Header className="flex">
+      <AccordionPrimitive.Trigger
+        ref={ref}
+        className={cn(
+          "b_mono flex flex-1 items-center justify-between py-0 transition-all duration-500 ease-in-out",
+          "[&[data-state=open]>div>svg]:rotate-180",
+          className
+        )}
+        onClick={() => setSelectedYear(children as string)}
+        {...props}
+      >
+        {children}
+        <div className="b_mono flex items-center justify-center shrink-0 transition-transform duration-500 ease-in-out">
+          <ChevronDown className="w-3 h-3 text-primary-color" /> 
+        </div>
+      </AccordionPrimitive.Trigger>
+    </AccordionPrimitive.Header>
+  );
+});
 AccordionTrigger.displayName = "AccordionTrigger"
 
 const AccordionContent = React.forwardRef<

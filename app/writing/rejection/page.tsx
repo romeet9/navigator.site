@@ -14,7 +14,7 @@ export default function Rejection() {
         
         <article className="w-full flex flex-col gap-3">
           <section className="flex flex-col gap-[0.75rem]">
-            <h1>Rejection</h1>
+            <h2>Rejection</h2>
             <div className="flex flex-col gap-2">
             <p className="b_serif">
               The most anxiety-inducing part of being an intern is waiting for that recruiter call after the internship ends. Yesterday, I got that call, and as the title suggests, I was rejected.             
@@ -41,7 +41,7 @@ export default function Rejection() {
             <h3>Running with rejection</h3>
             <div className="flex flex-col gap-2">
               <p className="b_serif">
-                I’d been meaning to refine my portfolio for a while, but for the past month, I’d been futzing around—collecting inspiration and tinkering with my existing layout, trying to make something work. Now, I’ve decided to create a <a href="https://github.com/robkkan/growth.site" className="link-underline" rel="noopener noreferrer">new concept</a>. I’m moving away from Webflow and putting my computer science degree to work.
+                I’d been meaning to refine my portfolio for a while, but for the past month, I’d been futzing around—collecting inspiration and tinkering with my existing layout, trying to make something work. Now, I’ve decided to create a new concept. I’m moving away from Webflow and putting my computer science degree to work.
               </p>
               <p className="b_serif">
                 Writing is something I’ve always wanted to improve on, and now I can proudly say I’ve started. I’m even giving it center stage in my new portfolio. There’s something about personal reflection and documenting growth that really interests me. Hopefully, it can help others too.

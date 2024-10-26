@@ -37,6 +37,7 @@
     /* Layout */
     --max-width-default: 57rem;
     --max-width-narrow: 36rem;
+    --max-width-study: 40rem;
   }
 
   /* Responsive font sizes */
@@ -85,7 +86,7 @@
   /* Layout utilities */
   .page-container {
     width: 100%;
-    max-width: calc(var(--max-width-default) + 6rem); /* 58rem + 40px for margins */
+    max-width: calc(var(--max-width-default) + 6rem); /* 57rem + 40px for margins */
     margin: 0 auto;
     padding: 8rem 3rem 2rem; /* Default padding for smaller screens */
   }
@@ -93,6 +94,13 @@
   .page-container-narrow { 
     width: 100%;
     max-width: calc(var(--max-width-narrow) + 6rem); 
+    margin: 0 auto;
+    padding: 8rem 3rem 2rem;
+  }
+
+  .page-container-study { 
+    width: 100%;
+    max-width: calc(var(--max-width-study) + 6rem); 
     margin: 0 auto;
     padding: 8rem 3rem 2rem;
   }
@@ -129,11 +137,11 @@
 
   .subtle-shadow {
     box-shadow: 
-    0px 151.56px 42.27px 0px rgba(150, 150, 150, 0.00),
-    0px 96.92px 39.18px 0px rgba(150, 150, 150, 0.01),
-    0px 54.64px 32.99px 0px rgba(150, 150, 150, 0.05),
-    0px 23.71px 23.71px 0px rgba(150, 150, 150, 0.09),
-    0px 6.19px 13.40px 0px rgba(150, 150, 150, 0.10);
+    0px -21.29166603088379px 6.083333492279053px 0px rgba(189, 189, 189, 0%),
+    0px -13.18055534362793px 5.069444179534912px 0px rgba(189, 189, 189, 1%),
+    0px -8.11111068725586px 5.069444179534912px 0px rgba(189, 189, 189, 5%),
+    0px -3.0416667461395264px 3.0416667461395264px 0px rgba(189, 189, 189, 9%),
+    0px -1.0138888359069824px 2.027777671813965px 0px rgba(189, 189, 189, 10%);
   }
 
   .fade-bottom {
@@ -156,5 +164,31 @@
 
   .fade-bottom.at-bottom::after {
     opacity: 0;
+  }
+
+  .inner-shadow-tertiary {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .inner-shadow-tertiary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    box-shadow: inset 0 0 0 0.05rem var(--color-tertiary);
+    pointer-events: none;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  .folder-svg-container {
+    --folder-stroke-width: 0.05rem; /* This is equivalent to 0.5px at 16px base font size */
+  }
+
+  .clip-content {
+    overflow: hidden;
   }
 }

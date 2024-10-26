@@ -9,7 +9,7 @@ const Footer: React.FC = () => {
         <ul className="flex flex-wrap justify-center">
           <li>
             <a 
-              href="/other-assets/resume_2024.pdf" 
+              href="/other-assets/resume_2024_figma.pdf" 
               className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"

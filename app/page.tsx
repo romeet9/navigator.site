@@ -7,13 +7,19 @@ import Link from 'next/link';
 import Image from 'next/image';
 import AccordionLikeButton from '@/components/ui/accordionLikeButton';
 import HeaderMain from '@/components/ui/header';
-import ProjectCard from '@/components/ui/projectCard';
 import { useRouter } from 'next/navigation';
-import { getFeaturedProjects } from '@/lib/data/projectData';
+import { getFeaturedProjects, Project } from '@/lib/data/projectData';
+import FileSystemVisualizer from '@/components/fileSystemVisualizer';
 
 export default function Home() {
-  const [selectedButton, setSelectedButton] = useState<string>('home')
-  const [selectedProject, setSelectedProject] = useState<string>('2024-005')
+  const projectData = getFeaturedProjects();
+  const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
+  const initialYear = years[0]; // Should be '2024'
+  const initialProject = projectData[initialYear][0]; // Should be the LinkedIn Brand Kit project
+
+  const [selectedButton, setSelectedButton] = useState<string>('home');
+  const [selectedYear, setSelectedYear] = useState<string>(initialYear);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(initialProject);
   const router = useRouter();
 
   useEffect(() => {
@@ -28,11 +34,18 @@ export default function Home() {
   }
 
   const handleProjectSelect = (projectId: string) => {
-    setSelectedProject(projectId)
+    const [year, num] = projectId.split('-');
+    const project = projectData[year]?.find(p => p.num === num);
+    if (project) {
+      setSelectedProject(project);
+      setSelectedYear(year);
+    }
   }
 
-  const projectData = getFeaturedProjects();
-  const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
+  const handleYearSelect = (year: string) => {
+    setSelectedYear(year);
+    setSelectedProject(null); // Reset selected project when changing year
+  }
 
   return (
     <main className="page-container">
@@ -65,7 +78,7 @@ export default function Home() {
           {/* Image Section */}
           <div className="w-full max-w-[28rem] mx-auto">
             <Image
-              src="/images/grid.png"
+              src="/images/grid2.png"
               alt="Robert playing tennis"
               width={496}
               height={496}
@@ -77,15 +90,15 @@ export default function Home() {
           {/* Projects Section */}
           <section className="flex flex-row gap-[3rem] w-full">
             {/* Accordion */}
-            <div className="w-[18rem] mx-auto md:block hidden">
+            <div className="w-[17.5rem] mx-auto md:block hidden">
               <Accordion 
                 type="single"  
-                defaultValue={years[0]}
+                defaultValue={initialYear}
                 collapsible
               >
                 {years.map((year) => (
                   <AccordionItem key={year} value={year}>
-                    <AccordionTrigger>{year}</AccordionTrigger>
+                    <AccordionTrigger onClick={() => handleYearSelect(year)}>{year}</AccordionTrigger>
                     {projectData[year].map((project) => (
                       <AccordionContent 
                         key={project.num} 
@@ -103,21 +116,12 @@ export default function Home() {
               </Accordion>
             </div>
 
-            {/* Project Card */}
-            {selectedProject && (() => {
-              const [year, num] = selectedProject.split('-');
-              const project = projectData[year]?.find(p => p.num === num);
-              if (project) {
-                return (
-                  <ProjectCard 
-                    title={project.title}
-                    imageSrc={project.imageSrc || ''}
-                    link={project.href}
-                  />
-                );
-              }
-              return null;
-            })()}
+            {/* FileSystemVisualizer */}
+            <FileSystemVisualizer
+              selectedYear={selectedYear}
+              projects={projectData[selectedYear] || []}
+              selectedProject={selectedProject}
+            />
           </section>
         </div>
 
