@@ -106,7 +106,7 @@ const AccordionTrigger = React.forwardRef<
       >
         {children}
         <div className="b_mono flex items-center justify-center shrink-0 transition-transform duration-500 ease-in-out">
-          <ChevronDown className="w-3 h-3 text-primary-color" /> 
+          <ChevronDown className="w-3 h-3 text-secondary-color" /> 
         </div>
       </AccordionPrimitive.Trigger>
     </AccordionPrimitive.Header>

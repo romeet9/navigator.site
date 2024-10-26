@@ -98,7 +98,7 @@
     width: 100%;
     max-width: calc(var(--max-width-default) + 6rem); /* 57rem + 40px for margins */
     margin: 0 auto;
-    padding: 8rem 3rem 2rem; /* Default padding for smaller screens */
+    padding: 13vh 3rem 2rem; /* Default padding for smaller screens */
   }
 
   .page-container-narrow { 

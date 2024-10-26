@@ -27,7 +27,7 @@ function ClubsNEUContent() {
 
   const crumbs = fromAllWorks
     ? [
-        { label: "ALL WORKS", href: "/all-works" },
+        { label: "ALL WORKS", href: "/archive" },
         { label: "CLUBSNEU DATABASE" },
       ]
     : [{ label: "CLUBSNEU DATABASE" }];
