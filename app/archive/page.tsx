@@ -30,7 +30,7 @@ export default function Archive() {
                 num={project.num}
                 title={project.title}
                 date={project.date}
-                href={project.href}
+                href={`${project.href}?from=all-works`}
               />
             </HoverEffectWrapper>
           ))}

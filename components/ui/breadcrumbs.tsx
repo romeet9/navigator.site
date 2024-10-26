@@ -11,10 +11,14 @@ interface Crumb {
 
 interface BreadcrumbsProps {
   crumbs: Crumb[];
+  fromAllWorks?: boolean;
 }
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs }) => {
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs, fromAllWorks = false }) => {
   const router = useRouter();
+
+  const allWorksCrumb: Crumb = { label: 'ALL WORKS', href: '/all-works' };
+  const displayCrumbs = fromAllWorks ? [allWorksCrumb, ...crumbs] : crumbs;
 
   return (
     <section className="flex items-center gap-[0.25rem] w-full">
@@ -25,12 +29,12 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs }) => {
         <ArrowLeftIcon className="w-3 h-3" />
         BACK
       </Button>
-      {crumbs.map((crumb, index) => (
+      {displayCrumbs.map((crumb, index) => (
         <React.Fragment key={index}>
           <ChevronRightIcon className="w-3 h-3 text-tertiary-color" />
           <Button 
-            variant={index === crumbs.length - 1 ? "selected" : "default"}
-            className={index === crumbs.length - 1 ? "shadow-inset-tertiary" : ""}
+            variant={index === displayCrumbs.length - 1 ? "selected" : "default"}
+            className={index === displayCrumbs.length - 1 ? "shadow-inset-tertiary" : ""}
             onClick={() => crumb.href && router.push(crumb.href)}
           >
             {crumb.label}
@@ -38,7 +42,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs }) => {
         </React.Fragment>
       ))}
       <div className="flex-grow mx-[0.25rem] mt-[0.625rem]">
-        <div className="h-[0.0625rem] bg-tertiary-color opacity-[0.82]"></div>
+        <div className="h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
       </div>
     </section>
   );

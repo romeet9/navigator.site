@@ -11,13 +11,15 @@
     --color-primary: #0F0F0F;
     --color-primary-light: #1F1F1F;
     --color-secondary: #5A5A5A;
-    --color-tertiary: #C9C9C9; 
+    --color-tertiary: #D7D7D7; 
 
     /* Typography */
     --font-commit-mono: 'CommitMono', monospace;
     --font-tiempos-headline: 'TiemposHeadline', serif;
     --font-tiempos-text: 'TiemposText', serif;
 
+    /* Font sizes */
+    --font-size-small: 0.875rem;
     --font-size-body: 1rem;
     --font-size-heading: 2.074rem;
     --font-size-title: 1.728rem;
@@ -64,6 +66,10 @@
     @apply text-subheading font-tiempos-headline text-primary-color; 
   }
 
+  h4 {
+    @apply text-small font-commit-mono text-secondary-color;
+  }
+
   .b_mono { 
     @apply text-body font-commit-mono text-primary-color; 
   }
@@ -74,6 +80,10 @@
 
   .italic-text {
     font-style: italic;
+  }
+
+  .tiempos-headline {
+    font-family: var(--font-tiempos-headline);
   }
 }
 
@@ -192,3 +202,4 @@
     overflow: hidden;
   }
 }
+

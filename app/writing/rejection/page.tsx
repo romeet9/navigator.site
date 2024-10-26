@@ -55,7 +55,7 @@ export default function Rejection() {
             </div>
           </section>
         </article>
-        <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.82]"></div>
+        <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
         <Footer />
       </div>
     </main>

@@ -22,7 +22,7 @@ const HeaderMain: React.FC<HeaderMainProps> = ({
   return (
     <header className="w-full">
       <div className="flex flex-row justify-between items-center w-full">
-        <h1>{headerText}</h1>
+        <h1 className="font-tiempos-headline">{headerText}</h1>
         <nav className="flex flex-row gap-1">
           <Tabs defaultValue={selectedButton} onValueChange={handleTabChange}>
             <TabsList>

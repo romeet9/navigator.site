@@ -10,6 +10,7 @@ const config: Config = {
   theme: {
   	extend: {
   		fontSize: {
+  			small: ['var(--font-size-small)', 'var(--line-height-body)'],	
   			body: ['var(--font-size-body)', 'var(--line-height-body)'],
   			heading: ['var(--font-size-heading)', 'var(--line-height-headings)'],
   			title: ['var(--font-size-title)', 'var(--line-height-headings)'],
@@ -25,9 +26,10 @@ const config: Config = {
   			'tertiary-color': 'var(--color-tertiary)'
   		},
   		fontFamily: {
-  			'commit-mono': ['var(--font-commit-mono)'],
-  			'tiempos-headline': ['var(--font-tiempos-headline)'],
-  			'tiempos-text': ['var(--font-tiempos-text)']
+  			'commit-mono': ['var(--font-commit-mono)', 'monospace'],
+  			'tiempos-headline': ['var(--font-tiempos-headline)', 'var(--font-jacques-francois)', 'serif'],
+  			'tiempos-text': ['var(--font-tiempos-text)', 'var(--font-jacques-francois)', 'serif'],
+  			'jacques-francois': ['var(--font-jacques-francois)', 'serif'],
   		},
   		spacing: {
   			'0': 'var(--spacing-0)',
