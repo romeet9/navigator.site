@@ -19,11 +19,14 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
   const offsetPerCard = 0.625; // 0.625rem (10px)
   const totalHeight = cardHeight + (projects.length - 1) * offsetPerCard;
 
-  // Sort projects to put the selected project last (it will be rendered on top)
+  // Updated sorting logic to handle both selected project and year
   const sortedProjects = [...projects].sort((a, b) => {
-    if (a.num === selectedProject?.num) return 1;
-    if (b.num === selectedProject?.num) return -1;
-    return 0;
+    if (selectedProject) {
+      if (a.num === selectedProject.num) return 1;
+      if (b.num === selectedProject.num) return -1;
+    }
+    // If no project is selected, sort by most recent number
+    return b.num.localeCompare(a.num);
   });
 
   return (

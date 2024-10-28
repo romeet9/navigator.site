@@ -154,9 +154,9 @@ function ClubsNEUContent() {
                 <h4>SOLUTION</h4>
                 <h3>A single platform for all clubs</h3>
                 <p className="b_serif">
-                  While finding exact statistics on members for every club was
-                  difficult, I analyzed the application or participation rates
-                  of 5 well-known campus clubs.
+                  An always-accessible platform helping students find their
+                  community with better search, personalized recommendations,
+                  and complete club information.
                 </p>
               </div>
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">

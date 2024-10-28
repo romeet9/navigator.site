@@ -44,7 +44,6 @@ export default function Home() {
 
   const handleYearSelect = (year: string) => {
     setSelectedYear(year);
-    setSelectedProject(null); // Reset selected project when changing year
   }
 
   return (

@@ -90,7 +90,7 @@ const AccordionTrigger = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Trigger>,
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger>
 >(({ className, children, ...props }, ref) => {
-  const { setSelectedYear } = React.useContext(AccordionContext);
+  const { setSelectedYear, selectedContent } = React.useContext(AccordionContext);
 
   return (
     <AccordionPrimitive.Header className="flex">
@@ -101,7 +101,10 @@ const AccordionTrigger = React.forwardRef<
           "[&[data-state=open]>div>svg]:rotate-180",
           className
         )}
-        onClick={() => setSelectedYear(children as string)}
+        onClick={() => {
+          // Don't reset selectedContent when clicking the year
+          setSelectedYear(children as string);
+        }}
         {...props}
       >
         {children}
