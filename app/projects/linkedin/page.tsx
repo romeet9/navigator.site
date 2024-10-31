@@ -23,13 +23,19 @@ import { Button } from "@/components/ui/button";
 function LinkedInContent() {
   const searchParams = useSearchParams();
   const fromAllWorks = searchParams.get("from") === "all-works";
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('linkedinAuth') === 'true';
+    }
+    return false;
+  });
   const [password, setPassword] = useState("");
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === "password") {
+    if (password === "your-password-here") {
       setIsAuthenticated(true);
+      localStorage.setItem('linkedinAuth', 'true');
     } else {
       alert("Incorrect password");
     }
