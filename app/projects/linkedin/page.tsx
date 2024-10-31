@@ -170,6 +170,8 @@ function LinkedInContent() {
                 </div>
               </section>
 
+              <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
+
               <section className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-1">
@@ -262,6 +264,8 @@ function LinkedInContent() {
                 </div>
               </section>
 
+              <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
+
               <section className="flex flex-col gap-5">
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-col gap-1">
@@ -352,6 +356,8 @@ function LinkedInContent() {
                   </div>
                 </div>
               </section>
+
+              <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
 
               <section className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
