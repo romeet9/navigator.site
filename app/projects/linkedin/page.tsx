@@ -147,7 +147,7 @@ function LinkedInContent() {
                   SUBMIT
                 </Button>
               </form>
-              <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6] pb-[4rem]"></div>
+              <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6] mb-[4rem]"></div>
             </section>
           ) : (
             <>
