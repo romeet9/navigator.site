@@ -33,7 +33,7 @@ function LinkedInContent() {
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (password === "your-password-here") {
+    if (password === "growth") {
       setIsAuthenticated(true);
       localStorage.setItem('linkedinAuth', 'true');
     } else {
@@ -141,9 +141,9 @@ function LinkedInContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="ENTER THE SECRET WORD"
-                  className="b_mono px-2 pt-[0.68rem] pb-[0.57rem] rounded-md shadow-inset-tertiary bg-fill w-full"
+                  className="b_mono px-2 pt-[0.64rem] pb-[0.61rem] rounded-md shadow-inset-tertiary bg-fill w-full"
                 />
-                <Button type="submit" className= "pt-[0.68rem] pb-[0.57rem]">
+                <Button type="submit" className= "pt-[0.64rem] pb-[0.61rem]">
                   SUBMIT
                 </Button>
               </form>

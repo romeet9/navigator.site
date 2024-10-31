@@ -118,15 +118,15 @@
     max-width: calc(var(--max-width-study) + 6rem);
   }
 
-  @media (max-width: 420px) {
-    .page-container {
-      padding-top: 8vh;
-    }
-  }
-
   @media (max-width: 1500px) {
     .page-container {
       padding-top: 13vh;
+    }
+  }
+
+  @media (max-width: 470px) {
+    .page-container {
+      padding-top: 8vh;
     }
   }
 

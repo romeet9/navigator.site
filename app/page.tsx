@@ -10,6 +10,10 @@ import HeaderMain from '@/components/ui/header';
 import { useRouter } from 'next/navigation';
 import { getFeaturedProjects, Project } from '@/lib/data/projectData';
 import FileSystemVisualizer from '@/components/fileSystemVisualizer';
+import ItemEntry from '@/components/ui/itemEntry';
+import { HoverEffectWrapper } from '@/components/hoverEffectWrapper';
+import { useHoverEffect } from '@/hooks/useHoverEffect';
+import { allProjects } from '@/lib/data/projectData';
 
 export default function Home() {
   const projectData = getFeaturedProjects();
@@ -21,9 +25,29 @@ export default function Home() {
   const [selectedYear, setSelectedYear] = useState<string>(initialYear);
   const [selectedProject, setSelectedProject] = useState<Project | null>(initialProject);
   const router = useRouter();
+  const [headerText, setHeaderText] = useState("Hey, I'm Robert.");
+
+  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
 
   useEffect(() => {
     setSelectedButton('home');
+  }, []);
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (typeof window !== 'undefined') {
+        setHeaderText(window.innerWidth <= 470 ? "Robert." : "Hey, I'm Robert.");
+      }
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener
+    window.addEventListener('resize', handleResize);
+
+    // Cleanup
+    return () => window.removeEventListener('resize', handleResize);
   }, []);
 
   const handleButtonClick = (buttonName: string) => {
@@ -61,7 +85,7 @@ export default function Home() {
         {/* Introduction Section */}
         <section className="flex flex-col gap-2 w-full">
           <HeaderMain 
-            headerText="Hey, I'm Robert."
+            headerText={headerText}
             selectedButton={selectedButton} 
             handleButtonClick={handleButtonClick}
           />
@@ -96,40 +120,60 @@ export default function Home() {
           </div>
 
           {/* Projects Section */}
-          <section className="flex flex-row gap-[3rem] w-full">
-            {/* Accordion */}
-            <div className="w-[17.5rem] mx-auto md:block hidden">
-              <Accordion 
-                type="single"  
-                defaultValue={initialYear}
-                collapsible
-              >
-                {years.map((year) => (
-                  <AccordionItem key={year} value={year}>
-                    <AccordionTrigger onClick={() => handleYearSelect(year)}>{year}</AccordionTrigger>
-                    {projectData[year].map((project) => (
-                      <AccordionContent 
-                        key={project.num} 
-                        contentId={`${year}-${project.num}`} 
-                        onClick={() => handleProjectSelect(`${year}-${project.num}`)}
-                      >
-                        {project.title}
-                      </AccordionContent>
-                    ))}
-                  </AccordionItem>
-                ))}
-                <AccordionLikeButton href="/archive">
-                  VIEW ALL
-                </AccordionLikeButton>
-              </Accordion>
+          <section className="w-full">
+            {/* Desktop view (>=780px) */}
+            <div className="hidden md:flex flex-row gap-[3rem] w-full">
+              <div className="w-[17.5rem] mx-auto">
+                <Accordion 
+                  type="single"  
+                  defaultValue={initialYear}
+                  collapsible
+                >
+                  {years.map((year) => (
+                    <AccordionItem key={year} value={year}>
+                      <AccordionTrigger onClick={() => handleYearSelect(year)}>{year}</AccordionTrigger>
+                      {projectData[year].map((project) => (
+                        <AccordionContent 
+                          key={project.num} 
+                          contentId={`${year}-${project.num}`} 
+                          onClick={() => handleProjectSelect(`${year}-${project.num}`)}
+                        >
+                          {project.title}
+                        </AccordionContent>
+                      ))}
+                    </AccordionItem>
+                  ))}
+                  <AccordionLikeButton href="/archive">
+                    VIEW ALL
+                  </AccordionLikeButton>
+                </Accordion>
+              </div>
+              <FileSystemVisualizer
+                selectedYear={selectedYear}
+                projects={projectData[selectedYear] || []}
+                selectedProject={selectedProject}
+              />
             </div>
 
-            {/* FileSystemVisualizer */}
-            <FileSystemVisualizer
-              selectedYear={selectedYear}
-              projects={projectData[selectedYear] || []}
-              selectedProject={selectedProject}
-            />
+            {/* Mobile view (<780px) */}
+            <div className="md:hidden w-full">
+              {allProjects.map((project) => (
+                <HoverEffectWrapper
+                  key={project.num}
+                  id={project.num}
+                  hoveredItem={hoveredItem}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <ItemEntry
+                    num={project.num}
+                    title={project.title}
+                    date={project.date}
+                    href={project.href}
+                  />
+                </HoverEffectWrapper>
+              ))}
+            </div>
           </section>
         </div>
 
