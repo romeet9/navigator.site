@@ -28,6 +28,11 @@ const tiemposText = localFont({
       style: "normal",
     },
     {
+      path: "../public/fonts/TiemposText-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
       path: "../public/fonts/TiemposText-Regular-Italic.woff2",
       weight: "400",
       style: "italic",

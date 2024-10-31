@@ -36,6 +36,7 @@ export default function Home() {
   const handleProjectSelect = (projectId: string) => {
     const [year, num] = projectId.split('-');
     const project = projectData[year]?.find(p => p.num === num);
+    console.log('handleProjectSelect:', { year, num, project });
     if (project) {
       setSelectedProject(project);
       setSelectedYear(year);
@@ -43,8 +44,16 @@ export default function Home() {
   }
 
   const handleYearSelect = (year: string) => {
+    console.log('handleYearSelect:', { year });
     setSelectedYear(year);
   }
+
+  useEffect(() => {
+    console.log('Page State Changed:', {
+      selectedYear,
+      selectedProject: selectedProject?.num
+    });
+  }, [selectedYear, selectedProject]);
 
   return (
     <main className="page-container page-container-default">

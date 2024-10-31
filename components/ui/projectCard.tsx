@@ -15,7 +15,7 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, svgSrc, link }) => (
       alt={`${title} Mockup`}
       width={584}
       height={438}
-      className="w-full h-auto cursor-pointer"
+      className="w-full h-auto cursor-pointer bg-transparent"
     />
   </Link>
 );
