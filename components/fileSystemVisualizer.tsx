@@ -24,7 +24,7 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
   }, [selectedYear, selectedProject]);
 
   // Calculate the total height based on the number of projects
-  const cardHeight = 26.04; // Height of a single card in rem
+  const cardHeight = 26.3; // Height of a single card in rem
   const offsetPerCard = 0.75; // 0.625rem (10px)
   const totalHeight = cardHeight + (projects.length - 1) * offsetPerCard;
 
