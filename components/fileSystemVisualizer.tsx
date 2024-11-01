@@ -23,9 +23,11 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
     });
   }, [selectedYear, selectedProject]);
 
-  // Calculate the total height based on the number of projects
-  const cardHeight = 26.3; // Height of a single card in rem
-  const offsetPerCard = 0.75; // 0.625rem (10px)
+  const cardHeight = 24.375333;  // Height of a single card in rem
+  const offsetPerCard = 0.75;    // Offset between cards in rem
+  const folderPadding = 1.6875;  // Top padding of the folder
+  
+  // Remove folderPadding from this calculation since it's handled by the div
   const totalHeight = cardHeight + (projects.length - 1) * offsetPerCard;
 
   // Updated sorting logic to handle both selected project and year
@@ -39,7 +41,7 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
   });
 
   return (
-    <div className="relative w-[36.5rem] mx-auto clip-content" style={{ height: `${totalHeight}rem` }}>
+    <div className="relative w-[36.5rem] mx-auto clip-content" style={{ height: `${totalHeight + folderPadding}rem` }}>
       <div className="absolute w-full">
         <Image
           src="/images/folder.svg"
@@ -51,10 +53,10 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
         />
       </div>
       <div className="absolute w-full h-full">
-        <div className="w-full h-[1.6875rem]" /> {/* This creates the absolute top padding */}
+        <div className="w-full h-[1.6875rem]" /> {/* Folder padding */}
         <div 
           className="relative" 
-          style={{ height: `calc(${totalHeight}rem - 1.6875rem)` }} // Subtract the 1.5rem (24px) top padding
+          style={{ height: `${totalHeight}rem` }} 
         >
           {sortedProjects.map((project, index) => (
             <div

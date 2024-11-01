@@ -11,7 +11,7 @@ interface ItemEntryProps {
 const ItemEntry: React.FC<ItemEntryProps> = ({ num, title, date, href }) => {
   return (
     <Link href={href} className="block w-full">
-      <div className="flex items-center py-[0.625rem]">
+      <div className="flex items-center py-[0.75rem]">
         <div className="flex items-center gap-1">
           <span className="b_mono text-secondary-color">{num}</span>
           <span className="b_mono text-primary-color">{title}</span>
