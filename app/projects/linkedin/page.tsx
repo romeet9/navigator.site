@@ -141,7 +141,7 @@ function LinkedInContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="ENTER THE SECRET WORD"
-                  className="b_mono px-2 pt-[0.64rem] pb-[0.61rem] rounded-md shadow-inset-tertiary bg-fill w-full"
+                  className="b_mono px-2 pt-[0.65rem] pb-[0.60rem] rounded-md shadow-inset-tertiary bg-fill w-full"
                 />
                 <Button type="submit" className= "pt-[0.64rem] pb-[0.61rem]">
                   SUBMIT
@@ -221,7 +221,7 @@ function LinkedInContent() {
                     <h4>PRINCIPLES</h4>
                     <h3>I learned that a brand kit is...</h3>
                   </div>
-                  <div className="grid grid-cols-2 gap-1">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-1">
                     <div className="rounded-[0.375rem] bg-fill px-2 py-[0.875rem] inner-shadow-tertiary">
                       <p className="b_serif">
                         <span className="font-medium">Visible:</span> Easy to
