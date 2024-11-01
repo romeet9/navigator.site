@@ -141,7 +141,7 @@ function LinkedInContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="ENTER THE SECRET WORD"
-                  className="b_mono px-2 pt-[0.65rem] pb-[0.60rem] rounded-md shadow-inset-tertiary bg-fill w-full"
+                  className="b_mono px-2 pt-[0.64rem] pb-[0.61rem] rounded-md shadow-inset-tertiary bg-fill w-full"
                 />
                 <Button type="submit" className= "pt-[0.64rem] pb-[0.61rem]">
                   SUBMIT
