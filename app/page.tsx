@@ -23,7 +23,16 @@ export default function Home() {
 
   const [selectedButton, setSelectedButton] = useState<string>('home');
   const [selectedYear, setSelectedYear] = useState<string>(initialYear);
-  const [selectedProject, setSelectedProject] = useState<Project | null>(initialProject);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(() => {
+    if (typeof window !== 'undefined') {
+      const lastSelectedId = localStorage.getItem('lastSelectedProject');
+      if (lastSelectedId) {
+        const [year, num] = lastSelectedId.split('-');
+        return projectData[year]?.find(p => p.num === num) || null;
+      }
+    }
+    return projectData['2024']?.find(p => p.num === '005') || null; // Default to LinkedIn
+  });
   const router = useRouter();
   const [headerText, setHeaderText] = useState("Hey, I'm Robert.");
 
@@ -64,6 +73,7 @@ export default function Home() {
     if (project) {
       setSelectedProject(project);
       setSelectedYear(year);
+      localStorage.setItem('lastSelectedProject', projectId);
     }
   }
 

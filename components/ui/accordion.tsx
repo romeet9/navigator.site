@@ -22,7 +22,7 @@ const AccordionContext = React.createContext<AccordionContextProps>({
   hoveredItem: null,
   handleMouseEnter: () => {},
   handleMouseLeave: () => {},
-  selectedContent: '2024-005', // Default to Linkedin Brand Kit
+  selectedContent: null,
   setSelectedContent: () => {},
   selectedYear: null,
   setSelectedYear: () => {},
@@ -39,8 +39,23 @@ const Accordion = React.forwardRef<
   AccordionProps
 >(({ className, ...props }, ref) => {
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
-  const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-005');
+  
+  // Initialize state from localStorage or default to null
+  const [selectedContent, setSelectedContent] = React.useState<string | null>(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('lastSelectedProject') || '2024-005';
+    }
+    return '2024-005';
+  });
+  
   const [selectedYear, setSelectedYear] = React.useState<string | null>(null);
+
+  // Update localStorage when selectedContent changes
+  React.useEffect(() => {
+    if (selectedContent) {
+      localStorage.setItem('lastSelectedProject', selectedContent);
+    }
+  }, [selectedContent]);
 
   return (
     <AccordionContext.Provider value={{ 
