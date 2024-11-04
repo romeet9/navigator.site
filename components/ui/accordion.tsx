@@ -2,6 +2,8 @@
 
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
+import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
+import { useRef, useState, useEffect } from "react"
 
 import { cn } from "@/lib/utils"
 import ChevronDown from '/public/images/icons/chevron-down.svg'
@@ -39,40 +41,29 @@ const Accordion = React.forwardRef<
   AccordionProps
 >(({ className, ...props }, ref) => {
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
-  
-  // Initialize state from localStorage or default to null
-  const [selectedContent, setSelectedContent] = React.useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('lastSelectedProject') || '2024-005';
-    }
-    return '2024-005';
-  });
-  
+  const [selectedContent, setSelectedContent] = React.useState<string | null>('2024-005');
   const [selectedYear, setSelectedYear] = React.useState<string | null>(null);
 
-  // Update localStorage when selectedContent changes
-  React.useEffect(() => {
-    if (selectedContent) {
-      localStorage.setItem('lastSelectedProject', selectedContent);
-    }
-  }, [selectedContent]);
-
   return (
-    <AccordionContext.Provider value={{ 
-      hoveredItem, 
-      handleMouseEnter, 
-      handleMouseLeave, 
-      selectedContent, 
-      setSelectedContent,
-      selectedYear,
-      setSelectedYear
-    }}>
-      <AccordionPrimitive.Root
-        ref={ref}
-        className={className}
-        {...props}
-      />
-    </AccordionContext.Provider>
+    <LayoutGroup id="accordion">
+      <AccordionContext.Provider value={{ 
+        hoveredItem, 
+        handleMouseEnter, 
+        handleMouseLeave, 
+        selectedContent, 
+        setSelectedContent,
+        selectedYear,
+        setSelectedYear
+      }}>
+        <AnimatePresence initial={false}>
+          <AccordionPrimitive.Root
+            ref={ref}
+            className={className}
+            {...props}
+          />
+        </AnimatePresence>
+      </AccordionContext.Provider>
+    </LayoutGroup>
   );
 });
 Accordion.displayName = "Accordion"
@@ -140,25 +131,62 @@ const AccordionContent = React.forwardRef<
 >(({ className, children, contentId, ...props }, ref) => {
   const { selectedContent, setSelectedContent } = React.useContext(AccordionContext);
   const isSelected = selectedContent === contentId;
+  const contentRef = useRef<HTMLDivElement>(null);
+  const [yOffset, setYOffset] = useState(0);
+
+  useEffect(() => {
+    if (contentRef.current && selectedContent !== contentId && isSelected) {
+      const currentRect = contentRef.current.getBoundingClientRect();
+      const previousElement = document.querySelector(`[data-content-id="${selectedContent}"]`);
+      if (previousElement) {
+        const previousRect = previousElement.getBoundingClientRect();
+        setYOffset(previousRect.top - currentRect.top);
+      }
+    }
+  }, [selectedContent, contentId, isSelected]);
 
   return (
     <AccordionPrimitive.Content
       ref={ref}
-      className={cn(
-        "overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down",
-        className
-      )}
+      className={cn("overflow-hidden", className)}
       {...props}
     >
-      <div 
-        className={cn(
-          "pb-[0.35rem] pt-[0.4rem] px-[0.75rem] rounded-[0.375rem] cursor-pointer transition-all duration-500 ease-in-out",
-          isSelected ? "bg-select text-primary-color" : "hover:text-primary-color",
-        )}
-        onClick={() => setSelectedContent(contentId)}
+      <motion.div
+        initial={{ height: 0 }}
+        animate={{ height: "auto" }}
+        exit={{ height: 0 }}
+        transition={{ 
+          duration: 0.5,
+          ease: [0.4, 0, 0.2, 1] // Smooth easeInOut curve
+        }}
       >
-        {children}
-      </div>
+        <div 
+          ref={contentRef}
+          data-content-id={contentId}
+          className={cn(
+            "relative pb-[0.35rem] pt-[0.4rem] px-[0.75rem] rounded-[0.375rem] cursor-pointer",
+            isSelected ? "text-primary-color" : "hover:text-primary-color",
+          )}
+          onClick={() => setSelectedContent(contentId)}
+        >
+          <AnimatePresence mode="wait">
+            {isSelected && (
+              <motion.span
+                layoutId="accordion-bubble"
+                className="absolute inset-[0.0625rem] z-0 bg-select rounded-[0.375rem]"
+                initial={{ y: yOffset }}
+                animate={{ y: 0 }}
+                transition={{
+                  type: "spring",
+                  bounce: 0.2,
+                  duration: 0.6
+                }}
+              />
+            )}
+          </AnimatePresence>
+          <span className="relative z-10">{children}</span>
+        </div>
+      </motion.div>
     </AccordionPrimitive.Content>
   );
 })
