@@ -9,7 +9,7 @@ import AccordionLikeButton from '@/components/ui/accordionLikeButton';
 import HeaderMain from '@/components/ui/header';
 import { useRouter } from 'next/navigation';
 import { getFeaturedProjects, Project } from '@/lib/data/projectData';
-import FileSystemVisualizer from '@/components/fileSystemVisualizer';
+import FileSystemVisualizer from '@/components/fileSystemViz';
 import ItemEntry from '@/components/ui/itemEntry';
 import { HoverEffectWrapper } from '@/components/hoverEffectWrapper';
 import { useHoverEffect } from '@/hooks/useHoverEffect';

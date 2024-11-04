@@ -15,7 +15,10 @@ export const allProjects: Project[] = [
 ];
 
 export const getFeaturedProjects = (): Record<string, Project[]> => {
-  return allProjects.reduce((acc, project) => {
+  // Filter out ReMo by excluding projects with href '/projects/remo'
+  const featuredProjects = allProjects.filter(project => project.href !== '/projects/remo');
+  
+  return featuredProjects.reduce((acc, project) => {
     if (!acc[project.date]) {
       acc[project.date] = [];
     }

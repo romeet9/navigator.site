@@ -11,7 +11,7 @@
     --color-primary: #0F0F0F;
     --color-primary-light: #1F1F1F;
     --color-secondary: #5A5A5A;
-    --color-tertiary: #CFCFCF; 
+    --color-tertiary: #CDCDCD; 
 
     /* Typography */
     --font-commit-mono: 'CommitMono', monospace;
@@ -131,28 +131,22 @@
   }
 
   /* Underline styles */
-  .link-underline {
+  .link-underline,
+  .b_mono a.link-underline,
+  .b_serif a.link-underline {
     text-decoration: none;
     border-bottom: 2px dotted var(--color-secondary);
     transition: border-color 0.3s ease;
   }
   
-  .link-underline-hover {
+  .link-underline-hover,
+  .b_mono a.link-underline:hover,
+  .b_serif a.link-underline:hover {
     border-bottom: 2px dotted transparent;
   }
   
   .link-underline-hover:hover {
     border-bottom: 2px dotted var(--color-secondary);
-  }
-  
-  .b_mono a.link-underline,
-  .b_serif a.link-underline {
-    border-bottom: 2px dotted var(--color-secondary);
-  }
-  
-  .b_mono a.link-underline:hover,
-  .b_serif a.link-underline:hover {
-    border-bottom: 2px dotted transparent;
   }
 
   /* Shadow styles */

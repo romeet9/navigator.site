@@ -6,17 +6,26 @@ interface ProjectCardProps {
   title: string;
   svgSrc: string;
   link: string;
+  isSmaller?: boolean;
+  year?: string;
 }
 
-const ProjectCard: React.FC<ProjectCardProps> = ({ title, svgSrc, link }) => (
-  <Link href={link} className="block w-full max-w-[36.5rem] mx-auto inner-shadow-tertiary rounded-[0.375rem]">
-    <Image
-      src={svgSrc}
-      alt={`${title} Mockup`}
-      width={584}
-      height={438}
-      className="w-full h-auto cursor-pointer bg-transparent"
-    />
+const ProjectCard: React.FC<ProjectCardProps> = ({ title, svgSrc, link, isSmaller }) => (
+  <Link href={link} className="block w-full mx-auto">
+    <div className="w-full h-full">
+      <Image
+        src={svgSrc}
+        alt={`${title} Mockup`}
+        width={525}
+        height={390}
+        className="w-full h-full"
+        style={{ 
+          objectFit: 'contain',
+          maxHeight: '100%'
+        }}
+        priority
+      />
+    </div>
   </Link>
 );
 
