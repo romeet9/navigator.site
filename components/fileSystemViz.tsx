@@ -56,7 +56,7 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
             initial: { y: 0 },
             hover: { y: '-6rem' }
           }}
-          transition={{ type: "spring", stiffness: 400, damping: 30 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
           style={{ 
             paddingTop: `${topPadding}rem`,
             height: `${projectCardHeight + topPadding}rem`
