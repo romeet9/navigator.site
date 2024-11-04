@@ -20,7 +20,7 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
   const topPadding = 2.8125;     // 45px
   const projectCardHeight = 21.9375;   // 351px
   
-  const currentProject = selectedProject || projects[0];
+  const currentProject = selectedProject || projects.find(p => p.num === '005') || projects[0];
 
   return (
     <motion.div 
