@@ -17,7 +17,7 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
 }) => {
   const folderWidth = 36.5;      // 584px
   const folderHeight = 27;       // 432px
-  const topPadding = 3.3125;     // 53px
+  const topPadding = 2.8125;     // 45px
   const projectCardHeight = 21.9375;   // 351px
   
   const currentProject = selectedProject || projects[0];
