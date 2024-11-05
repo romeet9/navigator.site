@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { Jacques_Francois } from 'next/font/google';
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const commitMono = localFont({
   src: "../public/fonts/CommitMono.woff2",
@@ -66,6 +67,7 @@ export default function RootLayout({
         className={`${commitMono.variable} ${tiemposHeadline.variable} ${tiemposText.variable} ${jacquesFrancois.variable} antialiased bg-background min-h-screen`}
       >
         {children}
+        <SpeedInsights />
         <Analytics />
       </body>
     </html>
