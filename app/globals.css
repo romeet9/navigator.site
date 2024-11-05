@@ -91,6 +91,16 @@
   .tiempos-headline {
     font-family: var(--font-tiempos-headline);
   }
+
+  ::selection {
+    background-color: var(--color-select);
+    color: var(--color-primary-light);
+  }
+  
+  ::-moz-selection {
+    background-color: var(--color-select);
+    color: var(--color-primary-light);
+  }
 }
 
 @layer utilities {
@@ -215,4 +225,30 @@
   .clip-content {
     overflow: hidden;
   }
+}
+
+@keyframes accordion-down {
+  from {
+    height: 0;
+  }
+  to {
+    height: var(--radix-accordion-content-height);
+  }
+}
+
+@keyframes accordion-up {
+  from {
+    height: var(--radix-accordion-content-height);
+  }
+  to {
+    height: 0;
+  }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 300ms ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 300ms ease-out;
 }

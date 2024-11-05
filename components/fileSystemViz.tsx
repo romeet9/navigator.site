@@ -36,12 +36,24 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = ({
         <motion.div 
           key={currentProject.num}
           className="absolute w-full h-full"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+          initial={{ 
+            opacity: 0,
+            scale: 0.99,
+            y: 5
+          }}
+          animate={{ 
+            opacity: 1,
+            scale: 1,
+            y: 0
+          }}
+          exit={{ 
+            opacity: 0,
+            scale: 0.99,
+            y: 5
+          }}
           transition={{ 
-            duration: 0.2,
-            ease: "easeInOut"
+            duration: 0.34,
+            ease: [0.2, 0.8, 0.32, 1]
           }}
         >
           {/* Folder Background */}

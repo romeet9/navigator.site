@@ -66,8 +66,8 @@ const config: Config = {
   			}
   		},
   		animation: {
-  			'accordion-down': 'accordion-down 0.2s ease-out',
-  			'accordion-up': 'accordion-up 0.2s ease-out'
+  			'accordion-down': 'accordion-down 400ms cubic-bezier(0.24, 1.15, 0.5, 1)',
+  			'accordion-up': 'accordion-up 400ms cubic-bezier(0.24, 1.15, 0.5, 1)'
   		}
   	}
   },
