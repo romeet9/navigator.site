@@ -225,6 +225,11 @@
   .clip-content {
     overflow: hidden;
   }
+
+  sup {
+    display: inline-flex;
+    white-space: nowrap;
+  }
 }
 
 @keyframes accordion-down {

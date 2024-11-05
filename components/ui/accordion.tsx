@@ -49,6 +49,11 @@ type AccordionProps = React.ComponentPropsWithoutRef<typeof AccordionPrimitive.R
   collapsible?: boolean;
 };
 
+const preloadImage = (src: string) => {
+  const img = new Image();
+  img.src = src;
+};
+
 const Accordion = React.forwardRef<
   React.ElementRef<typeof AccordionPrimitive.Root>,
   AccordionProps
@@ -155,6 +160,14 @@ const AccordionContent = React.forwardRef<
   const isSelected = selectedContent === contentId;
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const handleMouseEnter = () => {
+    const [year, num] = contentId.split('-');
+    const project = allProjects.find(p => p.num === num && p.date === year);
+    if (project) {
+      preloadImage(project.svgSrc);
+    }
+  };
+
   return (
     <AccordionPrimitive.Content
       ref={ref}
@@ -174,6 +187,7 @@ const AccordionContent = React.forwardRef<
           isSelected ? "text-primary-color" : "hover:text-primary-color",
         )}
         onClick={() => setSelectedContent(contentId)}
+        onMouseEnter={handleMouseEnter}
       >
         <AnimatePresence mode="wait">
           {isSelected && (

@@ -111,7 +111,16 @@ export default function Home() {
                 rel="noopener noreferrer"
               >
                 LinkedIn
-              </a>{" "}
+              </a>
+              <sup>
+                <Image
+                  src="/images/icons/link.svg"
+                  width={5}
+                  height={5}
+                  alt=""
+                  className="ml-[0.15rem] translate-y-[0rem]"
+                />
+              </sup>{" "}
               reimagining the future of generative AI ads. In my past life, I
               engineered insulin delivery pods at{" "}
               <a
@@ -121,6 +130,15 @@ export default function Home() {
               >
                 Becton Dickinson & Co
               </a>
+              <sup>
+                <Image
+                  src="/images/icons/link.svg"
+                  width={5}
+                  height={5}
+                  alt=""
+                  className="ml-[0.15rem] translate-y-[0rem]"
+                />
+              </sup>
               .
             </p>
             <p className="b_mono">
@@ -133,6 +151,15 @@ export default function Home() {
               >
                 photography
               </Link>
+              <sup>
+                <Image
+                  src="/images/icons/link.svg"
+                  width={5}
+                  height={5}
+                  alt=""
+                  className="ml-[0.15rem] translate-y-[0rem]"
+                />
+              </sup>
               , though I still reach for digital sometimes. I also enjoy
               ideating novel product ideas and scrolling{" "}
               <a
@@ -141,7 +168,16 @@ export default function Home() {
                 rel="noopener noreferrer"
               >
                 Twitter
-              </a>{" "}
+              </a>
+              <sup>
+                <Image
+                  src="/images/icons/link.svg"
+                  width={5}
+                  height={5}
+                  alt=""
+                  className="ml-[0.15rem] translate-y-[0rem]"
+                />
+              </sup>{" "}
               a bit too much.
             </p>
           </div>
