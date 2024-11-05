@@ -204,13 +204,14 @@ export default function Home() {
               <div className="w-[17.5rem] mx-auto">
                 <Accordion type="single" defaultValue={initialYear} collapsible>
                   {years.map((year) => (
-                    <AccordionItem key={year} value={year}>
+                    <AccordionItem key={`year-${year}`} value={year}>
                       <AccordionTrigger onClick={() => handleYearSelect(year)}>
                         {year}
                       </AccordionTrigger>
-                      <AnimatePresence initial={false}>
+                      <AnimatePresence initial={false} mode="wait">
                         {projectData[year].map((project) => (
                           <AccordionContent
+                            key={`${year}-${project.num}`}
                             contentId={`${year}-${project.num}`}
                             onClick={() =>
                               handleProjectSelect(`${year}-${project.num}`)
