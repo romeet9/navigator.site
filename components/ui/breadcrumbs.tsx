@@ -41,7 +41,7 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs, fromAllWorks = false 
           </Button>
         </React.Fragment>
       ))}
-      <div className="flex-grow mx-[0.25rem] mt-[0.625rem]">
+      <div className="flex-grow ml-[0.25rem] mt-[0.625rem]">
         <div className="h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
       </div>
     </section>

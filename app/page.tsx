@@ -19,13 +19,14 @@ import ItemEntry from "@/components/ui/itemEntry";
 import { HoverEffectWrapper } from "@/components/hoverEffectWrapper";
 import { useHoverEffect } from "@/hooks/useHoverEffect";
 import { allProjects } from "@/lib/data/projectData";
-import { AnimatePresence, motion } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
+import Grid from "@/components/ui/grid";
+import { motion } from "framer-motion";
 
 export default function Home() {
   const projectData = getFeaturedProjects();
   const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
   const initialYear = years[0]; // Should be '2024'
-  const initialProject = projectData[initialYear][0]; // Should be the LinkedIn Brand Kit project
 
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [selectedYear, setSelectedYear] = useState<string>(initialYear);
@@ -185,16 +186,29 @@ export default function Home() {
 
         {/* Main Content Section */}
         <div className="w-full flex flex-col gap-[5rem]">
-          {/* Image Section */}
-          <div className="w-full max-w-[28rem] mx-auto">
-            <Image
-              src="/images/grid2.png"
-              alt="Robert playing tennis"
-              width={496}
-              height={496}
-              quality={100}
-              className="w-full rounded-[0.25rem] object-cover"
-            />
+          {/* Grid Section */}
+          <div className="w-full flex justify-center mx-auto">
+            <motion.div 
+              onClick={() => router.push('/growth')}
+              className="cursor-pointer"
+              style={{
+                width: '28.375rem',    // 7 cells (4rem each) + 6 gaps (1px each) = 28rem + 0.375rem
+                height: '20.25rem',    // 5 cells (4rem each) + 4 gaps (1px each) = 20rem + 0.25rem
+                overflow: 'hidden',
+                position: 'relative',
+                outline: 'none',
+                border: 'none'
+              }}
+              layoutId="expandingGrid"
+            >
+              <div style={{
+                position: 'absolute',
+                top: '-10rem',
+                left: '-6rem',
+              }}>
+                <Grid rows={8} cols={10} noBorder={true} />
+              </div>
+            </motion.div>
           </div>
 
           {/* Projects Section */}
