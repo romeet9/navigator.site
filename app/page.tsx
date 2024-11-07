@@ -192,8 +192,8 @@ export default function Home() {
               onClick={() => router.push('/growth')}
               className="cursor-pointer"
               style={{
-                width: '28.375rem',    // 7 cells (4rem each) + 6 gaps (1px each) = 28rem + 0.375rem
-                height: '20.25rem',    // 5 cells (4rem each) + 4 gaps (1px each) = 20rem + 0.25rem
+                width: '28.4375rem',    // 7 cells (4rem each) + 7 gaps (1px each) = 28rem + 0.4375rem
+                height: '20.3125rem',    // 5 cells (4rem each) + 5 gaps (1px each) = 20rem + 0.3125rem
                 overflow: 'hidden',
                 position: 'relative',
                 outline: 'none',

@@ -28,12 +28,12 @@ export default function GrowthPage() {
         <motion.div
           layoutId="expandingGrid"
           initial={{ 
-            width: '28.375rem',
-            height: '20.25rem' 
+            width: '28.4375rem',
+            height: '20.3125rem' 
           }}
           animate={{ 
-            width: '40.7rem',
-            height: '32.625rem'
+            width: '40.6875rem',
+            height: '32.5625rem'
           }}
           transition={{ 
             duration: 0.5,
