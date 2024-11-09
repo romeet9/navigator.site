@@ -194,8 +194,8 @@ export default function Home() {
               onClick={() => router.push('/growth')}
               className="cursor-pointer w-full"
               style={{
-                maxWidth: '28.4375rem',
-                aspectRatio: '28.4375 / 20.3125',
+                maxWidth: '30.4375rem',
+                aspectRatio: '30.4375 / 22.3125',
                 overflow: 'hidden',
                 position: 'relative',
                 outline: 'none',
@@ -205,13 +205,13 @@ export default function Home() {
             >
               <div className="absolute inset-[0] pointer-events-none z-10">
                 {/* Top fade */}
-                <div className="absolute top-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-b from-background to-transparent opacity-50" />
+                <div className="absolute top-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-b from-background to-transparent" />
                 {/* Bottom fade */}
-                <div className="absolute bottom-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-t from-background to-transparent opacity-50" />
+                <div className="absolute bottom-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-t from-background to-transparent" />
                 {/* Left fade */}
-                <div className="absolute top-[0rem] bottom-[0rem] left-[0rem] w-[2rem] bg-gradient-to-r from-background to-transparent opacity-50" />
+                <div className="absolute top-[0rem] bottom-[0rem] left-[0rem] w-[2rem] bg-gradient-to-r from-background to-transparent" />
                 {/* Right fade */}
-                <div className="absolute top-[0rem] bottom-[0rem] right-[0rem] w-[2rem] bg-gradient-to-l from-background to-transparent opacity-50" />
+                <div className="absolute top-[0rem] bottom-[0rem] right-[0rem] w-[2rem] bg-gradient-to-l from-background to-transparent" />
               </div>
               <motion.div 
                 layoutId="gridInner"
@@ -220,8 +220,8 @@ export default function Home() {
                   position: 'absolute',
                   width: '142%',
                   aspectRatio: '40.6875 / 32.5625',
-                  top: '-29%',
-                  left: '-21%',
+                  top: '-23%',
+                  left: '-17%',
                   transformOrigin: 'center center',
                 }}
               >
