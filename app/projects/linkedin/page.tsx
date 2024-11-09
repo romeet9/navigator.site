@@ -132,7 +132,7 @@ function LinkedInContent() {
               <div className="flex flex-col gap-1">
                 <h3>This project isn't public yet</h3>
                 <p className="b_serif">
-                  Feel free to send me an email and i'll send you the password.
+                  If you don't have a password, please send me an email.
                 </p>
               </div>
               <form onSubmit={handlePasswordSubmit} className="flex flex-row gap-1 w-full">

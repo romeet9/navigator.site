@@ -18,7 +18,7 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
   const [fallingCells, setFallingCells] = useState<FallingCell[]>([]);
   const [nextId, setNextId] = useState(0);
   const animationFrameRef = useRef<number>();
-  const FALL_SPEED = 0.005; // Back to original speed
+  const FALL_SPEED = 0.005; 
 
   useEffect(() => {
     const animate = () => {
