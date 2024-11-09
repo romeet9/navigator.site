@@ -3,7 +3,7 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
-import { useRef, useState, useEffect } from "react"
+import { useRef } from "react"
 import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"

@@ -91,11 +91,12 @@ function LinkedInContent() {
               <h4>CONTEXT</h4>
               <h3>An unexpected switch up</h3>
               <p className="b_serif">
-                Two weeks before our start date, an APM, a SWE intern, and I
-                were reassigned to form an intern team to ship Brand Kit. At the
-                time, it was just an idea with minimal progress across product,
-                design, and engineering. It was up to the three of us to bring
-                it to life—a challenge that was both exciting and daunting.
+                Two weeks before our start date, we were reassigned to form an
+                intern team with an APM and a SWE intern to ship Brand Kit. At
+                the time, it was just an idea with minimal progress across
+                product, design, and engineering. It was up to the three of us to
+                bring it to life—a challenge that was both exciting and
+                daunting.
               </p>
             </div>
             <div className="flex flex-col gap-2">
@@ -132,7 +133,7 @@ function LinkedInContent() {
               <div className="flex flex-col gap-1">
                 <h3>This project isn't public yet</h3>
                 <p className="b_serif">
-                  If you don't have a password, please send me an email.
+                  If you don't have the password, please send me an email.
                 </p>
               </div>
               <form onSubmit={handlePasswordSubmit} className="flex flex-row gap-1 w-full">
