@@ -109,6 +109,7 @@ export default function Home() {
               <a
                 href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"
                 className="link-underline"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 LinkedIn
@@ -127,6 +128,7 @@ export default function Home() {
               <a
                 href="https://www.bd.com/en-us"
                 className="link-underline"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 Becton Dickinson & Co
@@ -147,7 +149,6 @@ export default function Home() {
               <Link
                 href="https://twitter.com/robertkkan"
                 className="link-underline"
-                rel="noopener noreferrer"
                 aria-label="My photography on Twitter"
               >
                 photography
@@ -166,6 +167,7 @@ export default function Home() {
               <a
                 href="https://twitter.com/robertkkan"
                 className="link-underline"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 Twitter
@@ -187,27 +189,34 @@ export default function Home() {
         {/* Main Content Section */}
         <div className="w-full flex flex-col gap-[5rem]">
           {/* Grid Section */}
-          <div className="w-full flex justify-center mx-auto">
+          <div className="w-full flex justify-center mx-auto px-16">
             <motion.div 
               onClick={() => router.push('/growth')}
-              className="cursor-pointer"
+              className="cursor-pointer w-full"
               style={{
-                width: '28.4375rem',    // 7 cells (4rem each) + 7 gaps (1px each) = 28rem + 0.4375rem
-                height: '20.3125rem',    // 5 cells (4rem each) + 5 gaps (1px each) = 20rem + 0.3125rem
+                maxWidth: '28.4375rem',
+                aspectRatio: '28.4375 / 20.3125',
                 overflow: 'hidden',
                 position: 'relative',
                 outline: 'none',
-                border: 'none'
+                border: 'none',
               }}
               layoutId="expandingGrid"
             >
-              <div style={{
-                position: 'absolute',
-                top: '-10rem',
-                left: '-6rem',
-              }}>
+              <motion.div 
+                layoutId="gridInner"
+                className="w-full"
+                style={{
+                  position: 'absolute',
+                  width: '142%', // Relative size to parent container
+                  aspectRatio: '40.6875 / 32.5625',
+                  top: '-29%',
+                  left: '-21%',
+                  transformOrigin: 'center center',
+                }}
+              >
                 <Grid rows={8} cols={10} noBorder={true} />
-              </div>
+              </motion.div>
             </motion.div>
           </div>
 

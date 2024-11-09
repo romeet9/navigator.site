@@ -62,26 +62,31 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
     });
   };
 
-  const cellSize = 4; // Always 4rem
-  const maxContainerSize = (cellSize * cols) + ((1/16) * (cols + 1));
-  const containerHeight = (cellSize * rows) + ((1/16) * (rows + 1));
+  const BASE_CELL_SIZE = 4; // Base size in rem
+  const GAP_SIZE = 1/16; // 1px in rem
+
+  // Calculate the ideal container size
+  const idealWidth = (BASE_CELL_SIZE * cols) + (GAP_SIZE * (cols + 1));
+  const idealHeight = (BASE_CELL_SIZE * rows) + (GAP_SIZE * (rows + 1));
 
   return (
     <div 
       style={{ 
         backgroundColor: '#E6E6E6',
         padding: noBorder ? '0' : '1px',
-        width: `${maxContainerSize}rem`,
-        height: `${containerHeight}rem`,
+        width: '100%',
+        maxWidth: `${idealWidth}rem`, // Set max width to ideal size
+        height: 'auto',
         outline: 'none',
-        border: 'none'
+        border: 'none',
+        aspectRatio: `${idealWidth} / ${idealHeight}`,
       }}
     >
       <div 
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${cols}, minmax(0, ${cellSize}rem))`,
-          gridTemplateRows: `repeat(${rows}, minmax(0, ${cellSize}rem))`,
+          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`, // Use minmax to allow scaling
+          gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
           gap: '1px',
           backgroundColor: '#E6E6E6',
           height: '100%',

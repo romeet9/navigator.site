@@ -4,6 +4,7 @@ import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
 import { useRef, useState, useEffect } from "react"
+import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"
 import ChevronDown from '/public/images/icons/chevron-down.svg'
@@ -20,6 +21,8 @@ interface AccordionContextProps {
   selectedYear: string | null;
   setSelectedYear: (value: string | null) => void;
   currentProject: Project | null;
+  hoveredProject: Project | null;
+  setHoveredProject: (project: Project | null) => void;
 }
 
 const DEFAULT_CONTEXT: AccordionContextProps = {
@@ -30,7 +33,9 @@ const DEFAULT_CONTEXT: AccordionContextProps = {
   setSelectedContent: () => {},
   selectedYear: null,
   setSelectedYear: () => {},
-  currentProject: null
+  currentProject: null,
+  hoveredProject: null,
+  setHoveredProject: () => {}
 };
 
 const AccordionContext = React.createContext<AccordionContextProps>(DEFAULT_CONTEXT);
@@ -76,7 +81,9 @@ const Accordion = React.forwardRef<
     setSelectedContent,
     selectedYear,
     setSelectedYear,
-    currentProject
+    currentProject,
+    hoveredProject: null,
+    setHoveredProject: () => {}
   }), [hoveredItem, handleMouseEnter, handleMouseLeave, selectedContent, selectedYear, currentProject]);
 
   return (
@@ -157,8 +164,22 @@ const AccordionContent = React.forwardRef<
   }
 >(({ className, children, contentId, ...props }, ref) => {
   const { selectedContent, setSelectedContent } = useAccordionContext();
+  const router = useRouter();
   const isSelected = selectedContent === contentId;
   const contentRef = useRef<HTMLDivElement>(null);
+
+  const handleClick = () => {
+    // If this content is already the selected one, navigate to its project page
+    if (contentId === selectedContent) {
+      const [year, num] = contentId.split('-');
+      const project = allProjects.find(p => p.num === num && p.date === year);
+      if (project) {
+        router.push(project.href);
+      }
+      return;
+    }
+    setSelectedContent(contentId);
+  };
 
   const handleMouseEnter = () => {
     const [year, num] = contentId.split('-');
@@ -186,7 +207,7 @@ const AccordionContent = React.forwardRef<
           "relative pb-[0.35rem] pt-[0.4rem] px-[0.75rem] rounded-[0.375rem] cursor-pointer",
           isSelected ? "text-primary-color" : "hover:text-primary-color",
         )}
-        onClick={() => setSelectedContent(contentId)}
+        onClick={handleClick}
         onMouseEnter={handleMouseEnter}
       >
         <AnimatePresence mode="wait">

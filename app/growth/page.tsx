@@ -27,13 +27,14 @@ export default function GrowthPage() {
       <div className="w-full flex justify-center mx-auto">
         <motion.div
           layoutId="expandingGrid"
+          className="w-full"
           initial={{ 
-            width: '28.4375rem',
-            height: '20.3125rem' 
+            maxWidth: '28.4375rem',
+            aspectRatio: '28.4375 / 20.3125'
           }}
           animate={{ 
-            width: '40.6875rem',
-            height: '32.5625rem'
+            maxWidth: '40.6875rem',
+            aspectRatio: '40.6875 / 32.5625'
           }}
           transition={{ 
             duration: 0.5,
@@ -45,10 +46,12 @@ export default function GrowthPage() {
           }}
         >
           <motion.div 
-            style={{
-              position: 'absolute',
-            }}
             layoutId="gridInner"
+            style={{
+              position: 'relative',
+              width: '100%',
+              height: '100%'
+            }}
           >
             <Grid rows={8} cols={10} />
           </motion.div>
