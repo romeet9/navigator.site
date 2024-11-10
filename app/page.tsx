@@ -194,8 +194,8 @@ export default function Home() {
               onClick={() => router.push('/growth')}
               className="cursor-pointer w-full"
               style={{
-                maxWidth: '30.4375rem',
-                aspectRatio: '30.4375 / 22.3125',
+                maxWidth: '29.4375rem',
+                aspectRatio: '29.4375 / 21.3125',
                 overflow: 'hidden',
                 position: 'relative',
                 outline: 'none',
@@ -220,7 +220,7 @@ export default function Home() {
                   position: 'absolute',
                   width: '142%',
                   aspectRatio: '40.6875 / 32.5625',
-                  top: '-23%',
+                  top: '-43%',
                   left: '-17%',
                   transformOrigin: 'center center',
                 }}

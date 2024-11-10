@@ -12,18 +12,35 @@ interface Crumb {
 interface BreadcrumbsProps {
   crumbs: Crumb[];
   fromAllWorks?: boolean;
+  backTo?: string;
 }
 
-const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs, fromAllWorks = false }) => {
+const Breadcrumbs: React.FC<BreadcrumbsProps> = ({ crumbs, fromAllWorks = false, backTo = '/' }) => {
   const router = useRouter();
 
   const allWorksCrumb: Crumb = { label: 'ALL WORKS', href: '/all-works' };
   const displayCrumbs = fromAllWorks ? [allWorksCrumb, ...crumbs] : crumbs;
 
+  const handleBack = () => {
+    try {
+      const currentPath = window.location.pathname;
+      window.history.back();
+      
+      // If we're still on the same page after a short delay, use the backTo route
+      setTimeout(() => {
+        if (document.location.pathname === currentPath) {
+          router.push(backTo);
+        }
+      }, 100);
+    } catch {
+      router.push(backTo);
+    }
+  };
+
   return (
     <section className="flex items-center gap-[0.25rem] w-full">
       <Button 
-        onClick={() => router.back()} 
+        onClick={handleBack}
         className="flex items-center gap-[0.25rem] pl-[0.5rem]"
       >
         <ArrowLeftIcon className="w-3 h-3" />

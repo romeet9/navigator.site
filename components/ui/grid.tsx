@@ -63,11 +63,10 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
   };
 
   const BASE_CELL_SIZE = 4; // Base size in rem
-  const GAP_SIZE = 1/16; // 1px in rem
-
-  // Calculate the ideal container size
-  const idealWidth = (BASE_CELL_SIZE * cols) + (GAP_SIZE * (cols + 1));
-  const idealHeight = (BASE_CELL_SIZE * rows) + (GAP_SIZE * (rows + 1));
+  
+  // Remove GAP_SIZE since we'll use borders instead
+  const idealWidth = BASE_CELL_SIZE * cols;
+  const idealHeight = BASE_CELL_SIZE * rows;
 
   return (
     <div 
@@ -75,7 +74,7 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
         backgroundColor: '#E6E6E6',
         padding: noBorder ? '0' : '1px',
         width: '100%',
-        maxWidth: `${idealWidth}rem`, // Set max width to ideal size
+        maxWidth: `${idealWidth}rem`,
         height: 'auto',
         outline: 'none',
         border: 'none',
@@ -85,13 +84,13 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
       <div 
         style={{
           display: 'grid',
-          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`, // Use minmax to allow scaling
+          gridTemplateColumns: `repeat(${cols}, minmax(0, 1fr))`,
           gridTemplateRows: `repeat(${rows}, minmax(0, 1fr))`,
-          gap: '1px',
+          gap: 0, // Remove gap
           backgroundColor: '#E6E6E6',
           height: '100%',
           outline: 'none',
-          border: 'none'
+          border: 'none',
         }}
       >
         {Array.from({ length: rows * cols }).map((_, index) => {
@@ -116,7 +115,8 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
                 aspectRatio: '1/1',
                 width: '100%',
                 outline: 'none',
-                border: 'none'
+                borderRight: col < cols - 1 ? '1px solid #E6E6E6' : 'none',
+                borderBottom: row < rows - 1 ? '1px solid #E6E6E6' : 'none',
               }}
             />
           );
