@@ -19,9 +19,8 @@ import ItemEntry from "@/components/ui/itemEntry";
 import { HoverEffectWrapper } from "@/components/hoverEffectWrapper";
 import { useHoverEffect } from "@/hooks/useHoverEffect";
 import { allProjects } from "@/lib/data/projectData";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import Grid from "@/components/ui/grid";
-import { motion } from "framer-motion";
 
 export default function Home() {
   const projectData = getFeaturedProjects();
@@ -38,6 +37,11 @@ export default function Home() {
   const [headerText, setHeaderText] = useState("Hey, I'm Robert.");
 
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
+
+  const [isLeaving, setIsLeaving] = useState(false);
+  const [isGridLeaving, setIsGridLeaving] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     setSelectedButton("home");
@@ -60,6 +64,13 @@ export default function Home() {
 
     // Cleanup
     return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleButtonClick = (buttonName: string) => {
@@ -92,11 +103,29 @@ export default function Home() {
     });
   }, [selectedYear, selectedProject]);
 
+  const handleGridClick = () => {
+    setIsLeaving(true);
+    
+    // Navigate after content fade completes
+    setTimeout(() => {
+      router.push('/growth');
+    }, 200);
+  };
+
   return (
     <main className="page-container page-container-default">
       <div className="flex flex-col gap-5 items-center w-full">
         {/* Introduction Section */}
-        <section className="flex flex-col gap-2 w-full">
+        <motion.section 
+          className="flex flex-col gap-2 w-full"
+          initial={{ opacity: 0, scale: 0.99 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ 
+            duration: 0.5,
+            delay: 1.3, // Increased delay to start after grid
+            ease: [0.48, 1, 0.65, 1]
+          }}
+        >
           <HeaderMain
             headerText={headerText}
             selectedButton={selectedButton}
@@ -184,15 +213,22 @@ export default function Home() {
               a bit too much.
             </p>
           </div>
-        </section>
+        </motion.section>
 
         {/* Main Content Section */}
         <div className="w-full flex flex-col gap-[5rem]">
-          {/* Grid Section */}
-          <div className="w-full flex justify-center mx-auto px-16">
+          {/* Grid Section - No fade animation */}
+          <div className="w-full flex justify-center mx-auto px-12">
             <motion.div 
-              onClick={() => router.push('/growth')}
+              onClick={handleGridClick}
               className="cursor-pointer w-full"
+              layoutId="expandingGrid"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isLoading ? 0 : 1 }}
+              transition={{ 
+                duration: 0.5, // Slower fade in
+                ease: [0.22, 1, 0.70, 1]
+              }}
               style={{
                 maxWidth: '29.4375rem',
                 aspectRatio: '29.4375 / 21.3125',
@@ -201,7 +237,6 @@ export default function Home() {
                 outline: 'none',
                 border: 'none',
               }}
-              layoutId="expandingGrid"
             >
               <div className="absolute inset-[0] pointer-events-none z-10">
                 {/* Top fade */}
@@ -231,7 +266,16 @@ export default function Home() {
           </div>
 
           {/* Projects Section */}
-          <section className="w-full">
+          <motion.section 
+            className="w-full"
+            initial={{ opacity: 0, scale: 0.99 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              duration: 0.5,
+              delay: 1.4, // Increased delay
+              ease: [0.48, 1, 0.65, 1]
+            }}
+          >
             {/* Desktop view (>=780px) */}
             <div className="hidden md:flex flex-row gap-[3rem] w-full">
               <div className="w-[17.5rem] mx-auto">
@@ -287,11 +331,21 @@ export default function Home() {
                 </HoverEffectWrapper>
               ))}
             </div>
-          </section>
+          </motion.section>
         </div>
 
         {/* Footer */}
-        <Footer />
+        <motion.footer
+          initial={{ opacity: 0, scale: 0.99 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ 
+            duration: 0.5,
+            delay: 1.4, // Increased delay
+            ease: [0.48, 1, 0.65, 1]
+          }}
+        >
+          <Footer />
+        </motion.footer>
       </div>
     </main>
   );

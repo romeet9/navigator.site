@@ -19,7 +19,7 @@ export default function GrowthPage() {
       }}
     >
       {/* Breadcrumbs Section */}
-      <div className="mb-8">
+      <div className="mb-[4.8rem]">
         <Breadcrumbs crumbs={crumbs} />
       </div>
 
@@ -29,16 +29,16 @@ export default function GrowthPage() {
           layoutId="expandingGrid"
           className="w-full"
           initial={{ 
-            maxWidth: '28.4375rem',
-            aspectRatio: '28.4375 / 20.3125'
+            maxWidth: '29.4375rem',
+            aspectRatio: '29.4375 / 21.3125',
           }}
           animate={{ 
             maxWidth: '40.6875rem',
-            aspectRatio: '40.6875 / 32.5625'
+            aspectRatio: '40.6875 / 32.5625',
           }}
           transition={{ 
-            duration: 0.5,
-            ease: "easeOut"
+            duration: 0.8,
+            ease: [0.22, 1, 0.36, 1]
           }}
           style={{
             position: 'relative',
