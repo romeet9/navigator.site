@@ -3,17 +3,22 @@
 import React from 'react';
 import Breadcrumbs from '@/components/ui/breadcrumbs';
 import Footer from '@/components/ui/footer';
+import { StaggerWrapper } from '@/components/staggerWrapper'; 
+import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
 
 export default function Rejection() {
+  const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
+
   return (
     <main className="page-container page-container-narrow">
       <div className="flex flex-col gap-4 items-start w-full mx-auto">
         <Breadcrumbs crumbs={[
           { label: "10-10-2024" }
         ]} />
-        
+
         <article className="w-full flex flex-col gap-3">
-          <section className="flex flex-col gap-[0.75rem]">
+          <StaggerWrapper {...getTransition(0)}>
+            <section className="flex flex-col gap-[0.75rem]">
             <h2>Rejection</h2>
             <div className="flex flex-col gap-2">
             <p className="b_serif">
@@ -23,9 +28,11 @@ export default function Rejection() {
               When I heard the news, I felt numb. In the back of my mind, I’d always hoped to take my last semester easy—focusing on my hobbies, designing at my own pace, and avoiding the constant stress of job hunting. But now, I’m back hunting and wanted to share a few thoughts.            
             </p>
             </div>
-          </section>
+            </section>
+          </StaggerWrapper>
 
-          <section className="flex flex-col gap-1">
+          <StaggerWrapper {...getTransition(1)}>
+            <section className="flex flex-col gap-1">
             <h3>The unpredictability of life</h3>
             <div className="flex flex-col gap-2">
               <p className="b_serif">
@@ -35,9 +42,11 @@ export default function Rejection() {
                 Yes, it’s unfair. The best thing you can do is carry your growth into the next opportunity.
               </p>
             </div>
-          </section>
+            </section>
+          </StaggerWrapper>
 
-          <section className="flex flex-col gap-1">
+          <StaggerWrapper {...getTransition(2)}>
+            <section className="flex flex-col gap-1">
             <h3>Running with rejection</h3>
             <div className="flex flex-col gap-2">
               <p className="b_serif">
@@ -53,10 +62,15 @@ export default function Rejection() {
                 It’s only been a day, but I’m already feeling optimistic about the future. Right now, I’m fixated on growth and documenting the exciting journey ahead.
               </p>
             </div>
-          </section>
+            </section>
+          </StaggerWrapper>
         </article>
-        <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
-        <Footer />
+        <StaggerWrapper {...getTransition(3)} className="w-full">
+          <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
+        </StaggerWrapper>
+        <StaggerWrapper {...getTransition(4)} className="w-full">
+          <Footer />
+        </StaggerWrapper>
       </div>
     </main>
   );

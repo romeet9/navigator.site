@@ -7,11 +7,14 @@ import { useRouter } from 'next/navigation';
 import ItemEntry from '@/components/ui/itemEntry';
 import { HoverEffectWrapper } from '@/components/hoverEffectWrapper';
 import { useHoverEffect } from '@/hooks/useHoverEffect';
+import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
+import { StaggerWrapper } from '@/components/staggerWrapper';
 
 export default function Writing() {
   const [selectedButton, setSelectedButton] = React.useState<string>('writing');
   const router = useRouter();
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
+  const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
@@ -22,7 +25,6 @@ export default function Writing() {
     }
   };
 
-  // writing entries data
   const writingEntries = [
     { num: "001", title: "Rejection", date: "10-10-2024", href: "/writing/rejection" },
   ];
@@ -37,25 +39,28 @@ export default function Writing() {
             handleButtonClick={handleButtonClick}
           />
           <div className="flex flex-col w-full"> 
-            {writingEntries.slice().reverse().map((entry) => (
-              <HoverEffectWrapper
-                key={entry.num}
-                id={entry.num}
-                hoveredItem={hoveredItem}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <ItemEntry
-                  num={entry.num}
-                  title={entry.title}
-                  date={entry.date}
-                  href={entry.href}
-                />
-              </HoverEffectWrapper>
+            {writingEntries.slice().reverse().map((entry, index) => (
+              <StaggerWrapper key={entry.num} {...getTransition(index)}>
+                <HoverEffectWrapper
+                  id={entry.num}
+                  hoveredItem={hoveredItem}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <ItemEntry
+                    num={entry.num}
+                    title={entry.title}
+                    date={entry.date}
+                    href={entry.href}
+                  />
+                </HoverEffectWrapper>
+              </StaggerWrapper>
             ))}
           </div>
         </section>
-        <Footer />
+        <StaggerWrapper {...getTransition(writingEntries.length)}>
+          <Footer />
+        </StaggerWrapper>
       </div>
     </main>
   );

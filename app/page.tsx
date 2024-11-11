@@ -69,7 +69,7 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 500);
+    }, 300);
     return () => clearTimeout(timer);
   }, []);
 
@@ -105,10 +105,10 @@ export default function Home() {
 
   const handleGridClick = () => {
     setIsLeaving(true);
-    
+
     // Navigate after content fade completes
     setTimeout(() => {
-      router.push('/growth');
+      router.push("/growth");
     }, 200);
   };
 
@@ -116,14 +116,17 @@ export default function Home() {
     <main className="page-container page-container-default">
       <div className="flex flex-col gap-5 items-center w-full">
         {/* Introduction Section */}
-        <motion.section 
+        <motion.section
+          layoutId="intro-section"
           className="flex flex-col gap-2 w-full"
-          initial={{ opacity: 0, scale: 0.99 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ 
-            duration: 0.5,
-            delay: 1.3, // Increased delay to start after grid
-            ease: [0.48, 1, 0.65, 1]
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.7,
+            delay: 1.0,
+            ease: [0.34, 1.56, 0.64, 1],
+            opacity: { duration: 0.7, delay: 1.0 },
+            y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.0 },
           }}
         >
           <HeaderMain
@@ -219,23 +222,23 @@ export default function Home() {
         <div className="w-full flex flex-col gap-[5rem]">
           {/* Grid Section - No fade animation */}
           <div className="w-full flex justify-center mx-auto px-12">
-            <motion.div 
+            <motion.div
               onClick={handleGridClick}
               className="cursor-pointer w-full"
               layoutId="expandingGrid"
               initial={{ opacity: 0 }}
               animate={{ opacity: isLoading ? 0 : 1 }}
-              transition={{ 
-                duration: 0.5, // Slower fade in
-                ease: [0.22, 1, 0.70, 1]
+              transition={{
+                duration: 0.4,
+                ease: [0.22, 1, 0.7, 1],
               }}
               style={{
-                maxWidth: '29.4375rem',
-                aspectRatio: '29.4375 / 21.3125',
-                overflow: 'hidden',
-                position: 'relative',
-                outline: 'none',
-                border: 'none',
+                maxWidth: "29.4375rem",
+                aspectRatio: "29.4375 / 21.3125",
+                overflow: "hidden",
+                position: "relative",
+                outline: "none",
+                border: "none",
               }}
             >
               <div className="absolute inset-[0] pointer-events-none z-10">
@@ -248,32 +251,49 @@ export default function Home() {
                 {/* Right fade */}
                 <div className="absolute top-[0rem] bottom-[0rem] right-[0rem] w-[2rem] bg-gradient-to-l from-background to-transparent" />
               </div>
-              <motion.div 
+              <motion.div
                 layoutId="gridInner"
                 className="w-full"
-                style={{
-                  position: 'absolute',
-                  width: '142%',
-                  aspectRatio: '40.6875 / 32.5625',
-                  top: '-43%',
-                  left: '-17%',
-                  transformOrigin: 'center center',
+                style={
+                  {
+                    position: "absolute",
+                    width: "142%",
+                    aspectRatio: "40.6875 / 32.5625",
+                    top: "-43%",
+                    left: "-17%",
+                    transformOrigin: "center center",
+                    "--grid-color": "var(--color-tertiary)",
+                  } as any
+                }
+                initial={{ "--grid-color": "var(--color-tertiary)" } as any}
+                animate={{ "--grid-color": "#E6E6E6" } as any}
+                transition={{
+                  delay: 0.95,
+                  duration: 0.6,
+                  ease: [0.25, 0.85, 0.35, 0.95],
                 }}
               >
-                <Grid rows={8} cols={10} noBorder={true} />
+                <Grid 
+                  rows={8} 
+                  cols={10} 
+                  noBorder={true} 
+                  playLoadingAnimation={!isLoading} 
+                />
               </motion.div>
             </motion.div>
           </div>
 
           {/* Projects Section */}
-          <motion.section 
+          <motion.section
             className="w-full"
-            initial={{ opacity: 0, scale: 0.99 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ 
-              duration: 0.5,
-              delay: 1.4, // Increased delay
-              ease: [0.48, 1, 0.65, 1]
+            initial={{ opacity: 0, y: 3 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{
+              duration: 0.9,
+              delay: 1.1,
+              ease: [0.34, 1.56, 0.64, 1],
+              opacity: { duration: 0.7, delay: 1.1 },
+              y: { duration: 0.9, ease: [0.34, 1.56, 0.64, 1], delay: 1.1 },
             }}
           >
             {/* Desktop view (>=780px) */}
@@ -336,12 +356,14 @@ export default function Home() {
 
         {/* Footer */}
         <motion.footer
-          initial={{ opacity: 0, scale: 0.99 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ 
-            duration: 0.5,
-            delay: 1.4, // Increased delay
-            ease: [0.48, 1, 0.65, 1]
+          initial={{ opacity: 0, y: 3 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{
+            duration: 0.9,
+            delay: 1.1,
+            ease: [0.34, 1.56, 0.64, 1],
+            opacity: { duration: 0.7, delay: 1.1 },
+            y: { duration: 0.9, ease: [0.34, 1.56, 0.64, 1], delay: 1.1 },
           }}
         >
           <Footer />

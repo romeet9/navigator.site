@@ -5,6 +5,7 @@ interface GridProps {
   rows: number;
   cols: number;
   noBorder?: boolean;
+  playLoadingAnimation?: boolean;
 }
 
 interface FallingCell {
@@ -14,7 +15,7 @@ interface FallingCell {
   startRow: number;
 }
 
-const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
+const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false, playLoadingAnimation = false }) => {
   const [fallingCells, setFallingCells] = useState<FallingCell[]>([]);
   const [nextId, setNextId] = useState(0);
   const animationFrameRef = useRef<number>();
@@ -43,6 +44,31 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
     };
   }, [rows]);
 
+  useEffect(() => {
+    if (playLoadingAnimation) {
+      // First animation at 300ms
+      const timer1 = setTimeout(() => {
+        handleHoverStart(3, 3);
+      }, 200);
+
+      // Second animation at 800ms
+      const timer2 = setTimeout(() => {
+        handleHoverStart(5, 6);
+      }, 400);
+
+      // Third animation at 1200ms
+      const timer3 = setTimeout(() => {
+        handleHoverStart(3, 6);
+      }, 400);
+
+      return () => {
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    }
+  }, [playLoadingAnimation]);
+
   const handleHoverStart = (row: number, col: number) => {
     setFallingCells(prev => [...prev, {
       id: nextId,
@@ -67,6 +93,14 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
   // Remove GAP_SIZE since we'll use borders instead
   const idealWidth = BASE_CELL_SIZE * cols;
   const idealHeight = BASE_CELL_SIZE * rows;
+
+  // Add this to your Grid component's styles
+  const gridStyles = {
+    "--grid-color": "var(--color-border)",
+    "& > div": {
+      borderColor: "var(--grid-color)"
+    }
+  }
 
   return (
     <div 
@@ -115,8 +149,8 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false }) => {
                 aspectRatio: '1/1',
                 width: '100%',
                 outline: 'none',
-                borderRight: col < cols - 1 ? '1px solid #E6E6E6' : 'none',
-                borderBottom: row < rows - 1 ? '1px solid #E6E6E6' : 'none',
+                borderRight: col < cols - 1 ? '1px solid var(--grid-color)' : 'none',
+                borderBottom: row < rows - 1 ? '1px solid var(--grid-color)' : 'none',
               }}
             />
           );
