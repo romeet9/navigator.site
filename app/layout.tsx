@@ -54,6 +54,19 @@ const jacquesFrancois = Jacques_Francois({
 export const metadata: Metadata = {
   title: "Robert Kan",
   description: "Robert Kan's portfolio showcasing product design work and writing about growth",
+  icons: {
+    icon: '/other-assets/favicon.svg',
+  },
+  openGraph: {
+    title: 'Robert Kan',
+    description: "Robert Kan's portfolio showcasing product design work and writing about growth",
+    images: [{
+      url: '/other-assets/thumbnail.png',
+      width: 1920,
+      height: 1080,
+      alt: 'Robert Kan Portfolio',
+    }],
+  },
 };
 
 export default function RootLayout({

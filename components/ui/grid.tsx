@@ -48,23 +48,53 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false, playLoadingAn
     if (playLoadingAnimation) {
       // First animation at 300ms
       const timer1 = setTimeout(() => {
-        handleHoverStart(3, 3);
-      }, 200);
+        handleHoverStart(2, 1);
+      }, 150);
 
       // Second animation at 800ms
       const timer2 = setTimeout(() => {
-        handleHoverStart(5, 6);
-      }, 400);
+        handleHoverStart(2, 2);
+      }, 200);
 
       // Third animation at 1200ms
       const timer3 = setTimeout(() => {
-        handleHoverStart(3, 6);
+        handleHoverStart(2, 3);
+      }, 250);
+
+      // Fourth animation at 1600ms
+      const timer4 = setTimeout(() => {
+        handleHoverStart(2, 4);
+      }, 300);
+
+      // Fifth animation at 2000ms
+      const timer5 = setTimeout(() => {
+        handleHoverStart(2, 5);
+      }, 350);
+
+      // Sixth animation at 2400ms
+      const timer6 = setTimeout(() => {
+        handleHoverStart(2, 6);
       }, 400);
+
+      // Seventh animation at 2800ms
+      const timer7 = setTimeout(() => {
+        handleHoverStart(2, 7);
+      }, 450);
+
+      // Eighth animation at 3200ms
+      const timer8 = setTimeout(() => {
+        handleHoverStart(2, 8);
+      }, 500);
 
       return () => {
         clearTimeout(timer1);
         clearTimeout(timer2);
         clearTimeout(timer3);
+        clearTimeout(timer4);
+        clearTimeout(timer5);
+        clearTimeout(timer6);
+        clearTimeout(timer7);
+        clearTimeout(timer8);
       };
     }
   }, [playLoadingAnimation]);
