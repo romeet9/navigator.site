@@ -230,6 +230,10 @@
     display: inline-flex;
     white-space: nowrap;
   }
+
+  .hover-group:hover .hover-group-hover\:translate-diagonal {
+    transform: translate(2px, -2px);
+  }
 }
 
 @keyframes accordion-down {
@@ -257,3 +261,4 @@
 .animate-accordion-up {
   animation: accordion-up 300ms ease-out;
 }
+

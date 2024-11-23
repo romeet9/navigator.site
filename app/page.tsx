@@ -123,10 +123,10 @@ export default function Home() {
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.7,
-            delay: 1.0,
+            delay: 1.2,
             ease: [0.34, 1.56, 0.64, 1],
-            opacity: { duration: 0.7, delay: 1.0 },
-            y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.0 },
+            opacity: { duration: 0.7, delay: 1.2 },
+            y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.2 },
           }}
         >
           <HeaderMain
@@ -138,81 +138,89 @@ export default function Home() {
             <p className="b_mono">
               I am a product designer obsessed with finding the simplest
               solution that leaves room for taste. Previously, I was at{" "}
-              <a
-                href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"
-                className="link-underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                LinkedIn
-              </a>
-              <sup>
-                <Image
-                  src="/images/icons/link.svg"
-                  width={5}
-                  height={5}
-                  alt=""
-                  className="ml-[0.15rem] translate-y-[0rem]"
-                />
-              </sup>{" "}
+              <span className="group">
+                <a
+                  href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"
+                  className="link-underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  LinkedIn
+                </a>
+                <sup className="inline-flex">
+                  <Image
+                    src="/images/icons/link.svg"
+                    width={5}
+                    height={5}
+                    alt=""
+                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                  />
+                </sup>
+              </span>{" "}
               reimagining the future of generative AI ads. In my past life, I
               engineered insulin delivery pods at{" "}
-              <a
-                href="https://www.bd.com/en-us"
-                className="link-underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Becton Dickinson & Co
-              </a>
-              <sup>
-                <Image
-                  src="/images/icons/link.svg"
-                  width={5}
-                  height={5}
-                  alt=""
-                  className="ml-[0.15rem] translate-y-[0rem]"
-                />
-              </sup>
+              <span className="group">
+                <a
+                  href="https://www.bd.com/en-us"
+                  className="link-underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Becton Dickinson & Co
+                </a>
+                <sup className="inline-flex">
+                  <Image
+                    src="/images/icons/link.svg"
+                    width={5}
+                    height={5}
+                    alt=""
+                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                  />
+                </sup>
+              </span>
               .
             </p>
             <p className="b_mono">
               Apart from work, you'll find me exploring analog{" "}
-              <Link
-                href="https://twitter.com/robertkkan"
-                className="link-underline"
-                aria-label="My photography on Twitter"
-              >
-                photography
-              </Link>
-              <sup>
-                <Image
-                  src="/images/icons/link.svg"
-                  width={5}
-                  height={5}
-                  alt=""
-                  className="ml-[0.15rem] translate-y-[0rem]"
-                />
-              </sup>
+              <span className="group">
+                <Link
+                  href="https://twitter.com/robertkkan"
+                  className="link-underline"
+                  aria-label="My photography on Twitter"
+                >
+                  photography
+                </Link>
+                <sup className="inline-flex">
+                  <Image
+                    src="/images/icons/link.svg"
+                    width={5}
+                    height={5}
+                    alt=""
+                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                  />
+                </sup>
+              </span>
               , though I still reach for digital sometimes. I also enjoy
               ideating novel product ideas and scrolling{" "}
-              <a
-                href="https://twitter.com/robertkkan"
-                className="link-underline"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Twitter
-              </a>
-              <sup>
-                <Image
-                  src="/images/icons/link.svg"
-                  width={5}
-                  height={5}
-                  alt=""
-                  className="ml-[0.15rem] translate-y-[0rem]"
-                />
-              </sup>{" "}
+              <span className="group">
+                <a
+                  href="https://twitter.com/robertkkan"
+                  className="link-underline"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Twitter
+                </a>
+                <sup className="inline-flex">
+                  <Image
+                    src="/images/icons/link.svg"
+                    width={5}
+                    height={5}
+                    alt=""
+                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                  />
+                </sup>
+              </span>{" "}
               a bit too much.
             </p>
           </div>
@@ -268,7 +276,7 @@ export default function Home() {
                 initial={{ "--grid-color": "var(--color-tertiary)" } as any}
                 animate={{ "--grid-color": "#E6E6E6" } as any}
                 transition={{
-                  delay: 0.95,
+                  delay: 1.15,
                   duration: 0.6,
                   ease: [0.25, 0.85, 0.35, 0.95],
                 }}
@@ -286,14 +294,14 @@ export default function Home() {
           {/* Projects Section */}
           <motion.section
             className="w-full"
-            initial={{ opacity: 0, y: 3 }}
+            initial={{ opacity: 0, y: -4 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.9,
-              delay: 1.1,
+              duration: 0.7,
+              delay: 1.35,
               ease: [0.34, 1.56, 0.64, 1],
-              opacity: { duration: 0.7, delay: 1.1 },
-              y: { duration: 0.9, ease: [0.34, 1.56, 0.64, 1], delay: 1.1 },
+              opacity: { duration: 0.7, delay: 1.35 },
+              y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.35 },
             }}
           >
             {/* Desktop view (>=780px) */}
@@ -356,14 +364,14 @@ export default function Home() {
 
         {/* Footer */}
         <motion.footer
-          initial={{ opacity: 0, y: 3 }}
+          initial={{ opacity: 0, y: -4 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
-            duration: 0.9,
-            delay: 1.1,
+            duration: 0.7,
+            delay: 1.35,
             ease: [0.34, 1.56, 0.64, 1],
-            opacity: { duration: 0.7, delay: 1.1 },
-            y: { duration: 0.9, ease: [0.34, 1.56, 0.64, 1], delay: 1.1 },
+            opacity: { duration: 0.7, delay: 1.35 },
+            y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.35 },
           }}
         >
           <Footer />

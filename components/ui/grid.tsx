@@ -45,58 +45,54 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false, playLoadingAn
   }, [rows]);
 
   useEffect(() => {
-    if (playLoadingAnimation) {
-      // First animation at 300ms
-      const timer1 = setTimeout(() => {
-        handleHoverStart(2, 1);
-      }, 150);
+    // if (playLoadingAnimation) {
+    //   const timer1 = setTimeout(() => {
+    //     handleHoverStart(0, 4);
+    //   }, 50);
 
-      // Second animation at 800ms
-      const timer2 = setTimeout(() => {
-        handleHoverStart(2, 2);
-      }, 200);
+    //   const timer2 = setTimeout(() => {
+    //     handleHoverStart(0, 3);
+    //   }, 200);
 
-      // Third animation at 1200ms
-      const timer3 = setTimeout(() => {
-        handleHoverStart(2, 3);
-      }, 250);
+    //   const timer3 = setTimeout(() => {
+    //     handleHoverStart(0, 2);
+    //   }, 350);
 
-      // Fourth animation at 1600ms
-      const timer4 = setTimeout(() => {
-        handleHoverStart(2, 4);
-      }, 300);
+    //   const timer4 = setTimeout(() => {
+    //     handleHoverStart(0, 1);
+    //   }, 500);
 
-      // Fifth animation at 2000ms
-      const timer5 = setTimeout(() => {
-        handleHoverStart(2, 5);
-      }, 350);
+    //   const timer5 = setTimeout(() => {
+    //     handleHoverStart(0, 5);
+    //   }, 50);
 
-      // Sixth animation at 2400ms
-      const timer6 = setTimeout(() => {
-        handleHoverStart(2, 6);
-      }, 400);
+    //   const timer6 = setTimeout(() => {
+    //     handleHoverStart(0, 6);
+    //   }, 200);
+      
+    //   const timer7 = setTimeout(() => {
+    //     handleHoverStart(0, 7);
+    //   }, 350);
 
-      // Seventh animation at 2800ms
-      const timer7 = setTimeout(() => {
-        handleHoverStart(2, 7);
-      }, 450);
+    //   const timer8 = setTimeout(() => {
+    //     handleHoverStart(0, 8);
+    //   }, 500);
 
-      // Eighth animation at 3200ms
-      const timer8 = setTimeout(() => {
-        handleHoverStart(2, 8);
-      }, 500);
 
-      return () => {
-        clearTimeout(timer1);
-        clearTimeout(timer2);
-        clearTimeout(timer3);
-        clearTimeout(timer4);
-        clearTimeout(timer5);
-        clearTimeout(timer6);
-        clearTimeout(timer7);
-        clearTimeout(timer8);
-      };
-    }
+
+    //   return () => {
+    //     clearTimeout(timer1);
+    //     clearTimeout(timer2);
+    //     clearTimeout(timer3);
+    //     clearTimeout(timer4);
+    //     clearTimeout(timer5);
+    //     clearTimeout(timer6);
+    //     clearTimeout(timer7);
+    //     clearTimeout(timer8);
+    //     // clearTimeout(timer9);
+    //     // clearTimeout(timer10);
+    //   };
+    // }
   }, [playLoadingAnimation]);
 
   const handleHoverStart = (row: number, col: number) => {
@@ -123,14 +119,6 @@ const Grid: React.FC<GridProps> = ({ rows, cols, noBorder = false, playLoadingAn
   // Remove GAP_SIZE since we'll use borders instead
   const idealWidth = BASE_CELL_SIZE * cols;
   const idealHeight = BASE_CELL_SIZE * rows;
-
-  // Add this to your Grid component's styles
-  const gridStyles = {
-    "--grid-color": "var(--color-border)",
-    "& > div": {
-      borderColor: "var(--grid-color)"
-    }
-  }
 
   return (
     <div 
