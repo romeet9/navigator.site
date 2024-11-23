@@ -55,7 +55,13 @@ export const metadata: Metadata = {
   title: "Robert Kan",
   description: "Robert Kan's portfolio showcasing product design work and writing about growth",
   icons: {
-    icon: '/other-assets/favicon.svg',
+    icon: [
+      { url: '/favicon/favicon.ico', sizes: '32x32' },
+    ],
+    other: [
+      { url: '/favicon/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/favicon/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
   },
   openGraph: {
     title: 'Robert Kan',
