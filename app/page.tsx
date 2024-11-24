@@ -184,7 +184,7 @@ export default function Home() {
               Apart from work, you'll find me exploring analog{" "}
               <span className="group">
                 <Link
-                  href="https://twitter.com/robertkkan"
+                  href="https://vs.co/l4rt9tds"
                   className="link-underline"
                   aria-label="My photography on Twitter"
                 >

@@ -27,6 +27,7 @@ export default function Writing() {
 
   const writingEntries = [
     { num: "001", title: "Rejection", date: "10-10-2024", href: "/writing/rejection" },
+    { num: "002", title: "Design founders", date: "11-23-2024", href: "/writing/designFounders" }
   ];
 
   return (
