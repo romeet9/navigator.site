@@ -57,7 +57,7 @@ export default function Rejection() {
             <h3>Skills of a great founder</h3>
             <div className="flex flex-col gap-2">
               <p className="b_serif">
-                Yes, designers possess many traits of great founders, notably their ability to deeply understand users and solve complex problems. However, these traits are not unique to designers<SerifChar>;</SerifChar> I would argue they are essential for any founder.
+                That being said, designers do possess many traits of great founders, notably their ability to deeply understand users and solve complex problems. However, these traits are not unique to designers<SerifChar>;</SerifChar> I would argue they are essential for any founder.
               </p>
               <p className="b_serif">
                 In the toughest stage of startup building—the early, pre-product-market-fit (PMF) phase—nimbleness in execution is crucial. At this stage, the ability to build or sell often takes priority because it<SerifChar>'</SerifChar>s the best way to test hypotheses. Design often slows down the iteration cycle through the design tax.
