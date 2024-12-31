@@ -10,16 +10,15 @@ interface FileSystemVisualizerProps {
   selectedProject: Project | null;
 }
 
-const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = memo(({
-  selectedYear,
+const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = memo(({ 
   projects,
-  selectedProject,
+  selectedProject 
 }) => {
-  const folderWidth = 36.5; // 584px
-  const folderHeight = 27; // 432px
-  const topPadding = 2.8125; // 45px
-  const projectCardHeight = 21.9375; // 351px
-
+  const folderWidth = 36.5;      // 584px
+  const folderHeight = 27;       // 432px
+  const topPadding = 2.8125;     // 45px
+  const projectCardHeight = 21.9375;   // 351px
+  
   const currentProject = useMemo(() => {
     return (
       selectedProject ||
@@ -29,38 +28,37 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = memo(({
   }, [selectedProject, projects]);
 
   return (
-    <motion.div
+    <motion.div 
       className="relative mx-auto"
       whileHover="hover"
       initial="initial"
-      style={{
+      style={{ 
         width: `${folderWidth}rem`,
-        height: `${folderHeight}rem`,
-        willChange: 'transform',
+        height: `${folderHeight}rem`
       }}
     >
       <AnimatePresence mode="wait">
-        <motion.div
+        <motion.div 
           key={currentProject.num}
           className="absolute w-full h-full"
-          initial={{
+          initial={{ 
             opacity: 0,
             scale: 0.99,
-            y: 5,
+            y: 5
           }}
-          animate={{
+          animate={{ 
             opacity: 1,
             scale: 1,
-            y: 0,
+            y: 0
           }}
-          exit={{
+          exit={{ 
             opacity: 0,
             scale: 0.99,
-            y: 5,
+            y: 5
           }}
-          transition={{
-            duration: 0.3,
-            ease: [0.4, 0, 0.2, 1],
+          transition={{ 
+            duration: 0.34,
+            ease: [0.2, 0.8, 0.32, 1]
           }}
           style={{ willChange: 'transform' }}
         >
@@ -78,21 +76,17 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = memo(({
           </div>
 
           {/* Project Card */}
-          <motion.div
+          <motion.div 
             className="absolute w-full px-4"
             variants={{
               initial: { y: 0 },
-              hover: { y: '-6rem' },
+              hover: { y: '-6rem' }
             }}
-            transition={{
-              type: 'spring',
-              stiffness: 350,
-              damping: 30,
-            }}
-            style={{
+            transition={{ type: "spring", stiffness: 320, damping: 30 }}
+            style={{ 
               paddingTop: `${topPadding}rem`,
               height: `${projectCardHeight + topPadding}rem`,
-              willChange: 'transform',
+              willChange: 'transform'
             }}
           >
             <ProjectCard
@@ -104,34 +98,30 @@ const FileSystemVisualizer: React.FC<FileSystemVisualizerProps> = memo(({
           </motion.div>
 
           {/* Updated Folder Front */}
-          <motion.div
-            className="absolute bottom-0 w-full z-10"
+          <motion.div 
+            className="absolute bottom-[0] w-full z-10"
             style={{
               transformOrigin: 'bottom',
               perspective: '1000px',
               transformStyle: 'preserve-3d',
-              willChange: 'transform',
+              willChange: 'transform'
             }}
             variants={{
-              initial: {
+              initial: { 
                 rotateX: 0,
                 skewX: 0,
                 translateY: 0,
-                translateZ: 0,
+                translateZ: 0
               },
-              hover: {
+              hover: { 
                 rotateX: -38,
                 skewX: -8,
                 translateY: 0,
-                translateZ: 0,
-              },
+                translateZ: 0
+              }
             }}
-            transition={{
-              type: 'spring',
-              stiffness: 500,
-              damping: 30,
-            }}
-          >
+            transition={{ type: "spring", stiffness: 320, damping: 30 }}
+          > 
             <Image
               src="/images/folderFront.svg"
               alt="Folder front"
