@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react';
+import React, { Suspense } from 'react';
 import HeaderMain from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
 import { useRouter, useSearchParams } from 'next/navigation';
@@ -10,20 +10,18 @@ import { useHoverEffect } from '@/hooks/useHoverEffect';
 import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
 import { StaggerWrapper } from '@/components/staggerWrapper';
 
-export default function Writing() {
-  const [selectedButton, setSelectedButton] = React.useState<string>('writing');
-  const router = useRouter();
-  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
-  const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
+function WritingContent() {
   const searchParams = useSearchParams();
   const isNavigatingBetweenPages = searchParams.get('from') === 'home';
+  const router = useRouter();
+  const [selectedButton, setSelectedButton] = React.useState<string>('writing');
+  const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
+  const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
     if (buttonName === 'home') {
       router.push('/?from=writing');
-    } else if (buttonName === 'writing') {
-      router.push('/writing');
     }
   };
 
@@ -69,5 +67,13 @@ export default function Writing() {
         </StaggerWrapper>
       </div>
     </main>
+  );
+}
+
+export default function Writing() {
+  return (
+    <Suspense fallback={null}>
+      <WritingContent />
+    </Suspense>
   );
 }

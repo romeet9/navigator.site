@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -12,8 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AccordionLikeButton from "@/components/ui/accordionLikeButton";
 import HeaderMain from "@/components/ui/header";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from "next/navigation";
 import { getFeaturedProjects, Project } from "@/lib/data/projectData";
 import FileSystemVisualizer from "@/components/fileSystemViz";
 import ItemEntry from "@/components/ui/itemEntry";
@@ -25,7 +24,7 @@ import Grid from "@/components/ui/grid";
 import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
 import { StaggerWrapper } from '@/components/staggerWrapper';
 
-export default function Home() {
+function HomeContent() {
   const searchParams = useSearchParams();
   const isNavigatingBetweenPages = searchParams.get('from') === 'writing';
 
@@ -358,5 +357,13 @@ export default function Home() {
         </StaggerWrapper>
       </div>
     </main>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense fallback={null}>
+      <HomeContent />
+    </Suspense>
   );
 }
