@@ -13,6 +13,7 @@ import Image from "next/image";
 import AccordionLikeButton from "@/components/ui/accordionLikeButton";
 import HeaderMain from "@/components/ui/header";
 import { useRouter } from "next/navigation";
+import { useSearchParams } from 'next/navigation';
 import { getFeaturedProjects, Project } from "@/lib/data/projectData";
 import FileSystemVisualizer from "@/components/fileSystemViz";
 import ItemEntry from "@/components/ui/itemEntry";
@@ -21,8 +22,13 @@ import { useHoverEffect } from "@/hooks/useHoverEffect";
 import { allProjects } from "@/lib/data/projectData";
 import { AnimatePresence, motion } from "framer-motion";
 import Grid from "@/components/ui/grid";
+import { useStaggerAnimation } from '@/hooks/useStaggerAnimation';
+import { StaggerWrapper } from '@/components/staggerWrapper';
 
 export default function Home() {
+  const searchParams = useSearchParams();
+  const isNavigatingBetweenPages = searchParams.get('from') === 'writing';
+
   const projectData = getFeaturedProjects();
   const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
   const initialYear = years[0]; // Should be '2024'
@@ -42,6 +48,8 @@ export default function Home() {
   const [isGridLeaving, setIsGridLeaving] = useState(false);
 
   const [isLoading, setIsLoading] = useState(true);
+
+  const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
 
   useEffect(() => {
     setSelectedButton("home");
@@ -74,11 +82,9 @@ export default function Home() {
   }, []);
 
   const handleButtonClick = (buttonName: string) => {
-    setSelectedButton(
-      buttonName === selectedButton ? selectedButton : buttonName
-    );
+    setSelectedButton(buttonName);
     if (buttonName === "writing") {
-      router.push("/writing");
+      router.push('/writing?from=home');
     }
   };
 
@@ -116,266 +122,240 @@ export default function Home() {
     <main className="page-container page-container-default">
       <div className="flex flex-col gap-5 items-center w-full">
         {/* Introduction Section */}
-        <motion.section
-          layoutId="intro-section"
-          className="flex flex-col gap-2 w-full"
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.7,
-            delay: 1.2,
-            ease: [0.34, 1.56, 0.64, 1],
-            opacity: { duration: 0.7, delay: 1.2 },
-            y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.2 },
-          }}
-        >
-          <HeaderMain
-            headerText={headerText}
-            selectedButton={selectedButton}
-            handleButtonClick={handleButtonClick}
-          />
-          <div className="flex flex-col gap-2 w-full">
-            <p className="b_mono">
-              I am a product designer obsessed with finding the simplest
-              solution that leaves room for taste. Previously, I was at{" "}
-              <span className="group">
-                <a
-                  href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"
-                  className="link-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>{" "}
-              reimagining the future of generative AI ads. In my past life, I
-              engineered insulin delivery pods at{" "}
-              <span className="group">
-                <a
-                  href="https://www.bd.com/en-us"
-                  className="link-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Becton Dickinson & Co
-                </a>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>
-              .
-            </p>
-            <p className="b_mono">
-              Apart from work, you'll find me exploring analog{" "}
-              <span className="group">
-                <Link
-                  href="https://vs.co/l4rt9tds"
-                  className="link-underline"
-                  aria-label="My photography on Twitter"
-                >
-                  photography
-                </Link>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>
-              , though I still reach for digital sometimes. I also enjoy
-              ideating novel product ideas and scrolling{" "}
-              <span className="group">
-                <a
-                  href="https://twitter.com/robertkkan"
-                  className="link-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>{" "}
-              a bit too much.
-            </p>
-          </div>
-        </motion.section>
+        <section className="flex flex-col gap-2 w-full">
+          <StaggerWrapper {...getTransition(0)} skipAnimation={isNavigatingBetweenPages}>
+            <HeaderMain
+              headerText={headerText}
+              selectedButton={selectedButton}
+              handleButtonClick={handleButtonClick}
+            />
+          </StaggerWrapper>
+          
+          <StaggerWrapper {...getTransition(1)}>
+            <div className="flex flex-col gap-2 w-full">
+              <p className="b_mono">
+                I am a product designer obsessed with finding the simplest
+                solution that leaves room for taste. Previously, I was at{" "}
+                <span className="group">
+                  <a
+                    href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"
+                    className="link-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    LinkedIn
+                  </a>
+                  <sup className="inline-flex">
+                    <Image
+                      src="/images/icons/link.svg"
+                      width={5}
+                      height={5}
+                      alt=""
+                      className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                    />
+                  </sup>
+                </span>{" "}
+                reimagining the future of generative AI ads. In my past life, I
+                engineered insulin delivery pods at{" "}
+                <span className="group">
+                  <a
+                    href="https://www.bd.com/en-us"
+                    className="link-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Becton Dickinson & Co
+                  </a>
+                  <sup className="inline-flex">
+                    <Image
+                      src="/images/icons/link.svg"
+                      width={5}
+                      height={5}
+                      alt=""
+                      className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                    />
+                  </sup>
+                </span>
+                .
+              </p>
+              <p className="b_mono">
+                Apart from work, you'll find me exploring analog{" "}
+                <span className="group">
+                  <Link
+                    href="https://vs.co/l4rt9tds"
+                    className="link-underline"
+                    aria-label="My photography on Twitter"
+                  >
+                    photography
+                  </Link>
+                  <sup className="inline-flex">
+                    <Image
+                      src="/images/icons/link.svg"
+                      width={5}
+                      height={5}
+                      alt=""
+                      className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                    />
+                  </sup>
+                </span>
+                , though I still reach for digital sometimes. I also enjoy
+                ideating novel product ideas and scrolling{" "}
+                <span className="group">
+                  <a
+                    href="https://twitter.com/robertkkan"
+                    className="link-underline"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Twitter
+                  </a>
+                  <sup className="inline-flex">
+                    <Image
+                      src="/images/icons/link.svg"
+                      width={5}
+                      height={5}
+                      alt=""
+                      className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
+                    />
+                  </sup>
+                </span>{" "}
+                a bit too much.
+              </p>
+            </div>
+          </StaggerWrapper>
+        </section>
 
-        {/* Main Content Section */}
         <div className="w-full flex flex-col gap-[5rem]">
-          {/* Grid Section - No fade animation */}
-          <div className="w-full flex justify-center mx-auto px-12">
-            <motion.div
-              onClick={handleGridClick}
-              className="cursor-pointer w-full"
-              layoutId="expandingGrid"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: isLoading ? 0 : 1 }}
-              transition={{
-                duration: 0.4,
-                ease: [0.22, 1, 0.7, 1],
-              }}
-              style={{
-                maxWidth: "29.4375rem",
-                aspectRatio: "29.4375 / 21.3125",
-                overflow: "hidden",
-                position: "relative",
-                outline: "none",
-                border: "none",
-              }}
-            >
-              <div className="absolute inset-[0] pointer-events-none z-10">
-                {/* Top fade */}
-                <div className="absolute top-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-b from-background to-transparent" />
-                {/* Bottom fade */}
-                <div className="absolute bottom-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-t from-background to-transparent" />
-                {/* Left fade */}
-                <div className="absolute top-[0rem] bottom-[0rem] left-[0rem] w-[2rem] bg-gradient-to-r from-background to-transparent" />
-                {/* Right fade */}
-                <div className="absolute top-[0rem] bottom-[0rem] right-[0rem] w-[2rem] bg-gradient-to-l from-background to-transparent" />
-              </div>
+          {/* Grid Section */}
+          <StaggerWrapper {...getTransition(1)}>
+            <div className="w-full flex justify-center mx-auto px-12">
               <motion.div
-                layoutId="gridInner"
-                className="w-full"
-                style={
-                  {
-                    position: "absolute",
-                    width: "142%",
-                    aspectRatio: "40.6875 / 32.5625",
-                    top: "-43%",
-                    left: "-17%",
-                    transformOrigin: "center center",
-                    "--grid-color": "var(--color-tertiary)",
-                  } as any
-                }
-                initial={{ "--grid-color": "var(--color-tertiary)" } as any}
-                animate={{ "--grid-color": "#E6E6E6" } as any}
+                onClick={handleGridClick}
+                className="cursor-pointer w-full"
+                layoutId="expandingGrid"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: isLoading ? 0 : 1 }}
                 transition={{
-                  delay: 1.15,
-                  duration: 0.6,
-                  ease: [0.25, 0.85, 0.35, 0.95],
+                  duration: 0.4,
+                  ease: [0.22, 1, 0.7, 1],
+                }}
+                style={{
+                  maxWidth: "29.4375rem",
+                  aspectRatio: "29.4375 / 21.3125",
+                  overflow: "hidden",
+                  position: "relative",
+                  outline: "none",
+                  border: "none",
                 }}
               >
-                <Grid 
-                  rows={8} 
-                  cols={10} 
-                  noBorder={true} 
-                  playLoadingAnimation={!isLoading} 
-                />
+                <div className="absolute inset-[0] pointer-events-none z-10">
+                  {/* Top fade */}
+                  <div className="absolute top-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-b from-background to-transparent" />
+                  {/* Bottom fade */}
+                  <div className="absolute bottom-[0rem] left-[0rem] right-[0rem] h-[2rem] bg-gradient-to-t from-background to-transparent" />
+                  {/* Left fade */}
+                  <div className="absolute top-[0rem] bottom-[0rem] left-[0rem] w-[2rem] bg-gradient-to-r from-background to-transparent" />
+                  {/* Right fade */}
+                  <div className="absolute top-[0rem] bottom-[0rem] right-[0rem] w-[2rem] bg-gradient-to-l from-background to-transparent" />
+                </div>
+                <motion.div
+                  layoutId="gridInner"
+                  className="w-full"
+                  style={
+                    {
+                      position: "absolute",
+                      width: "142%",
+                      aspectRatio: "40.6875 / 32.5625",
+                      top: "-43%",
+                      left: "-17%",
+                      transformOrigin: "center center",
+                      "--grid-color": "#E6E6E6",
+                    } as any
+                  }
+                  initial={{ "--grid-color": "#E6E6E6" } as any}
+                  animate={{ "--grid-color": "#E6E6E6" } as any}
+                  transition={{
+                    delay: 1.15,
+                    duration: 0.6,
+                    ease: [0.25, 0.85, 0.35, 0.95],
+                  }}
+                >
+                  <Grid 
+                    rows={8} 
+                    cols={10} 
+                    noBorder={true} 
+                    playLoadingAnimation={!isLoading} 
+                  />
+                </motion.div>
               </motion.div>
-            </motion.div>
-          </div>
+            </div>
+          </StaggerWrapper>
 
           {/* Projects Section */}
-          <motion.section
-            className="w-full"
-            initial={{ opacity: 0, y: -4 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.7,
-              delay: 1.35,
-              ease: [0.34, 1.56, 0.64, 1],
-              opacity: { duration: 0.7, delay: 1.35 },
-              y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.35 },
-            }}
-          >
-            {/* Desktop view (>=780px) */}
-            <div className="hidden md:flex flex-row gap-[3rem] w-full">
-              <div className="w-[17.5rem] mx-auto">
-                <Accordion type="single" defaultValue={initialYear} collapsible>
-                  {years.map((year) => (
-                    <AccordionItem key={`year-${year}`} value={year}>
-                      <AccordionTrigger onClick={() => handleYearSelect(year)}>
-                        {year}
-                      </AccordionTrigger>
-                      <AnimatePresence initial={false} mode="wait">
-                        {projectData[year].map((project) => (
-                          <AccordionContent
-                            key={`${year}-${project.num}`}
-                            contentId={`${year}-${project.num}`}
-                            onClick={() =>
-                              handleProjectSelect(`${year}-${project.num}`)
-                            }
-                          >
-                            {project.title}
-                          </AccordionContent>
-                        ))}
-                      </AnimatePresence>
-                    </AccordionItem>
-                  ))}
-                  <AccordionLikeButton href="/archive">
-                    VIEW ALL
-                  </AccordionLikeButton>
-                </Accordion>
+          <StaggerWrapper {...getTransition(2)}>
+            <section className="w-full">
+              {/* Desktop view (>=780px) */}
+              <div className="hidden md:flex flex-row gap-[3rem] w-full">
+                <div className="w-[17.5rem] mx-auto">
+                  <Accordion type="single" defaultValue={initialYear} collapsible>
+                    {years.map((year) => (
+                      <AccordionItem key={`year-${year}`} value={year}>
+                        <AccordionTrigger onClick={() => handleYearSelect(year)}>
+                          {year}
+                        </AccordionTrigger>
+                        <AnimatePresence initial={false} mode="wait">
+                          {projectData[year].map((project) => (
+                            <AccordionContent
+                              key={`${year}-${project.num}`}
+                              contentId={`${year}-${project.num}`}
+                              onClick={() =>
+                                handleProjectSelect(`${year}-${project.num}`)
+                              }
+                            >
+                              {project.title}
+                            </AccordionContent>
+                          ))}
+                        </AnimatePresence>
+                      </AccordionItem>
+                    ))}
+                    <AccordionLikeButton href="/archive">
+                      VIEW ALL
+                    </AccordionLikeButton>
+                  </Accordion>
+                </div>
+                <FileSystemVisualizer
+                  selectedYear={selectedYear}
+                  projects={projectData[selectedYear] || []}
+                  selectedProject={selectedProject}
+                />
               </div>
-              <FileSystemVisualizer
-                selectedYear={selectedYear}
-                projects={projectData[selectedYear] || []}
-                selectedProject={selectedProject}
-              />
-            </div>
 
-            {/* Mobile view (<780px) */}
-            <div className="md:hidden w-full">
-              {allProjects.map((project) => (
-                <HoverEffectWrapper
-                  key={project.num}
-                  id={project.num}
-                  hoveredItem={hoveredItem}
-                  onMouseEnter={handleMouseEnter}
-                  onMouseLeave={handleMouseLeave}
-                >
-                  <ItemEntry
-                    num={project.num}
-                    title={project.title}
-                    date={project.date}
-                    href={project.href}
-                  />
-                </HoverEffectWrapper>
-              ))}
-            </div>
-          </motion.section>
+              {/* Mobile view (<780px) */}
+              <div className="md:hidden w-full">
+                {allProjects.map((project) => (
+                  <HoverEffectWrapper
+                    key={project.num}
+                    id={project.num}
+                    hoveredItem={hoveredItem}
+                    onMouseEnter={handleMouseEnter}
+                    onMouseLeave={handleMouseLeave}
+                  >
+                    <ItemEntry
+                      num={project.num}
+                      title={project.title}
+                      date={project.date}
+                      href={project.href}
+                    />
+                  </HoverEffectWrapper>
+                ))}
+              </div>
+            </section>
+          </StaggerWrapper>
         </div>
 
-        {/* Footer */}
-        <motion.footer
-          initial={{ opacity: 0, y: -4 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.7,
-            delay: 1.35,
-            ease: [0.34, 1.56, 0.64, 1],
-            opacity: { duration: 0.7, delay: 1.35 },
-            y: { duration: 0.7, ease: [0.34, 1.56, 0.64, 1], delay: 1.35 },
-          }}
-        >
+        <StaggerWrapper {...getTransition(3)}>
           <Footer />
-        </motion.footer>
+        </StaggerWrapper>
       </div>
     </main>
   );

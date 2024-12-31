@@ -3,7 +3,7 @@
 import React from 'react';
 import HeaderMain from '@/components/ui/header';
 import Footer from '@/components/ui/footer';
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import ItemEntry from '@/components/ui/itemEntry';
 import { HoverEffectWrapper } from '@/components/hoverEffectWrapper';
 import { useHoverEffect } from '@/hooks/useHoverEffect';
@@ -15,11 +15,13 @@ export default function Writing() {
   const router = useRouter();
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
   const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
+  const searchParams = useSearchParams();
+  const isNavigatingBetweenPages = searchParams.get('from') === 'home';
 
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
     if (buttonName === 'home') {
-      router.push('/');
+      router.push('/?from=writing');
     } else if (buttonName === 'writing') {
       router.push('/writing');
     }
@@ -34,14 +36,17 @@ export default function Writing() {
     <main className="page-container page-container-default">
       <div className="flex flex-col gap-[1.625rem] items-center w-full">
         <section className="flex flex-col gap-[0.75rem] w-full">
-          <HeaderMain 
-            headerText="Writing."
-            selectedButton={selectedButton} 
-            handleButtonClick={handleButtonClick}
-          />
+          <StaggerWrapper {...getTransition(0)} skipAnimation={isNavigatingBetweenPages}>
+            <HeaderMain 
+              headerText="Writing."
+              selectedButton={selectedButton} 
+              handleButtonClick={handleButtonClick}
+            />
+          </StaggerWrapper>
+          
           <div className="flex flex-col w-full"> 
             {writingEntries.slice().reverse().map((entry, index) => (
-              <StaggerWrapper key={entry.num} {...getTransition(index)}>
+              <StaggerWrapper key={entry.num} {...getTransition(index + 1)}>
                 <HoverEffectWrapper
                   id={entry.num}
                   hoveredItem={hoveredItem}
@@ -59,7 +64,7 @@ export default function Writing() {
             ))}
           </div>
         </section>
-        <StaggerWrapper {...getTransition(writingEntries.length)}>
+        <StaggerWrapper {...getTransition(writingEntries.length + 1)}>
           <Footer />
         </StaggerWrapper>
       </div>
