@@ -20,7 +20,6 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, svgSrc, link, isSmalle
         className="w-full h-full object-contain"
         priority
         loading="eager"
-        unoptimized
       />
     </div>
   </Link>
