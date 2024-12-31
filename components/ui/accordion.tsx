@@ -3,7 +3,7 @@
 import * as React from "react"
 import * as AccordionPrimitive from "@radix-ui/react-accordion"
 import { motion, AnimatePresence, LayoutGroup } from "framer-motion"
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 import { cn } from "@/lib/utils"
@@ -85,6 +85,22 @@ const Accordion = React.forwardRef<
     hoveredProject: null,
     setHoveredProject: () => {}
   }), [hoveredItem, handleMouseEnter, handleMouseLeave, selectedContent, selectedYear, currentProject]);
+
+  // Preload adjacent projects
+  useEffect(() => {
+    if (selectedContent) {
+      const [year, num] = selectedContent.split('-');
+      const currentIndex = allProjects.findIndex(p => p.num === num && p.date === year);
+      
+      // Preload next and previous projects
+      [-1, 1].forEach(offset => {
+        const adjacentProject = allProjects[currentIndex + offset];
+        if (adjacentProject) {
+          preloadImage(adjacentProject.svgSrc);
+        }
+      });
+    }
+  }, [selectedContent]);
 
   return (
     <LayoutGroup id="accordion">

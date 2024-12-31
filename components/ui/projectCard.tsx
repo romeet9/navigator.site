@@ -11,7 +11,7 @@ interface ProjectCardProps {
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ title, svgSrc, link, isSmaller = false }) => (
   <Link href={link} className="block w-full mx-auto">
-    <div className="w-full h-full">
+    <div className="w-full h-full relative">
       <Image
         src={svgSrc}
         alt={`Mockup of the project titled "${title}"`}
@@ -20,6 +20,9 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ title, svgSrc, link, isSmalle
         className="w-full h-full object-contain"
         priority
         loading="eager"
+        sizes={isSmaller ? "400px" : "525px"}
+        placeholder="blur"
+        blurDataURL={`data:image/svg+xml;base64,...`}
       />
     </div>
   </Link>
