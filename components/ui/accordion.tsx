@@ -86,21 +86,12 @@ const Accordion = React.forwardRef<
     setHoveredProject: () => {}
   }), [hoveredItem, handleMouseEnter, handleMouseLeave, selectedContent, selectedYear, currentProject]);
 
-  // Preload adjacent projects
+  // Preload all project images on mount
   useEffect(() => {
-    if (selectedContent) {
-      const [year, num] = selectedContent.split('-');
-      const currentIndex = allProjects.findIndex(p => p.num === num && p.date === year);
-      
-      // Preload next and previous projects
-      [-1, 1].forEach(offset => {
-        const adjacentProject = allProjects[currentIndex + offset];
-        if (adjacentProject) {
-          preloadImage(adjacentProject.svgSrc);
-        }
-      });
-    }
-  }, [selectedContent]);
+    allProjects.forEach(project => {
+      preloadImage(project.svgSrc);
+    });
+  }, []); // Empty dependency array means this runs once on mount
 
   return (
     <LayoutGroup id="accordion">
