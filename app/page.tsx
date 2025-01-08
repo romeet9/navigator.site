@@ -30,14 +30,14 @@ function HomeContent() {
 
   const projectData = getFeaturedProjects();
   const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
-  const initialYear = years[0]; // Should be '2024'
+  const initialYear = years[0]; 
 
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [selectedYear, setSelectedYear] = useState<string>(initialYear);
   const [selectedProject, setSelectedProject] = useState<Project | null>(() => {
-    // Always default to LinkedIn project
-    return projectData["2024"]?.find((p) => p.num === "005") || null;
+    return projectData[initialYear]?.find((p) => p.num === "005") || null;
   });
+  
   const router = useRouter();
   const [headerText, setHeaderText] = useState("Hey, I'm Robert.");
 
@@ -97,7 +97,6 @@ function HomeContent() {
   };
 
   const handleYearSelect = (year: string) => {
-    console.log("handleYearSelect:", { year });
     setSelectedYear(year);
   };
 
@@ -296,7 +295,11 @@ function HomeContent() {
               {/* Desktop view (>=780px) */}
               <div className="hidden md:flex flex-row gap-[3rem] w-full">
                 <div className="w-[17.5rem] mx-auto">
-                  <Accordion type="single" defaultValue={initialYear} collapsible>
+                  <Accordion 
+                    type="single" 
+                    defaultValue={initialYear} 
+                    collapsible
+                  >
                     {years.map((year) => (
                       <AccordionItem key={`year-${year}`} value={year}>
                         <AccordionTrigger onClick={() => handleYearSelect(year)}>

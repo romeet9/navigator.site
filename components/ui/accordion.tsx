@@ -96,13 +96,11 @@ const Accordion = React.forwardRef<
   return (
     <LayoutGroup id="accordion">
       <AccordionContext.Provider value={contextValue}>
-        <AnimatePresence initial={false}>
-          <AccordionPrimitive.Root
-            ref={ref}
-            className={cn('accordion-root', className)}
-            {...props}
-          />
-        </AnimatePresence>
+        <AccordionPrimitive.Root
+          ref={ref}
+          className={cn('accordion-root', className)}
+          {...props}
+        />
       </AccordionContext.Provider>
     </LayoutGroup>
   );
@@ -217,7 +215,7 @@ const AccordionContent = React.forwardRef<
         onClick={handleClick}
         onMouseEnter={handleMouseEnter}
       >
-        <AnimatePresence mode="wait">
+        <AnimatePresence>
           {isSelected && (
             <motion.span
               layoutId="accordion-bubble"
