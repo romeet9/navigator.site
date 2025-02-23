@@ -10,24 +10,21 @@ export async function generateStaticParams() {
 }
 
 interface PageProps {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
   searchParams: { [key: string]: string | string[] | undefined };
 }
 
 // Generate metadata for each dynamic page including metadataBase
 export async function generateMetadata({ params }: PageProps) {
-  // Await the params to ensure they're resolved before using its properties.
   const { slug } = await params;
   const post = await getPostBySlug(slug);
 
   return {
-    // For production, make sure the NEXT_PUBLIC_SITE_URL env is set correctly.
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'),
     title: post?.title || 'Default Title',
-    description: 'A description for your post goes here.', // Adjust as needed
+    description: post?.description || 'A description for your post goes here.',
     openGraph: {
       images: [
-        // Relative URLs in openGraph will be resolved using metadataBase.
         new URL(
           `/images/og/${slug}.png`,
           process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'

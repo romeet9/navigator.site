@@ -25,6 +25,7 @@ export const mdxComponents = {
 export interface PostFrontMatter {
   title: string;
   date: string;
+  description: string;
 }
 
 export interface Post {
@@ -32,6 +33,7 @@ export interface Post {
   title: string;
   date: string;
   content: React.ReactElement;
+  description: string;
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | null> {
@@ -49,6 +51,7 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
       slug,
       title: frontmatter.title,
       date: frontmatter.date,
+      description: frontmatter.description,
       content
     }
   } catch (error) {
