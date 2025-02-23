@@ -1,4 +1,5 @@
 import type { Config } from "tailwindcss";
+import typography from '@tailwindcss/typography'
 
 const config: Config = {
     darkMode: ["class"],
@@ -39,6 +40,10 @@ const config: Config = {
   			'4': 'var(--spacing-4)',
   			'5': 'var(--spacing-5)'
   		},
+  		letterSpacing: {
+				narrow: '-0.005em',
+  			wide: '0.01em'
+  		},
   		maxWidth: {
   			default: 'var(--max-width-default)',
   			narrow: 'var(--max-width-narrow)',
@@ -71,6 +76,6 @@ const config: Config = {
   		}
   	}
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), require('@tailwindcss/typography')],
 };
 export default config;

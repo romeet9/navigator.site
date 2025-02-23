@@ -1,11 +1,11 @@
 import React from 'react';
 
-interface SeriffallbackCharProps {
+interface SerifCharProps {
   children: React.ReactNode;
 }
 
-const SeriffallbackChar: React.FC<SeriffallbackCharProps> = ({ children }) => {
+const SerifChar: React.FC<SerifCharProps> = ({ children }) => {
   return <span className="font-jacques-francois">{children}</span>;
 };
 
-export default SeriffallbackChar;
+export default SerifChar;

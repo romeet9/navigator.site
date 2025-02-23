@@ -218,7 +218,6 @@ const AccordionContent = React.forwardRef<
         <AnimatePresence>
           {isSelected && (
             <motion.span
-              layoutId="accordion-bubble"
               className="absolute inset-[0.0625rem] z-0 bg-select rounded-[0.375rem]"
               transition={{
                 type: "spring",

@@ -1,0 +1,28 @@
+/* Make sure this file is included in your project (e.g., imported in your global CSS) */
+
+/* When a paragraph is immediately followed by a subheading (h2 or h3),
+   apply gap-4 (e.g., 2rem) margin on the subheading */
+.mdx-content p + h2,
+.mdx-content p + h3 {
+  margin-top: 2rem; /* Adjust according to your design if gap-4 should be different */
+}
+
+/* When a subheading (h2 or h3) is immediately followed by a paragraph,
+   apply gap-1 (e.g., 0.5rem) margin on the paragraph */
+.mdx-content h2 + p,
+.mdx-content h3 + p {
+  margin-top: 0.5rem;
+}
+
+/* When a paragraph is immediately followed by another paragraph,
+   apply gap-2 (e.g., 1rem) margin on the second paragraph */
+.mdx-content p + p {
+  margin-top: 1rem;
+}
+
+/* When a paragraph is immediately followed by a blockquote,
+   apply gap-2 (e.g., 1.5rem) margin on the blockquote */
+.mdx-content blockquote + p,
+.mdx-content p + blockquote {
+  margin-top: 1.5rem;
+}

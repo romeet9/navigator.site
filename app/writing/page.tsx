@@ -27,14 +27,31 @@ function WritingContent() {
 
   const writingEntries = [
     { num: "001", title: "Rejection", date: "10-10-2024", href: "/writing/rejection" },
-    { num: "002", title: "Design founders", date: "11-23-2024", href: "/writing/designFounders" }
+    { num: "002", title: "Design Founders", date: "11-23-2024", href: "/writing/designFounders" },
+    { num: "003", title: "Moving to NYC", date: "01-31-2025", href: "/writing/movingToNYC" }
   ];
+
+  // Memoize the getTransition calls
+  const transitions = React.useMemo(() => 
+    writingEntries.map((_, index) => getTransition(index + 1)),
+    [writingEntries.length] // Only recalculate if the number of entries changes
+  );
+
+  const headerTransition = React.useMemo(() => 
+    getTransition(0),
+    []
+  );
+
+  const footerTransition = React.useMemo(() => 
+    getTransition(writingEntries.length + 1),
+    [writingEntries.length]
+  );
 
   return (
     <main className="page-container page-container-default">
       <div className="flex flex-col gap-[1.625rem] items-center w-full">
         <section className="flex flex-col gap-[0.75rem] w-full">
-          <StaggerWrapper {...getTransition(0)} skipAnimation={isNavigatingBetweenPages}>
+          <StaggerWrapper {...headerTransition} skipAnimation={isNavigatingBetweenPages}>
             <HeaderMain 
               headerText="Writing."
               selectedButton={selectedButton} 
@@ -44,7 +61,7 @@ function WritingContent() {
           
           <div className="flex flex-col w-full"> 
             {writingEntries.slice().reverse().map((entry, index) => (
-              <StaggerWrapper key={entry.num} {...getTransition(index + 1)}>
+              <StaggerWrapper key={entry.num} {...transitions[index]}>
                 <HoverEffectWrapper
                   id={entry.num}
                   hoveredItem={hoveredItem}
@@ -62,7 +79,7 @@ function WritingContent() {
             ))}
           </div>
         </section>
-        <StaggerWrapper {...getTransition(writingEntries.length + 1)}>
+        <StaggerWrapper {...footerTransition}>
           <Footer />
         </StaggerWrapper>
       </div>

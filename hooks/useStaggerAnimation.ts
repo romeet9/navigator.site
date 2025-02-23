@@ -7,23 +7,16 @@ interface StaggerConfig {
   y?: number;
 }
 
-export const useStaggerAnimation = ({
-  baseDelay = 0.1,
-  staggerDelay = 0.1,
-  duration = 0.9,
-  y = 3
-}: StaggerConfig = {}) => {
-  const getTransition = useCallback((index: number = 0) => ({
-    initial: { opacity: 0, y },
+export const useStaggerAnimation = ({ baseDelay = 0.1 }) => {
+  const getTransition = (index: number) => ({
+    initial: { opacity: 0, y: 12 },
     animate: { opacity: 1, y: 0 },
     transition: {
-      duration,
-      delay: baseDelay + (index * staggerDelay),
-      ease: [0.34, 1.56, 0.64, 1],
-      opacity: { duration: duration - 0.2, delay: baseDelay + (index * staggerDelay) },
-      y: { duration, ease: [0.34, 1.56, 0.64, 1], delay: baseDelay + (index * staggerDelay) },
+      duration: 0.6,
+      delay: index * baseDelay,
+      ease: [0.21, 0.47, 0.32, 0.98]
     }
-  }), [baseDelay, staggerDelay, duration, y]);
+  });
 
   return { getTransition };
 };

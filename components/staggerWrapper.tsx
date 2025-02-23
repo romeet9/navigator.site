@@ -7,7 +7,11 @@ interface StaggerWrapperProps {
   index?: number;
   initial: { opacity: number; y: number };
   animate: { opacity: number; y: number };
-  transition: any;
+  transition?: {
+    duration?: number;
+    delay?: number;
+    ease?: string | number[];
+  };
   className?: string;
 }
 
@@ -16,7 +20,10 @@ export const StaggerWrapper = ({
   skipAnimation = false,
   initial, 
   animate, 
-  transition,
+  transition = {
+    duration: 0.5,
+    ease: [0.21, 0.47, 0.32, 0.98] // Custom easing curve for smooth animation
+  },
   className = '' 
 }: StaggerWrapperProps) => {
   if (skipAnimation) {
@@ -25,10 +32,14 @@ export const StaggerWrapper = ({
 
   return (
     <motion.div
-      className={className}
+      className={`${className} transform-gpu`}
       initial={initial}
       animate={animate}
       transition={transition}
+      style={{
+        willChange: 'transform, opacity',
+        backfaceVisibility: 'hidden'
+      }}
     >
       {children}
     </motion.div>

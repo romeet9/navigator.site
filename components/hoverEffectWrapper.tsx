@@ -10,25 +10,44 @@ interface HoverEffectWrapperProps {
   children: React.ReactNode;
 }
 
-export const HoverEffectWrapper: React.FC<HoverEffectWrapperProps> = ({
+const HoverEffectWrapper: React.FC<HoverEffectWrapperProps> = React.memo(function HoverEffectWrapper({
   id,
   hoveredItem,
   onMouseEnter,
   onMouseLeave,
   className,
   children
-}) => {
+}) {
+  // Memoize the event handlers to prevent recreating on every render
+  const handleMouseEnter = React.useCallback(() => {
+    onMouseEnter(id);
+  }, [id, onMouseEnter]);
+
+  // Optimize class computation
+  const combinedClassName = React.useMemo(() => 
+    cn(
+      "transition-opacity duration-500 ease-in-out transform-gpu",
+      hoveredItem && hoveredItem !== id ? "opacity-40" : "opacity-100",
+      className
+    ),
+    [hoveredItem, id, className]
+  );
+
   return (
     <div
-      className={cn(
-        "transition-opacity duration-500 ease-in-out",
-        hoveredItem && hoveredItem !== id ? "opacity-40" : "opacity-100",
-        className
-      )}
-      onMouseEnter={() => onMouseEnter(id)}
+      className={combinedClassName}
+      onMouseEnter={handleMouseEnter}
       onMouseLeave={onMouseLeave}
+      style={{
+        willChange: 'opacity',
+        backfaceVisibility: 'hidden'
+      }}
     >
       {children}
     </div>
   );
-};
+});
+
+HoverEffectWrapper.displayName = 'HoverEffectWrapper';
+
+export { HoverEffectWrapper };

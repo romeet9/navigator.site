@@ -1,3 +1,5 @@
+@import '../lib/mdx.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -38,7 +40,7 @@
 
     /* Layout */
     --max-width-default: 57rem;
-    --max-width-narrow: 36rem;
+    --max-width-narrow: 38rem;
     --max-width-study: 40rem;
   }
 
@@ -77,11 +79,11 @@
   }
 
   .b_mono { 
-    @apply text-body font-commit-mono text-primary-color; 
+    @apply text-body font-commit-mono text-primary-color tracking-narrow; 
   }
 
   .b_serif { 
-    @apply text-body font-tiempos-text text-primary-color-light; 
+    @apply text-body font-tiempos-text text-primary-color-light tracking-wide; 
   }
 
   .italic-text {
@@ -262,3 +264,6 @@
   animation: accordion-up 300ms ease-out;
 }
 
+.mdx-blockquote {
+  @apply border-l-[0.125rem] border-tertiary-color pl-2;
+}
