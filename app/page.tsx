@@ -125,8 +125,8 @@ function HomeContent() {
           
           <div className="flex flex-col gap-2 w-full">
             <p className="b_mono">
-              I'm a product designer obsessed with finding the simplest
-              solution that leaves room for taste. Previously, I was at{" "}
+              I craft seamless interfaces, obsessing over the simplest
+              solutions that leave room for taste. Previously, I was at{" "}
               <span className="group">
                 <a
                   href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"

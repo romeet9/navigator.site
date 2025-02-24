@@ -19,7 +19,13 @@ export const mdxComponents = {
   ),
   SerifChar: ({ children }: { children: React.ReactNode }) => (
     <SerifChar>{children}</SerifChar>
-  )
+  ),
+  ol: (props: React.DetailedHTMLProps<React.OlHTMLAttributes<HTMLOListElement>, HTMLOListElement>) => (
+    <ol className="b_serif mdx-ol" {...props} />
+  ),
+  li: (props: React.DetailedHTMLProps<React.LiHTMLAttributes<HTMLLIElement>, HTMLLIElement>) => (
+    <li className="b_serif" {...props} />
+  ),
 }
 
 export interface PostFrontMatter {
@@ -43,7 +49,14 @@ export async function getPostBySlug(slug: string): Promise<Post | null> {
     
     const { frontmatter, content } = await compileMDX<PostFrontMatter>({
       source,
-      options: { parseFrontmatter: true },
+      options: { 
+        parseFrontmatter: true,
+        mdxOptions: {
+          remarkPlugins: [],
+          rehypePlugins: [],
+          format: 'mdx'
+        }
+      },
       components: mdxComponents,
     });
     

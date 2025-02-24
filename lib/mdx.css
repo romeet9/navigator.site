@@ -23,6 +23,12 @@
 /* When a paragraph is immediately followed by a blockquote,
    apply gap-2 (e.g., 1.5rem) margin on the blockquote */
 .mdx-content blockquote + p,
-.mdx-content p + blockquote {
+.mdx-content p + blockquote,
+.mdx-content ol + p,
+.mdx-content p + ol {
   margin-top: 1.5rem;
+}
+
+.mdx-content li + li {
+  margin-top: 0.5rem;
 }
