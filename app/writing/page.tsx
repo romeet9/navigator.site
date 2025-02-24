@@ -49,7 +49,7 @@ function WritingContent() {
 
   return (
     <main className="page-container page-container-default">
-      <div className="flex flex-col gap-[1.625rem] items-center w-full">
+      <div className="flex flex-col gap-[2.25rem] items-center w-full">
         <section className="flex flex-col gap-[0.75rem] w-full">
           <StaggerWrapper {...headerTransition} skipAnimation={isNavigatingBetweenPages}>
             <HeaderMain 

@@ -18,7 +18,7 @@ export default function Archive() {
 
   return (
     <main className="page-container page-container-default">
-      <div className="flex flex-col gap-[1.625rem] items-center w-full mx-auto">
+      <div className="flex flex-col gap-[2.25rem] items-center w-full mx-auto">
         <Breadcrumbs crumbs={[{ label: "ALL WORKS" }]} />
 
         <StaggerWrapper {...getTransition(0)} className="w-full">
