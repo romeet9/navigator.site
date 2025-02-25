@@ -36,11 +36,7 @@ async function WritingPage() {
     };
   });
 
-  return (
-    <Suspense fallback={null}>
-      <WritingClient initialEntries={entries} />
-    </Suspense>
-  );
+  return <WritingClient initialEntries={entries} />;
 }
 
 export default WritingPage;
