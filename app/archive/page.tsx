@@ -18,32 +18,34 @@ export default function Archive() {
 
   return (
     <main className="page-container page-container-default">
-      <div className="flex flex-col gap-[2.25rem] items-center w-full mx-auto">
+      <div className="flex flex-col gap-3 items-center w-full mx-auto">
         <Breadcrumbs crumbs={[{ label: "ALL WORKS" }]} />
 
-        <StaggerWrapper {...getTransition(0)} className="w-full">
-          {allProjects.map((project, index) => (
-            <StaggerWrapper key={project.num} {...getTransition(index + 1)}>
-              <HoverEffectWrapper
-                id={project.num}
-                hoveredItem={hoveredItem}
-                onMouseEnter={handleMouseEnter}
-                onMouseLeave={handleMouseLeave}
-              >
-                <ItemEntry
-                  num={project.num}
-                  title={project.title}
-                  date={project.date}
-                  href={`${project.href}?from=all-works`}
-                />
-              </HoverEffectWrapper>
-            </StaggerWrapper>
-          ))}
-        </StaggerWrapper>
+        <div className="flex flex-col gap-[2.25rem] w-full">
+          <StaggerWrapper {...getTransition(0)} className="w-full">
+            {allProjects.map((project, index) => (
+              <StaggerWrapper key={project.num} {...getTransition(index + 1)}>
+                <HoverEffectWrapper
+                  id={project.num}
+                  hoveredItem={hoveredItem}
+                  onMouseEnter={handleMouseEnter}
+                  onMouseLeave={handleMouseLeave}
+                >
+                  <ItemEntry
+                    num={project.num}
+                    title={project.title}
+                    date={project.date}
+                    href={`${project.href}?from=all-works`}
+                  />
+                </HoverEffectWrapper>
+              </StaggerWrapper>
+            ))}
+          </StaggerWrapper>
 
-        <StaggerWrapper {...getTransition(allProjects.length + 1)}>
-          <Footer />
-        </StaggerWrapper>
+          <StaggerWrapper {...getTransition(allProjects.length + 1)}>
+            <Footer />
+          </StaggerWrapper>
+        </div>
       </div>
     </main>
   );

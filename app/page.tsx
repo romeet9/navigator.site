@@ -12,7 +12,7 @@ import Link from "next/link";
 import Image from "next/image";
 import AccordionLikeButton from "@/components/ui/accordionLikeButton";
 import HeaderMain from "@/components/ui/header";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import { getFeaturedProjects, Project } from "@/lib/data/projectData";
 import FileSystemVisualizer from "@/components/fileSystemViz";
 import ItemEntry from "@/components/ui/itemEntry";
@@ -23,9 +23,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import Grid from "@/components/ui/grid";
 
 function HomeContent() {
-  const searchParams = useSearchParams();
-  const isNavigatingBetweenPages = searchParams.get('from') === 'writing';
-
   const projectData = getFeaturedProjects();
   const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
   const initialYear = years[0]; 
@@ -79,7 +76,7 @@ function HomeContent() {
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
     if (buttonName === "writing") {
-      router.push('/writing?from=home');
+      router.push('/writing');
     }
   };
 
