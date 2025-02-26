@@ -17,6 +17,17 @@ const nextConfig = {
     });
 
     return config;
+  },
+  
+  // Add redirects configuration
+  redirects: async () => {
+    return [
+      {
+        source: '/clubsneu',
+        destination: '/projects/clubsneu',
+        permanent: true, // 308 status code (permanent redirect)
+      },
+    ];
   }
 };
 
