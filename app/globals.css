@@ -79,7 +79,7 @@
   }
 
   .b_mono { 
-    @apply text-body font-commit-mono text-primary-color tracking-narrow; 
+    @apply text-body font-commit-mono text-primary-color tracking-[-0.02em]; 
   }
 
   .b_serif { 

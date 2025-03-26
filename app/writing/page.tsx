@@ -1,4 +1,4 @@
-import React, { Suspense } from 'react';
+import React from 'react';
 import { getAllPosts } from '@/lib/mdx';
 import WritingClient from './writingClient';
 
