@@ -13,6 +13,22 @@ const commitMono = localFont({
   display: 'swap',
 });
 
+const TimesCustom = localFont({
+  src: "../public/fonts/times.ttf",
+  variable: "--font-times-custom",
+  weight: "450",
+  preload: true,
+  display: 'swap',
+});
+
+const TheCoffins = localFont({
+  src: "../public/fonts/the-coffins.otf",
+  variable: "--font-the-coffins",
+  weight: "450",
+  preload: true,
+  display: 'swap',
+});
+
 const tiemposHeadline = localFont({
   src: "../public/fonts/TiemposHeadline-Regular.woff2",
   variable: "--font-tiempos-headline",

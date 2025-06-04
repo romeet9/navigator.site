@@ -25,14 +25,14 @@ import Grid from "@/components/ui/grid";
 function HomeContent() {
   const projectData = getFeaturedProjects();
   const years = Object.keys(projectData).sort((a, b) => Number(b) - Number(a));
-  const initialYear = years[0]; 
+  const initialYear = years[0];
 
   const [selectedButton, setSelectedButton] = useState<string>("home");
   const [selectedYear, setSelectedYear] = useState<string>(initialYear);
   const [selectedProject, setSelectedProject] = useState<Project | null>(() => {
     return projectData[initialYear]?.find((p) => p.num === "005") || null;
   });
-  
+
   const router = useRouter();
   const [headerText, setHeaderText] = useState("Hey, I'm Robert.");
 
@@ -76,7 +76,7 @@ function HomeContent() {
   const handleButtonClick = (buttonName: string) => {
     setSelectedButton(buttonName);
     if (buttonName === "writing") {
-      router.push('/writing');
+      router.push("/writing");
     }
   };
 
@@ -119,95 +119,11 @@ function HomeContent() {
             selectedButton={selectedButton}
             handleButtonClick={handleButtonClick}
           />
-          
+
           <div className="flex flex-col gap-2 w-full">
-            <p className="b_mono">
-              I craft seamless interfaces, obsessing over the simplest
-              solutions that leave room for taste. Previously, I was at{" "}
-              <span className="group">
-                <a
-                  href="https://business.linkedin.com/marketing-solutions/ads/linkedin-accelerate"
-                  className="link-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  LinkedIn
-                </a>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>{" "}
-              reimagining the future of generative AI ads. In my past life, I
-              engineered insulin delivery pods at{" "}
-              <span className="group">
-                <a
-                  href="https://www.bd.com/en-us"
-                  className="link-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Becton Dickinson & Co
-                </a>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>
-              .
-            </p>
-            <p className="b_mono">
-              Besides design, you'll find me shooting analog{" "}
-              <span className="group">
-                <Link
-                  href="https://vs.co/l4rt9tds"
-                  className="link-underline"
-                  aria-label="My photography on Twitter"
-                >
-                  photography
-                </Link>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>
-              , although I still reach for digital sometimes. I also enjoy
-              writing sporadically and doom-scrolling{" "}
-              <span className="group">
-                <a
-                  href="https://twitter.com/robertkkan"
-                  className="link-underline"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Twitter
-                </a>
-                <sup className="inline-flex">
-                  <Image
-                    src="/images/icons/link.svg"
-                    width={5}
-                    height={5}
-                    alt=""
-                    className="ml-[0.15rem] transition-transform duration-300 ease-in-out group-hover:translate-y-[-2px] group-hover:translate-x-[2px]"
-                  />
-                </sup>
-              </span>{" "}
-              a bit too much.
+            <p className="the-coffins font-italic">
+              I am a UI/UX designer, bringing your ideas to life with a little
+              style, a lot of sass, and zero dull moments!
             </p>
           </div>
         </section>
@@ -266,11 +182,11 @@ function HomeContent() {
                   ease: [0.25, 0.85, 0.35, 0.95],
                 }}
               >
-                <Grid 
-                  rows={8} 
-                  cols={10} 
-                  noBorder={true} 
-                  playLoadingAnimation={!isLoading} 
+                <Grid
+                  rows={8}
+                  cols={10}
+                  noBorder={true}
+                  playLoadingAnimation={!isLoading}
                 />
               </motion.div>
             </motion.div>
@@ -281,11 +197,7 @@ function HomeContent() {
             {/* Desktop view (>=780px) */}
             <div className="hidden md:flex flex-row gap-[3rem] w-full">
               <div className="w-[17.5rem] mx-auto">
-                <Accordion 
-                  type="single" 
-                  defaultValue={initialYear} 
-                  collapsible
-                >
+                <Accordion type="single" defaultValue={initialYear} collapsible>
                   {years.map((year) => (
                     <AccordionItem key={`year-${year}`} value={year}>
                       <AccordionTrigger onClick={() => handleYearSelect(year)}>

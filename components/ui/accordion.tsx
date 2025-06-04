@@ -119,7 +119,7 @@ const AccordionItem = React.forwardRef<
       hoveredItem={hoveredItem}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={cn("b_mono text-secondary-color", className)}
+      className={cn("the-coffins items-center text-secondary-color", className)}
     >
       <AccordionPrimitive.Item
         ref={ref}

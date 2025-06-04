@@ -5,14 +5,14 @@ import Breadcrumbs from "@/components/ui/breadcrumbs";
 import Footer from "@/components/ui/footer";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import SerifChar from '@/components/serifChar';
-import mainImage from "@/public/images/clubsneu/main.png";
+import SerifChar from "@/components/serifChar";
+import mainImage from "@/public/images/clubsneu/vi_intro.png";
 import participationImage from "@/public/images/clubsneu/participation.png";
-import instagramImage from "@/public/images/clubsneu/instagram.png";
-import fallfestImage from "@/public/images/clubsneu/fallfest.png";
+import instagramImage from "@/public/images/clubsneu/vi_core_user.png";
+import problemStatementImage from "@/public/images/clubsneu/vi_prb_state.png";
 import anthologyImage from "@/public/images/clubsneu/anthology.png";
-import productImage from "@/public/images/clubsneu/clubsneu.png";
-import toolbarIterationImage from "@/public/images/clubsneu/toolbarIteration.png";
+import bucketOneImage from "@/public/images/clubsneu/vi_bucket_1.png";
+import bucketTwoImage from "@/public/images/clubsneu/vi_bucket_2.png";
 import toolbarFinalImage from "@/public/images/clubsneu/toolbarFinal.png";
 import cardImage from "@/public/images/clubsneu/clubCard.png";
 import searchIterationImage from "@/public/images/clubsneu/searchIteration.png";
@@ -28,11 +28,8 @@ function ClubsNEUContent() {
   const fromAllWorks = searchParams.get("from") === "all-works";
 
   const crumbs = fromAllWorks
-    ? [
-        { label: "ALL WORKS", href: "/archive" },
-        { label: "CLUBSNEU DATABASE" },
-      ]
-    : [{ label: "CLUBSNEU DATABASE" }];
+    ? [{ label: "ALL WORKS", href: "/archive" }, { label: "CLUBSNEU DATABASE" }]
+    : [{ label: "VOTE - IN" }];
 
   const { getTransition } = useStaggerAnimation({ baseDelay: 0.1 });
 
@@ -46,21 +43,16 @@ function ClubsNEUContent() {
             <section className="flex flex-col gap-[1.5rem]">
               <div className="flex flex-col gap-[0.75rem]">
                 <h2>
-                  Community database focused on discovery and student-club
-                  connection
+                  India adopts secure centralized online voting to replace
+                  traditional polling.
                 </h2>
                 <p className="b_serif">
-                  From March to December 2023, as the founding designer, I worked
-                  with an engineer to ship a new platform that helps Northeastern
-                  students discover and connect with clubs. Check out the{" "}
-                  <a
-                    href="https://github.com/festillis/clubsneu"
-                    className="link-underline"
-                    rel="noopener noreferrer"
-                  >
-                    Github
-                  </a>{" "}
-                  here.
+                  The Government of India is shifting from offline voting to a
+                  centralized online voting system. This digital platform will
+                  allow citizens to register, verify their identity, and vote
+                  securely online, eliminating physical polling stations while
+                  ensuring transparency, preventing fraud, and avoiding
+                  duplicate or unauthorized voting.
                 </p>
               </div>
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -76,103 +68,62 @@ function ClubsNEUContent() {
           </StaggerWrapper>
 
           <StaggerWrapper {...getTransition(1)}>
-            <section className="flex flex-col gap-5">
+            <section className="flex flex-col gap-10">
               <div className="flex flex-col gap-1">
                 <h4>CONTEXT & RESEARCH</h4>
-                <h3>Alumni biggest regret: not joining clubs</h3>
+                <h3>Core Users: Who We’re Here to Help</h3>
                 <p className="b_serif">
-                  During an alumni AMA, panelists were asked about their biggest
-                  regret at Northeastern. Surprisingly, they all shared the same
-                  one<SerifChar>:</SerifChar> not joining enough clubs. Having faced a similar issue, I
-                  decided to explore it further.
+                  A typical Indian citizen of voting age (18+) with basic
+                  digital literacy. This user has access to a mobile phone or
+                  computer with internet connectivity but may not be tech-savvy.
+                  They want to exercise their right to vote but may face
+                  challenges with digital processes due to limited exposure.
                 </p>
               </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col gap-1">
-                  <h3>Northeastern club participation</h3>
-                  <p className="b_serif">
-                    While finding exact statistics on members for every club was
-                    difficult, I analyzed the application or participation rates
-                    of 5 well-known campus clubs.
-                  </p>
-                </div>
-                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
-                  <Image
-                    src={participationImage}
-                    alt="ClubsNEU main interface"
-                    width={1200}
-                    height={675}
-                    layout="responsive"
-                  />
-                </div>
-              </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col gap-1">
-                  <h3>Why was participation low<SerifChar>?</SerifChar></h3>
-                  <p className="b_serif">
-                    Talking to 10<SerifChar>+</SerifChar> students and reviewing existing platforms gave
-                    us valuable insights. Students mentioned three products, each
-                    with distinct pain points.
-                  </p>
-                </div>
-                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
-                  <Image
-                    src={instagramImage}
-                    alt="ClubsNEU main interface"
-                    width={1200}
-                    height={675}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
-                  <Image
-                    src={fallfestImage}
-                    alt="ClubsNEU main interface"
-                    width={1200}
-                    height={675}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
-                  <Image
-                    src={anthologyImage}
-                    alt="ClubsNEU main interface"
-                    width={1200}
-                    height={675}
-                    layout="responsive"
-                  />
-                </div>
+              <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                <Image
+                  src={instagramImage}
+                  alt="ClubsNEU main interface"
+                  width={1200}
+                  height={675}
+                  layout="responsive"
+                />
               </div>
             </section>
-          </StaggerWrapper>
-
-          <StaggerWrapper {...getTransition(2)}>
-            <div className="w-full h-[0.0625rem] bg-tertiary-color opacity-[0.6]"></div>
           </StaggerWrapper>
 
           <StaggerWrapper {...getTransition(3)}>
             <section className="flex flex-col gap-5">
               <div className="flex flex-col gap-1">
                 <h4>PROBLEM</h4>
-                <h3>Too many incomplete platforms</h3>
+                <h3>Let simplify the Problem Statement 🤔 . . . </h3>
                 <p className="b_serif">
-                  Students switch between platforms, leading to frustration, a
-                  higher barrier to entry, and a weaker sense of community.
+                  We need to simplify the problem statement and create small
+                  buckets and specify the core problems.
                 </p>
               </div>
+              <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                  <Image
+                    src={problemStatementImage}
+                    alt="ClubsNEU main interface"
+                    width={1200}
+                    height={675}
+                    layout="responsive"
+                  />
+                </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>SOLUTION</h4>
-                  <h3>A single platform for all clubs</h3>
+                  <h4>BKCT - 1</h4>
+                  <h3>Verification Complexity</h3>
                   <p className="b_serif">
-                    An always-accessible platform helping students find their
-                    community with better search, personalized recommendations,
-                    and complete club information.
+                    Users may struggle with identity verification steps,
+                    especially if they involve multiple documents. They would
+                    become impatient while standing in the long queue.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                   <Image
-                    src={productImage}
+                    src={bucketOneImage}
                     alt="ClubsNEU main interface"
                     width={1200}
                     height={675}
@@ -187,26 +138,18 @@ function ClubsNEUContent() {
             <section className="flex flex-col gap-5">
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>DECISIONS</h4>
-                  <h3>Toolbar Orientation</h3>
+                  <h4>BKCT - 2</h4>
+                  <h3>Trust in Digital Systems</h3>
                   <p className="b_serif">
-                    The toolbar is the primary interaction point for filtering and
-                    sorting the database. There were two options<SerifChar>:</SerifChar> horizontal and
-                    vertical, each with their pros and cons.
+                    Users may feel apprehensive about the security and
+                    transparency of the online voting process, fearing data
+                    breaches, fraud, or that their vote won’t be counted
+                    accurately.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                   <Image
-                    src={toolbarIterationImage}
-                    alt="ClubsNEU main interface"
-                    width={1200}
-                    height={675}
-                    layout="responsive"
-                  />
-                </div>
-                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
-                  <Image
-                    src={toolbarFinalImage}
+                    src={bucketTwoImage}
                     alt="ClubsNEU main interface"
                     width={1200}
                     height={675}
@@ -219,8 +162,9 @@ function ClubsNEUContent() {
                   <h3>Club card exploration</h3>
                   <p className="b_serif">
                     These cards show basic club info to encourage further
-                    exploration. They greatly influenced ClubsNEU<SerifChar>'</SerifChar>s visual design
-                    and underwent many iterations.
+                    exploration. They greatly influenced ClubsNEU
+                    <SerifChar>'</SerifChar>s visual design and underwent many
+                    iterations.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -237,9 +181,9 @@ function ClubsNEUContent() {
                 <div className="flex flex-col gap-1">
                   <h3>Maximizing search efficiency</h3>
                   <p className="b_serif">
-                    When clicking into a club card, we chose between loading a new
-                    page or using a full screen overlay. The overlay proved more
-                    efficient and simpler for browsing clubs.
+                    When clicking into a club card, we chose between loading a
+                    new page or using a full screen overlay. The overlay proved
+                    more efficient and simpler for browsing clubs.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -302,8 +246,8 @@ function ClubsNEUContent() {
                     />
                   </div>
                   <h4 className="text-primary-color-light">
-                    Your go-to for club info, pulled from socials, calendars, and
-                    websites.
+                    Your go-to for club info, pulled from socials, calendars,
+                    and websites.
                   </h4>
                 </div>
                 <div className="flex flex-col gap-1">
@@ -348,8 +292,8 @@ function ClubsNEUContent() {
                 <h3>Scope creep hinders MVP development</h3>
                 <p className="b_serif">
                   There were tons of features brainstormed that kept on pushing
-                  the release date. For an MVP, limiting the scope early will save
-                  time in the long run.
+                  the release date. For an MVP, limiting the scope early will
+                  save time in the long run.
                 </p>
               </div>
             </section>
