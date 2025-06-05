@@ -21,11 +21,16 @@ import dataInfoTwoImage from "@/public/images/clubsneu/data-info-2.png";
 import dataInfoThreeImage from "@/public/images/clubsneu/data-info-3.png";
 import dataInfoFourImage from "@/public/images/clubsneu/data-info-4.png";
 import dataInfoFiveImage from "@/public/images/clubsneu/data-info-5.png";
+import dpOneImage from "@/public/images/clubsneu/dp-1.png";
+import dpTwoImage from "@/public/images/clubsneu/dp-2.png";
+import dpThreeImage from "@/public/images/clubsneu/dp-3.png";
+import dpFourImage from "@/public/images/clubsneu/dp-4.png";
 import toolbarFinalImage from "@/public/images/clubsneu/toolbarFinal.png";
 import cardImage from "@/public/images/clubsneu/clubCard.png";
 import searchIterationImage from "@/public/images/clubsneu/searchIteration.png";
 import searchFinalImage from "@/public/images/clubsneu/searchFinal.png";
-import finalDatabase from "@/public/images/clubsneu/finalDatabase.png";
+import progressBarImage from "@/public/images/clubsneu/progress-bar.png";
+import notiBarImage from "@/public/images/clubsneu/noti-bar.png";
 import finalClubPage from "@/public/images/clubsneu/finalClub.png";
 import finalMobile from "@/public/images/clubsneu/finalMobile.png";
 import { StaggerWrapper } from "@/components/staggerWrapper";
@@ -100,19 +105,81 @@ function ClubsNEUContent() {
             </section>
           </StaggerWrapper>
 
+          <StaggerWrapper {...getTransition(4)}>
+            <section className="flex flex-col gap-5">
+              <div className="flex flex-col gap-2">
+                <div className="flex flex-col gap-2">
+                  <h4>MY DESIGN PROCESS</h4>
+                  <h3>📌 Every solution starts with clarity.</h3>
+                  <p className="b_serif">
+                    I don’t rush into design. I pause. Break things down. Ask
+                    the right questions. That’s how I connect real problems to
+                    real user needs—and design with purpose.
+                  </p>
+                  <div className="flex flex-col gap-2">
+                    <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                      <Image
+                        src={dpOneImage}
+                        alt="ClubsNEU main interface"
+                        width={1200}
+                        height={675}
+                        layout="responsive"
+                      />
+                    </div>
+                    <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                      <Image
+                        src={dpTwoImage}
+                        alt="ClubsNEU main interface"
+                        width={1200}
+                        height={675}
+                        layout="responsive"
+                      />
+                    </div>
+                    <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                      <Image
+                        src={dpThreeImage}
+                        alt="ClubsNEU main interface"
+                        width={1200}
+                        height={675}
+                        layout="responsive"
+                      />
+                    </div>
+                    <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                      <Image
+                        src={dpFourImage}
+                        alt="ClubsNEU main interface"
+                        width={1200}
+                        height={675}
+                        layout="responsive"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </StaggerWrapper>
+
           <StaggerWrapper {...getTransition(3)}>
             <section className="flex flex-col gap-5">
               <div className="flex flex-col gap-1">
-                <h4>PROBLEM</h4>
+                <h4>STEP - 1</h4>
                 <h3>Let simplify the Problem Statement 🤔 . . . </h3>
                 <p className="b_serif">
                   We need to simplify the problem statement and create small
                   buckets and specify the core problems.
                 </p>
+                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                  <Image
+                    src={problemStatementImage}
+                    alt="ClubsNEU main interface"
+                    width={1200}
+                    height={675}
+                    layout="responsive"
+                  />
+                </div>
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>BKCT - 1</h4>
                   <h3>Verification Complexity</h3>
                   <p className="b_serif">
                     Users may struggle with identity verification steps,
@@ -132,7 +199,6 @@ function ClubsNEUContent() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>BKCT - 2</h4>
                   <h3>Trust in Digital Systems</h3>
                   <p className="b_serif">
                     Users may feel apprehensive about the security and
@@ -153,7 +219,6 @@ function ClubsNEUContent() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>BKCT - 3</h4>
                   <h3>Fraud Concerns</h3>
                   <p className="b_serif">
                     Users may worry about the possibility of their identity
@@ -173,7 +238,6 @@ function ClubsNEUContent() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>BKCT - 4</h4>
                   <h3>Navigation & Usability</h3>
                   <p className="b_serif">
                     If the app is not intuitive, users might find it challenging
@@ -193,7 +257,6 @@ function ClubsNEUContent() {
               </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
-                  <h4>BKCT - 5</h4>
                   <h3>Fear of Mistakes</h3>
                   <p className="b_serif">
                     Some users may fear making an error during the voting
@@ -216,35 +279,25 @@ function ClubsNEUContent() {
 
           <StaggerWrapper {...getTransition(4)}>
             <section className="flex flex-col gap-5">
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-5">
                 <div className="flex flex-col gap-1">
-                  <h4>UNDERSTANDING DATA</h4>
-                  <h3>
-                    Let’s dive into the research, then match with the problem
-                    buckets
-                  </h3>
+                  <h4>MY DESIGN PROCESS</h4>
+                  <h3>🎯 Design starts with better questions.</h3>
                   <p className="b_serif">
-                    Before diving into the solution I usually try to create a
-                    relation between the pain points of users and the problem
-                    statement, as it help me to get familiar with the metrics to
-                    measure the success. So to gather the insights of users I
-                    did a survey. After identifying the user pain points, I
-                    compared them against the survey responses and the problem
-                    buckets I created while analysing the problem statement.
+                    Before pixels, I dig into the problem. I break it down, find
+                    the friction, and ask sharp questions that reveal how users
+                    think and feel. These insights shape everything I design.
                   </p>
                 </div>
               </div>
-              <div className="flex flex-col gap-2">
-                <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1">
                   <h4>QUESTION - 1</h4>
-                  <h3>Verification Complexity</h3>
+                  <h3>🧩 Verifying your identity isn’t always smooth.</h3>
                   <p className="b_serif">
-                    This question addresses the difficulty users might face with
-                    identity verification steps, which is a key part of the
-                    "Verification Complexity" problem.
+                    Users often face friction with online systems when uploading
+                    documents or completing verification steps.
                   </p>
-                </div>
-                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                   <Image
                     src={dataInfoOneImage}
                     alt="ClubsNEU main interface"
@@ -253,15 +306,14 @@ function ClubsNEUContent() {
                     layout="responsive"
                   />
                 </div>
-              </div>
+                </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
                   <h4>QUESTION - 2</h4>
-                  <h3>Fraud Concerns</h3>
+                  <h3>🚨 Trust issues run deep.</h3>
                   <p className="b_serif">
-                    The question focuses on concerns related to identity misuse,
-                    fraud, or duplicate voting, directly tying into the "Fraud
-                    Concerns" bucket.
+                    From fraud to vote duplication—users worry about their data
+                    and votes being tampered with.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -277,11 +329,10 @@ function ClubsNEUContent() {
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
                   <h4>QUESTION - 3</h4>
-                  <h3>Trust in Digital Systems</h3>
+                  <h3>🔐 Is the system safe?</h3>
                   <p className="b_serif">
-                    This question explores users’ trust in online platforms,
-                    which connects with fears around security and transparency,
-                    relevant to the "Trust in Digital Systems" problem.
+                    Trust in digital platforms often hinges on how seamless or
+                    secure the verification feels.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -297,11 +348,10 @@ function ClubsNEUContent() {
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
                   <h4>QUESTION - 4</h4>
-                  <h3>Navigation & Usability</h3>
+                  <h3>🧭 Lost in the process.</h3>
                   <p className="b_serif">
-                    This question relates to how users may find navigating a
-                    system challenging, which could lead to abandoned sessions,
-                    matching the "Navigation & Usability" bucket.
+                    If a task is confusing, most users just give up. Simplicity
+                    is survival.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -317,10 +367,10 @@ function ClubsNEUContent() {
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
                   <h4>QUESTION - 5</h4>
-                  <h3>Fear of Mistakes</h3>
+                  <h3>📩 “Was my vote cast?”</h3>
                   <p className="b_serif">
-                    This question can reveal issues like accidentally casting
-                    the wrong vote, aligning with the "Fear of Mistakes" bucket.
+                    Users want confirmation. A simple message can ease doubts
+                    and build trust.
                   </p>
                 </div>
                 <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
@@ -339,19 +389,18 @@ function ClubsNEUContent() {
           <StaggerWrapper {...getTransition(5)}>
             <section className="flex flex-col gap-2">
               <div className="flex flex-col gap-1">
-                <h4>FINAL DESIGNS</h4>
-                <h3>An MVP ready for distribution</h3>
+                <h4>FINAL DESIGNS TO SOLVE VERIFICATION COMPLEXITIES</h4>
+                <h3>Progress Bar</h3>
                 <p className="b_serif">
-                  With the database, club page, and onboarding completed, it was
-                  time to pitch the product to clubs and students to test its
-                  market fit.
+                  This is especially useful during delays, as it
+                  reassures users that their data is being processed.
                 </p>
               </div>
               <div className="flex flex-col gap-[3rem]">
                 <div className="flex flex-col gap-1">
                   <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                     <Image
-                      src={finalDatabase}
+                      src={progressBarImage}
                       alt="ClubsNEU main interface"
                       width={1200}
                       height={675}
@@ -359,14 +408,29 @@ function ClubsNEUContent() {
                     />
                   </div>
                   <h4 className="text-primary-color-light">
-                    Simply search, filter, and discover clubs that match your
-                    interests.
+                    Verification progress bar for clarity
                   </h4>
                 </div>
+              </div>
+            </section>
+          </StaggerWrapper>
+
+          <StaggerWrapper {...getTransition(5)}>
+            <section className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h3>Real - Time notifications</h3>
+                <p className="b_serif">
+                  I added notifications to provide real-time updates about the
+                  user’s actions—whether their data was correctly entered,
+                  whether the OTP was sent successfully, etc. This direct
+                  communication with users helps build trust and transparency.
+                </p>
+              </div>
+              <div className="flex flex-col gap-[3rem]">
                 <div className="flex flex-col gap-1">
                   <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                     <Image
-                      src={finalClubPage}
+                      src={notiBarImage}
                       alt="ClubsNEU main interface"
                       width={1200}
                       height={675}
@@ -374,23 +438,7 @@ function ClubsNEUContent() {
                     />
                   </div>
                   <h4 className="text-primary-color-light">
-                    Your go-to for club info, pulled from socials, calendars,
-                    and websites.
-                  </h4>
-                </div>
-                <div className="flex flex-col gap-1">
-                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
-                    <Image
-                      src={finalMobile}
-                      alt="ClubsNEU main interface"
-                      width={1200}
-                      height={675}
-                      layout="responsive"
-                    />
-                  </div>
-                  <h4 className="text-primary-color-light">
-                    Responsive design ensures ClubsNEU adapts seamlessly across
-                    all devices.
+                    Real-time notifications build user trust.
                   </h4>
                 </div>
               </div>

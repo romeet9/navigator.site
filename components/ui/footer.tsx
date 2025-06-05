@@ -19,7 +19,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a 
-              href="mailto:therobkan@gmail.com"
+              href="mailto:therobChatterjee @gmail.com"
               className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"
@@ -41,7 +41,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a 
-              href="https://twitter.com/robertkkan"
+              href="https://twitter.com/RomeetkChatterjee "
               className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"
@@ -52,7 +52,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a 
-              href="https://www.linkedin.com/in/robertkkan/" 
+              href="https://www.linkedin.com/in/RomeetkChatterjee /" 
               className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"
@@ -63,7 +63,7 @@ const Footer: React.FC = () => {
           <li className="mx-0 text-primary-color">/</li>
           <li>
             <a 
-              href="https://github.com/robkkan" 
+              href="https://github.com/robkChatterjee " 
               className="b_mono text-primary-color link-underline link-underline-hover"
               target="_blank"
               rel="noopener noreferrer"

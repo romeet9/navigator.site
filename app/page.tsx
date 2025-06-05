@@ -34,7 +34,7 @@ function HomeContent() {
   });
 
   const router = useRouter();
-  const [headerText, setHeaderText] = useState("Hey, I'm Robert.");
+  const [headerText, setHeaderText] = useState("Hey, I'm Romeet.");
 
   const { hoveredItem, handleMouseEnter, handleMouseLeave } = useHoverEffect();
 
@@ -51,7 +51,7 @@ function HomeContent() {
     const handleResize = () => {
       if (typeof window !== "undefined") {
         setHeaderText(
-          window.innerWidth <= 470 ? "Robert." : "Hey, I'm Robert."
+          window.innerWidth <= 470 ? "Romeet." : "Hey, I'm Romeet."
         );
       }
     };
@@ -183,8 +183,8 @@ function HomeContent() {
                 }}
               >
                 <Grid
-                  rows={8}
-                  cols={10}
+                  rows={18}
+                  cols={20}
                   noBorder={true}
                   playLoadingAnimation={!isLoading}
                 />
@@ -231,7 +231,7 @@ function HomeContent() {
             </div>
 
             {/* Mobile view (<780px) */}
-            <div className="md:hidden w-full">
+            {/* <div className="md:hidden w-full">
               {allProjects.map((project) => (
                 <HoverEffectWrapper
                   key={project.num}
@@ -248,7 +248,43 @@ function HomeContent() {
                   />
                 </HoverEffectWrapper>
               ))}
+            </div> */}
+            {/* Mobile responsive code start */}
+            <div className="md:flex flex-row gap-[3rem] w-full md:hidden">
+              <div className=" w-[100%] mx-auto">
+                <Accordion type="single" defaultValue={initialYear} collapsible>
+                  {years.map((year) => (
+                    <AccordionItem key={`year-${year}`} value={year}>
+                      <AccordionTrigger onClick={() => handleYearSelect(year)}>
+                        {year}
+                      </AccordionTrigger>
+                      <AnimatePresence initial={false} mode="wait">
+                        {projectData[year].map((project) => (
+                          <AccordionContent
+                            key={`${year}-${project.num}`}
+                            contentId={`${year}-${project.num}`}
+                            onClick={() =>
+                              handleProjectSelect(`${year}-${project.num}`)
+                            }
+                          >
+                            {project.title}
+                          </AccordionContent>
+                        ))}
+                      </AnimatePresence>
+                    </AccordionItem>
+                  ))}
+                  <AccordionLikeButton href="/archive">
+                    VIEW ALL
+                  </AccordionLikeButton>
+                </Accordion>
+              </div>
+              {/* <FileSystemVisualizer
+                selectedYear={selectedYear}
+                projects={projectData[selectedYear] || []}
+                selectedProject={selectedProject}
+              /> */}
             </div>
+            {/* Mobile responsive code end */}
           </section>
         </div>
 

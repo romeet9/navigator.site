@@ -68,8 +68,8 @@ const jacquesFrancois = Jacques_Francois({
 });
 
 export const metadata: Metadata = {
-  title: "Robert Kan",
-  description: "Robert Kan's portfolio showcasing product design work and writing about growth",
+  title: "Romeet Chatterjee ",
+  description: "Romeet Chatterjee 's portfolio showcasing product design work and writing about growth",
   icons: {
     icon: [
       { url: '/favicon/favicon.ico', sizes: '32x32' },
@@ -80,13 +80,13 @@ export const metadata: Metadata = {
     ],
   },
   openGraph: {
-    title: 'Robert Kan',
-    description: "Robert Kan's portfolio showcasing product design work and writing about growth",
+    title: 'Romeet Chatterjee ',
+    description: "Romeet Chatterjee 's portfolio showcasing product design work and writing about growth",
     images: [{
       url: '/other-assets/thumbnail.png',
       width: 1920,
       height: 1080,
-      alt: 'Robert Kan Portfolio',
+      alt: 'Romeet Chatterjee  Portfolio',
     }],
   },
 };
