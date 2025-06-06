@@ -42,7 +42,7 @@ function UdemyContent() {
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                 <Image
                   src={mainImage}
-                  alt="ClubsNEU main interface"
+                  alt="votein main interface"
                   width={1200}
                   height={675}
                   layout="responsive"

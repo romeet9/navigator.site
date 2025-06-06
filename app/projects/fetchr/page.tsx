@@ -52,7 +52,7 @@ function FetchrContent() {
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                 <Image
                   src={styleImage}
-                  alt="ClubsNEU main interface"
+                  alt="votein main interface"
                   width={1200}
                   height={675}
                   layout="responsive"
@@ -61,7 +61,7 @@ function FetchrContent() {
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                 <Image
                   src={chatImage}
-                  alt="ClubsNEU main interface"
+                  alt="votein main interface"
                   width={1200}
                   height={675}
                   layout="responsive"
@@ -70,7 +70,7 @@ function FetchrContent() {
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                 <Image
                   src={waistImage}
-                  alt="ClubsNEU main interface"
+                  alt="votein main interface"
                   width={1200}
                   height={675}
                   layout="responsive"

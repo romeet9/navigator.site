@@ -23,8 +23,8 @@ const nextConfig = {
   redirects: async () => {
     return [
       {
-        source: '/clubsneu',
-        destination: '/projects/clubsneu',
+        source: '/votein',
+        destination: '/projects/votein',
         permanent: true, // 308 status code (permanent redirect)
       },
     ];

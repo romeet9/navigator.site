@@ -82,7 +82,7 @@ function LinkedInContent() {
               <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                 <Image
                   src={mainImage}
-                  alt="ClubsNEU main interface"
+                  alt="votein main interface"
                   width={1200}
                   height={675}
                   layout="responsive"
@@ -370,7 +370,7 @@ function LinkedInContent() {
                     <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                       <Image
                         src={placementImage1}
-                        alt="ClubsNEU main interface"
+                        alt="votein main interface"
                         width={1200}
                         height={675}
                         layout="responsive"
@@ -379,7 +379,7 @@ function LinkedInContent() {
                     <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                       <Image
                         src={placementImage2}
-                        alt="ClubsNEU main interface"
+                        alt="votein main interface"
                         width={1200}
                         height={675}
                         layout="responsive"
