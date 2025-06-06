@@ -31,6 +31,10 @@ import searchIterationImage from "@/public/images/clubsneu/searchIteration.png";
 import searchFinalImage from "@/public/images/clubsneu/searchFinal.png";
 import progressBarImage from "@/public/images/clubsneu/progress-bar.png";
 import notiBarImage from "@/public/images/clubsneu/noti-bar.png";
+import idVerifyImage from "@/public/images/clubsneu/id-verify.png";
+import evmImage from "@/public/images/clubsneu/evm-style.png";
+import homeScreenImage from "@/public/images/clubsneu/home-screen.png";
+import veriImage from "@/public/images/clubsneu/verification.png";
 import finalClubPage from "@/public/images/clubsneu/finalClub.png";
 import finalMobile from "@/public/images/clubsneu/finalMobile.png";
 import { StaggerWrapper } from "@/components/staggerWrapper";
@@ -291,13 +295,13 @@ function ClubsNEUContent() {
                 </div>
               </div>
               <div className="flex flex-col gap-1">
-                  <h4>QUESTION - 1</h4>
-                  <h3>🧩 Verifying your identity isn’t always smooth.</h3>
-                  <p className="b_serif">
-                    Users often face friction with online systems when uploading
-                    documents or completing verification steps.
-                  </p>
-                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                <h4>QUESTION - 1</h4>
+                <h3>🧩 Verifying your identity isn’t always smooth.</h3>
+                <p className="b_serif">
+                  Users often face friction with online systems when uploading
+                  documents or completing verification steps.
+                </p>
+                <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                   <Image
                     src={dataInfoOneImage}
                     alt="ClubsNEU main interface"
@@ -306,7 +310,7 @@ function ClubsNEUContent() {
                     layout="responsive"
                   />
                 </div>
-                </div>
+              </div>
               <div className="flex flex-col gap-2">
                 <div className="flex flex-col gap-1">
                   <h4>QUESTION - 2</h4>
@@ -386,14 +390,17 @@ function ClubsNEUContent() {
             </section>
           </StaggerWrapper>
 
+          {/* Design solution from here */}
+
           <StaggerWrapper {...getTransition(5)}>
             <section className="flex flex-col gap-2">
               <div className="flex flex-col gap-1">
                 <h4>FINAL DESIGNS TO SOLVE VERIFICATION COMPLEXITIES</h4>
-                <h3>Progress Bar</h3>
+                <h3>Silence creates doubt.</h3>
                 <p className="b_serif">
-                  This is especially useful during delays, as it
-                  reassures users that their data is being processed.
+                  So I added a progress bar to show users exactly what’s
+                  happening behind the scenes—because even a short wait feels
+                  better when you know you’re not stuck.
                 </p>
               </div>
               <div className="flex flex-col gap-[3rem]">
@@ -418,12 +425,11 @@ function ClubsNEUContent() {
           <StaggerWrapper {...getTransition(5)}>
             <section className="flex flex-col gap-2">
               <div className="flex flex-col gap-1">
-                <h3>Real - Time notifications</h3>
+                <h3>Instant feedback. Clear updates.</h3>
                 <p className="b_serif">
-                  I added notifications to provide real-time updates about the
-                  user’s actions—whether their data was correctly entered,
-                  whether the OTP was sent successfully, etc. This direct
-                  communication with users helps build trust and transparency.
+                  From OTPs sent to data errors flagged—I added real-time alerts
+                  to keep users in the loop. Because when systems speak up,
+                  users feel seen and secure.
                 </p>
               </div>
               <div className="flex flex-col gap-[3rem]">
@@ -439,6 +445,122 @@ function ClubsNEUContent() {
                   </div>
                   <h4 className="text-primary-color-light">
                     Real-time notifications build user trust.
+                  </h4>
+                </div>
+              </div>
+            </section>
+          </StaggerWrapper>
+
+          <StaggerWrapper {...getTransition(5)}>
+            <section className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h3>Trust through transparency.</h3>
+                <p className="b_serif">
+                  Users can check their unique ID to confirm it was used—and see
+                  exactly how. Who voted, for which party, and when. No
+                  guesswork. No fraud. Just clarity.
+                </p>
+              </div>
+              <div className="flex flex-col gap-[3rem]">
+                <div className="flex flex-col gap-1">
+                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                    <Image
+                      src={idVerifyImage}
+                      alt="ClubsNEU main interface"
+                      width={1200}
+                      height={675}
+                      layout="responsive"
+                    />
+                  </div>
+                  <h4 className="text-primary-color-light">
+                    Helps voters confirm their vote was counted correctly,
+                    reducing doubts and boosting confidence in the system.
+                  </h4>
+                </div>
+              </div>
+            </section>
+          </StaggerWrapper>
+
+          <StaggerWrapper {...getTransition(5)}>
+            <section className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h3>Familiarity builds confidence.</h3>
+                <p className="b_serif">
+                  Inspired by real voting machines, the design mirrors what
+                  users already know—making it easier for everyone, especially
+                  older or less tech-savvy users, to vote with ease.
+                </p>
+              </div>
+              <div className="flex flex-col gap-[3rem]">
+                <div className="flex flex-col gap-1">
+                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                    <Image
+                      src={evmImage}
+                      alt="ClubsNEU main interface"
+                      width={1200}
+                      height={675}
+                      layout="responsive"
+                    />
+                  </div>
+                  <h4 className="text-primary-color-light">
+                    Makes voting feel instantly familiar.
+                  </h4>
+                </div>
+              </div>
+            </section>
+          </StaggerWrapper>
+
+          <StaggerWrapper {...getTransition(5)}>
+            <section className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h3>Act fast, vote faster.</h3>
+                <p className="b_serif">
+                  A bold CTA on the homepage pushes urgency and lets users dive
+                  straight into voting—no extra taps, no confusion.
+                </p>
+              </div>
+              <div className="flex flex-col gap-[3rem]">
+                <div className="flex flex-col gap-1">
+                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                    <Image
+                      src={homeScreenImage}
+                      alt="ClubsNEU main interface"
+                      width={1200}
+                      height={675}
+                      layout="responsive"
+                    />
+                  </div>
+                  <h4 className="text-primary-color-light">
+                    Reducing friction in navigation{" "}
+                  </h4>
+                </div>
+              </div>
+            </section>
+          </StaggerWrapper>
+
+          <StaggerWrapper {...getTransition(5)}>
+            <section className="flex flex-col gap-2">
+              <div className="flex flex-col gap-1">
+                <h3>Tap. Scan. Verified.</h3>
+                <p className="b_serif">
+                  Biometric login (fingerprint & face) adds speed and security.
+                  A progress bar and clear step-by-step cues reduce stress—so
+                  users know exactly what’s working and what’s not.
+                </p>
+              </div>
+              <div className="flex flex-col gap-[3rem]">
+                <div className="flex flex-col gap-1">
+                  <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
+                    <Image
+                      src={veriImage}
+                      alt="ClubsNEU main interface"
+                      width={1200}
+                      height={675}
+                      layout="responsive"
+                    />
+                  </div>
+                  <h4 className="text-primary-color-light">
+                    No third-party, no tampering risks.{" "}
                   </h4>
                 </div>
               </div>
