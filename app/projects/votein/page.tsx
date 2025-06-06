@@ -7,6 +7,7 @@ import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import SerifChar from "@/components/serifChar";
 import mainImage from "@/public/images/votein/vi_intro.png";
+import outroImage from "@/public/images/votein/outro.png";
 import participationImage from "@/public/images/votein/participation.png";
 import instagramImage from "@/public/images/votein/vi_core_user.png";
 import problemStatementImage from "@/public/images/votein/vi_prb_state.png";
@@ -630,7 +631,7 @@ function VoteinContent() {
           
           <div className="w-full inner-shadow-tertiary rounded-[0.375rem]">
                     <Image
-                      src={veriImage}
+                      src={outroImage}
                       alt="votein main interface"
                       width={1200}
                       height={675}
