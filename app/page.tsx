@@ -231,7 +231,7 @@ function HomeContent() {
             </div>
 
             {/* Mobile view (<780px) */}
-            {/* <div className="md:hidden w-full">
+            <div className="md:hidden w-full">
               {allProjects.map((project) => (
                 <HoverEffectWrapper
                   key={project.num}
@@ -248,10 +248,10 @@ function HomeContent() {
                   />
                 </HoverEffectWrapper>
               ))}
-            </div> */}
+            </div>
             {/* Mobile responsive code start */}
             <div className="md:flex flex-row gap-[3rem] w-full md:hidden">
-              <div className=" w-[100%] mx-auto">
+              {/* <div className=" w-[100%] mx-auto">
                 <Accordion type="single" defaultValue={initialYear} collapsible>
                   {years.map((year) => (
                     <AccordionItem key={`year-${year}`} value={year}>
@@ -277,7 +277,7 @@ function HomeContent() {
                     VIEW ALL
                   </AccordionLikeButton>
                 </Accordion>
-              </div>
+              </div> */}
               {/* <FileSystemVisualizer
                 selectedYear={selectedYear}
                 projects={projectData[selectedYear] || []}
